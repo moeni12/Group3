@@ -5,7 +5,7 @@ License ![GitHub](https://img.shields.io/github/license/moeni12/Group3)
 
 ![Releases](https://img.shields.io/github/release/moeni12/Group3)
 
-Group 3 Individual Team Member Contribution 
+Group 3 Individual Team Member Contribution
 
   <table>
     <thead>

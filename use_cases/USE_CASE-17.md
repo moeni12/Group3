@@ -43,7 +43,7 @@ A request for capital cities in the world by largest population to smallest .
 
 ## EXTENSIONS
 
-3. **Lists of countries does not exist**:
+3. **Lists of capital cities does not exist**:
    1. User cannot view the lists of the capital cities.
 
 ## SUB-VARIATIONS

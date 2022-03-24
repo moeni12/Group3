@@ -38,7 +38,7 @@ A request for the population of people, people living in cities, and people not 
 
 1. The population of people, people living in cities, and people not living in cities in each continent for user.
 2. Need to capture the population of people, people living in cities, and people not living information for.
-3. Need to extract current population information of population of people, people living in cities, and people not livng in cities.
+3. Need to extract current population information of population of people, people living in cities, and people not living in cities.
 4. Need to  provide report to organization.
 
 ## EXTENSIONS

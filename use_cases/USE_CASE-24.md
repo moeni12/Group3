@@ -44,7 +44,7 @@ A request for the population of people, people living in cities, and people not 
 ## EXTENSIONS
 
 3. **Lists of  cities does not exist**:
-    1. User cannot view the lists of the population of people, people living in cities, and people not living in region.
+    1. User cannot view the lists of the population of people, people living in cities, and people not living in cities in each region.
 
 ## SUB-VARIATIONS
 

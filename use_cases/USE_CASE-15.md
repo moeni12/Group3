@@ -1,4 +1,4 @@
-# USE CASE: 1 All the countries in the world organised by largest population to smallest.
+# USE CASE: 15 
 
 ## CHARACTERISTIC INFORMATION
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.  
+We know the role.
 
 ### Success End Condition
 

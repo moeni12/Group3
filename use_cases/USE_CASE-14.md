@@ -38,7 +38,7 @@ A request for the top N populated cities in a region where N is provided by the 
 
 1. The top N populated cities information for user.
 2. Need to capture name of the populated cities to get population information for.
-3. Need to extract current population information of populated cities.
+3. Need to extract current population information of populated cities in a region.
 4. Need to  provide report to organization.
 
 ## EXTENSIONS

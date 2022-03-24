@@ -43,7 +43,7 @@ A request for the top N populated cities in a country where N is provided by the
 
 ## EXTENSIONS
 
-3. **Lists of countries does not exist**:
+3. **Lists of populated cities does not exist**:
     1. User cannot view the lists of the populated cities in a countries.
 
 ## SUB-VARIATIONS

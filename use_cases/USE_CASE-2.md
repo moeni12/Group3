@@ -44,7 +44,7 @@ A request for countries organised by largest population to smallest .
 ## EXTENSIONS
 
 3. **Lists of countries does not exist**:
-    1. User cannot view the lists of the countries.
+    1. User cannot view the lists of the countries in a continent.
 
 ## SUB-VARIATIONS
 

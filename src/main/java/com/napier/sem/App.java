@@ -35,6 +35,12 @@ public class App {
         // Display results
         a.displayCity(cit);
 
+        // Extract country information
+        ArrayList<city> cityinW = a.getAllCityinW();
+
+        // Display results
+        a.displayCityinW(cityinW);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -240,4 +246,61 @@ public class App {
 //        }
     }
 
+    /**
+     * Gets all the current employees and salaries.
+     * @return A list of all employees and salaries, or null if there is an error.
+     */
+    public ArrayList<city> getAllCityinW()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "select * from city order by Population desc;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<city> city = new ArrayList<city>();
+            while (rset.next())
+            {
+                city emp = new city();
+//                emp.code = rset.getString("city.Code");
+                emp.Name = rset.getString("city.Name");
+                emp.Population = rset.getInt("city.Population");
+//                emp.region = rset.getString("city.region");
+
+                city.add(emp);
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get salary details");
+            return null;
+        }
+    }
+
+    public void displayCityinW(ArrayList<city> cou)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("Report all the cities in the world organised by largest population to smallest.\n ");
+        for (city emp : cou)
+        {
+
+            System.out.println (
+                    emp.Name + " "
+                            + emp.Population + " "
+                            + "\n");
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
 }

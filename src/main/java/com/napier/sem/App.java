@@ -25,6 +25,9 @@ public class App {
         System.out.println("Never say Never !!!!");
         // Extract city information
         ArrayList<country> cou = a.getAllCountry();
+        ArrayList<continent> con = a.getAllContinent();
+        ArrayList<region> reg = a.getAllRegion();
+
 
         // Display results
         a.displayCountry(cou);
@@ -34,6 +37,8 @@ public class App {
 
         // Display results
         a.displayCity(cit);
+        a.displayContinent(con);
+        a.displayRegion(reg);
 
         // Extract country information
         ArrayList<city> cityinW = a.getAllCityinW();
@@ -371,4 +376,137 @@ public class App {
 //            e.printStackTrace();
 //        }
     }
+
+    /**
+     * Gets all the countries in a continent organised by largest population to smallest.
+     * @return the countries in a continent organised by largest population to smallest., or null if there is an error.
+     */
+    public ArrayList<continent> getAllContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String cont = "North America";
+            String strSelect = "SELECT * "
+                    + "FROM country "
+                    + " WHERE Continent =" + "'" + cont + "'"
+                    + " ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<continent> continent = new ArrayList<continent>();
+            while (rset.next())
+            {
+                continent emp = new continent();
+                emp.code = rset.getString("country.code");              emp.name = rset.getString("country.name");
+                emp.continent = rset.getString("country.continent");
+                emp.region = rset.getString("country.region");
+                emp.population = rset.getInt("country.population");
+                continent.add(emp);
+
+
+
+
+            }
+            return continent;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in continent");
+            return null;
+        }
+    }
+    public void displayContinent(ArrayList<continent> con)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("All the countries in a region organised by largest population to smallest.");
+
+        for (continent emp : con)
+        {
+            System.out.println
+                    (
+                            emp.code + " "
+                                    + emp.name + " " + emp.population
+                                    + "\n");
+
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    //All the countries in a region organised by largest population to smallest.
+
+    public ArrayList<region> getAllRegion()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String reg = "Southern Europe";
+            String strSelect = "SELECT * "
+                    + "FROM country "
+                    + " WHERE Region =" + "'" + reg + "'"
+                    + " ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<region> region = new ArrayList<region>();
+            while (rset.next())
+            {
+                region emp = new region();
+                emp.code = rset.getString("country.code");              emp.name = rset.getString("country.name");
+                emp.continent = rset.getString("country.continent");
+                emp.region = rset.getString("country.region");
+                emp.population = rset.getInt("country.population");
+                region.add(emp);
+
+
+
+
+            }
+            return region;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in a region");
+            return null;
+        }
+    }
+
+    public void displayRegion(ArrayList<region> reg)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("All the countries in a continent organised by largest population to smallest.");
+        for (region emp : reg)
+        {
+            System.out.println
+                    (
+                            emp.code + " "
+                                    + emp.name + " " + emp.population
+                                    + "\n");
+
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+
+}
 }

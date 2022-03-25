@@ -41,6 +41,13 @@ public class App {
         // Display results
         a.displayCityinW(cityinW);
 
+// Extract country information
+        ArrayList<city> cityinC = a.getAllCityContinent();
+
+        // Display results
+        a.displayCityContinent(cityinC);
+
+
         // Disconnect from database
         a.disconnect();
     }
@@ -293,6 +300,67 @@ public class App {
                     emp.Name + " "
                             + emp.Population + " "
                             + "\n");
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    public ArrayList<city> getAllCityContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String cont = "North America";
+            String strSelect = "SELECT *"
+                    + "FROM country, city "
+                    + "WHERE country.Code= city.CountryCode AND country.Continent =" + "'" + cont + "'"
+                    + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<city> city = new ArrayList<city>();
+            while (rset.next())
+            {
+                city emp = new city();
+//                emp.code = rset.getString("city.Code");
+                emp.Name = rset.getString("city.Name");
+                emp.Population = rset.getInt("city.Population");
+//                emp.region = rset.getString("city.region");
+
+                city.add(emp);
+
+
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in continent");
+            return null;
+        }
+    }
+
+    public void displayCityContinent(ArrayList<city> con)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("Report all the cities in a continent organised by largest population to smallest.\n");
+
+        for (city emp : con)
+        {
+                            System.out.println (
+                                    emp.Name + " "
+                                            + emp.Population + " "
+                                            + "\n");
+
         }
 //        try {
 //            new File("./reports/").mkdir();

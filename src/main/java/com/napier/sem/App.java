@@ -25,9 +25,12 @@ public class App {
         System.out.println("Never say Never !!!!");
         // Extract employee salary information
         ArrayList<country> cou = a.getAllCountry();
+        ArrayList<continent> con = a.getAllContinent();
+
 
         // Display results
         a.displayCountry(cou,"report1.md");
+        a.displayContinent(con);
 
         // Disconnect from database
         a.disconnect();
@@ -172,6 +175,70 @@ public class App {
         }
     }
 
+    /**
+     * Gets all the countries in a continent organised by largest population to smallest.
+     * @return the countries in a continent organised by largest population to smallest., or null if there is an error.
+     */
+    public ArrayList<continent> getAllContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String cont = "North America";
+            String strSelect = "SELECT * "
+                    + "FROM country "
+                    + " WHERE Continent =" + "'" + cont + "'"
+                    + " ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<continent> continent = new ArrayList<continent>();
+            while (rset.next())
+            {
+                continent emp = new continent();
+                emp.code = rset.getString("country.code");              emp.name = rset.getString("country.name");
+                emp.continent = rset.getString("country.continent");
+                emp.region = rset.getString("country.region");
+                emp.population = rset.getInt("country.population");
+               continent.add(emp);
+
+
+
+
+            }
+            return continent;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in continent");
+            return null;
+        }
+    }
+    public void displayContinent(ArrayList<continent> con)
+    {
+        StringBuilder sb = new StringBuilder();
+       System.out.printIn("All the countries in a continent organised by largest population to smallest.")
+        for (continent emp : con)
+        {
+            System.out.println
+                    (
+                    emp.code + " "
+                            + emp.name + " " + emp.population
+                            + "\n");
+
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
 
 
 }

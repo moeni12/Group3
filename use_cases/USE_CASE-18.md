@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a report all the capital cities in a continent organised by largest population to smallest.
+As a reporter that we need to report all the capital cities in a continent organised by largest population to smallest.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.
+We need to understand the report design and need to think the SWL query to get correct information.
 
 ### Success End Condition
 
@@ -32,19 +32,19 @@ User.
 
 ### Trigger
 
-A request for capital cities in a continent organised by largest population to smallest .
+A user request a report for capital cities in a continent organised by largest population to smallest .
 
 ## MAIN SUCCESS SCENARIO
 
 1. Largest to smallest population information for capital cities in a continent.
-2. Need to capture name of the capital cities to get population information for.
-3. Need to extract current population information of capital cities in a continent.
-4. Need to  provide report to organization.
+2. To do this, we need to join with the database first.
+3. In addition, we need to capture name of the capital cities to get population information for.
+4. Moreover, we need to extract current population information of capital cities in a continent.
+5. Finally, we need to  provide report to organization.
 
 ## EXTENSIONS
 
-3. **Lists of capital cities does not exist**:
-    1. User cannot view the lists of the capital cities in a continent.
+None.
 
 ## SUB-VARIATIONS
 

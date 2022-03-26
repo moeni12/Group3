@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.  
+ We have to connect with database and specify the role for individual. We have to understand the data structure. 
 
 ### Success End Condition
 
@@ -32,19 +32,19 @@ User.
 
 ### Trigger
 
-A request for countries organised by largest population to smallest .
+A user request a report for countries organised by largest population to smallest .
 
 ## MAIN SUCCESS SCENARIO
 
-1. Largest to smallest population information for all the countries in the world.
-2. Need to capture name of the country to get population information for.
-3. Need to extract current population information of all the countries in the world.
-4. Need to  provide report to organization.
+1. User request for a report which can show largest to smallest population information for all the countries in the world.
+2. To do this, we need to join with the database first.
+3. And thenm  we need to capture name of the country to get population information for.
+4. Need to extract current population information of all the countries in the world.
+5. Finally, we can provide report to organization.
 
 ## EXTENSIONS
 
-3. **Lists of countries does not exist**:
-    1. User cannot view the lists of the countries.
+None.
 
 ## SUB-VARIATIONS
 
@@ -52,4 +52,4 @@ None.
 
 ## SCHEDULE
 
-**DUE DATE**: Release 1.0
+**DUE DATE**: Release 0.2

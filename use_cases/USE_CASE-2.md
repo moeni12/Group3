@@ -36,11 +36,11 @@ A  User request a report for countries in a contient organised by largest popula
 
 ## MAIN SUCCESS SCENARIO
 
-1.User request for a report which can show largest to smallest population information for all the countries in the world.
-2.To do this, we need to think about the query with the database first.
-3.And then we need to capture name of the countries in a contient to get population information for.
-4.Need to extract current population information of all the countries in the continent.
-5.Finally, we can provide report to organization.
+1. User request for a report which can show largest to smallest population information for all the countries in the world.
+2. To do this, we need to think about the query with the database first.
+3. And then we need to capture name of the countries in a contient to get population information for.
+4. Need to extract current population information of all the countries in the continent.
+5. Finally, we can provide report to organization.
 
 ## EXTENSIONS
 

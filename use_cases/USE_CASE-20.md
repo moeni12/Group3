@@ -36,7 +36,7 @@ A request for the top N populated cities in the world where N is provided by the
 
 ## MAIN SUCCESS SCENARIO
 
-1. User request for a report which can show the top N populated cities in the world information for user.
+1. User request for a report which can show the top N populated cities in the world information.
 2. To do this, we need to join with the database first.
 3. In addition, we need to capture the top N populated cities in the world to get population information for.
 4. Moreover, we need to extract current population information of populated cities in the world.

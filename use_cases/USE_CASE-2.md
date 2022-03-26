@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a report all the  in a continent organised by largest population to smallest
+As reporter, we need to  report all the  in a continent organised by largest population to smallest
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.
+We have to define the query for the task and we have to think about the report design.
 
 ### Success End Condition
 
@@ -32,19 +32,19 @@ User.
 
 ### Trigger
 
-A request for countries organised by largest population to smallest .
+A  User request a report for countries in a contient organised by largest population to smallest .
 
 ## MAIN SUCCESS SCENARIO
 
-1. Largest to smallest population information for all the countries in a continent.
-2. Need to capture name of the country in a continent to get population information for.
-3. Need to extract current population information of all the countries in a continent.
-4. Need to  provide report to organization.
+1.User request for a report which can show largest to smallest population information for all the countries in the world.
+2.To do this, we need to think about the query with the database first.
+3.And then we need to capture name of the countries in a contient to get population information for.
+4.Need to extract current population information of all the countries in the continent.
+5.Finally, we can provide report to organization.
 
 ## EXTENSIONS
 
-3. **Lists of countries does not exist**:
-    1. User cannot view the lists of the countries in a continent.
+None.
 
 ## SUB-VARIATIONS
 
@@ -52,4 +52,4 @@ None.
 
 ## SCHEDULE
 
-**DUE DATE**: Release 1.0
+**DUE DATE**: Release 0.2

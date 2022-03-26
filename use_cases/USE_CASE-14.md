@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a reportert that we need to the top N populated cities in a region where N is provided by the user
+As a reportert that we need to report the top N populated cities in a region where N is provided by the user
 
 ### Scope
 

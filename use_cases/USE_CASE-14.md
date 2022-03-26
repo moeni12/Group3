@@ -38,7 +38,7 @@ A user request a report for the top N populated cities in a region.
 1. User request for a report which  can show the top N populated cities information.
 2. To do this, we need to join with the database first.
 3. In additon, we need to capture name of the populated cities to get population information for.
-4. More over, we need to extract current population information of populated cities in a region.
+4. Moreover, we need to extract current population information of populated cities in a region.
 5. Finally, we weed to  provide report to organization.
 
 ## EXTENSIONS

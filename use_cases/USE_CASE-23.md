@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a report the population of people, people living in cities, and people not living in cities in each continent.
+As a reporter that we need to report the population of people, people living in cities, and people not living in cities in each continent.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.
+We need to understand the report design and need to think the SWL query to get correct information.
 
 ### Success End Condition
 
@@ -32,19 +32,19 @@ User.
 
 ### Trigger
 
-A request for the population of people, people living in cities, and people not living in cities.
+A user request for the population of people, people living in cities, and people not living in cities.
 
 ## MAIN SUCCESS SCENARIO
 
-1. The population of people, people living in cities, and people not living in cities in each continent for user.
-2. Need to capture the population of people, people living in cities, and people not living information for.
-3. Need to extract current population information of population of people, people living in cities, and people not living in cities.
-4. Need to  provide report to organization.
+1. User request for a report which can show the population of people, people living in cities, and people not living in cities in each continent.
+2. To do this, we need to join with the database first.
+3. In addition, we need to capture the population of people, people living in cities, and people not living information for.
+4. Moreover we need to extract current population information of population of people, people living in cities, and people not living in cities.
+5. Finally, we need to  provide report to organization.
 
 ## EXTENSIONS
 
-3. **Lists of  cities does not exist**:
-    1. User cannot view the lists of the population of people, people living in cities, and people not living in cities.
+None.
 
 ## SUB-VARIATIONS
 

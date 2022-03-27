@@ -36,7 +36,7 @@ A user request a report for capital cities in a region organised by largest popu
 
 ## MAIN SUCCESS SCENARIO
 
-1. Largest to smallest population information for capital cities in a region.
+1. User request for a report which can show largest to smallest population information for capital cities in a region.
 2. To do this, we need to join with the database first.
 3. In addition, we need to capture name of the capital cities in a region to get population information for.
 4. Moreover, we need to extract current population information of capital cities in a region.

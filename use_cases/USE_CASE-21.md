@@ -37,9 +37,10 @@ A request for the top N populated cities in a continent where N is provided by t
 ## MAIN SUCCESS SCENARIO
 
 1. User requse for a report whcih can show the top N populated cities in a continent information.
-2. In addition, we need to capture the top N populated cities in a continent to get population information for.
-3. Moreover, we need to extract current population information of populated cities in a continent.
-4. Finally, we need to  provide report to organization.
+2. To do this, we need to join with the database first.
+3. In addition, we need to capture the top N populated cities in a continent to get population information for.
+4. Moreover, we need to extract current population information of populated cities in a continent.
+5. Finally, we need to  provide report to organization.
 
 ## EXTENSIONS
 

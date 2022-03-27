@@ -19,8 +19,14 @@ public class App {
         // Create new Application
         App a = new App();
 
-        // Connect to database
-        a.connect("db:3306", 30000);
+        if(args.length < 1){
+            a.connect("localhost:33060", 30000);
+        }else{
+            a.connect(args[0], Integer.parseInt(args[1]));
+        }
+
+//        // Connect to database
+//        a.connect("db:3306", 30000);
         System.out.println("Never say Never !!!!");
         /**
          * Report for countries information

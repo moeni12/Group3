@@ -149,7 +149,18 @@ public class App {
     public void displayCountry(ArrayList<Country> cou)
     {
         StringBuilder sb = new StringBuilder();
+
+        // Check country is not null
+        if (cou == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+
+        // Print header
+        System.out.println(String.format("%-10s %-15s %-20s %-8s", "Code", "Name", "Population", "Continent"));
         System.out.println("Reporting all the countries in the world organised by largest population to smallest ");
+
         for (Country emp : cou)
         {
 
@@ -471,6 +482,26 @@ public class App {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+    }
+
+    public void printCountries(ArrayList<Country> countries)
+    {
+        // Check country is not null
+        if (countries == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-10s %-15s %-20s %-8s", "Code", "Name", "Population", "Continent"));
+        // Loop over all employees in the list
+        for (Country emp : countries)
+        {
+            String emp_string =
+                    String.format("%-10s %-15s %-20s %-8s",
+                            emp.code, emp.name, emp.population, emp.continent);
+            System.out.println(emp_string);
+        }
     }
 
 

@@ -32,7 +32,7 @@ User.
 
 ### Trigger
 
-A request for the top N populated cities in a region where N is provided by the user.
+A user request for the top N populated cities in a region where N is provided.
 
 ## MAIN SUCCESS SCENARIO
 

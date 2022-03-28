@@ -36,7 +36,7 @@ A user request a report for the population of a region
 
 ## MAIN SUCCESS SCENARIO
 
-1. User request for a report which can show the population of a continent.
+1. User request for a report which can show the population of a region.
 2. To do this, we need to join with the database first.
 3. And then we need to capture name of the region to get population information for.
 4. Need to extract current the population of a region.

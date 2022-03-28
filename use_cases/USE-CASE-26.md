@@ -1,4 +1,4 @@
-# USE CASE: 1 The population of the world
+# USE CASE: 26 The population of the world
 
 ## CHARACTERISTIC INFORMATION
 

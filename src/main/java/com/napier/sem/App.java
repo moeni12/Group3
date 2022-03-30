@@ -344,7 +344,8 @@ public class App {
     {
         StringBuilder sb = new StringBuilder();
         System.out.println("Report all the cities in a continent organised by largest population to smallest.\n");
-
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println("|   Name    |   Popuation");
         for (city emp : con)
         {
                             System.out.println (

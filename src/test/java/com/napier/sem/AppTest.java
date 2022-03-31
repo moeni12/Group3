@@ -1,8 +1,6 @@
 package com.napier.sem;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 
 public class AppTest
@@ -46,17 +44,17 @@ public class AppTest
         app.displayCountry(cou);
     }
 
-    @Test
-    void printCountries()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.code = "NAT";
-        emp.name = "Kevin";
-        emp.population = 120000;
-        emp.continent = "Engineer";
-
-        countries.add(emp);
-        app.printCountries(countries);
-    }
+//    @Test
+//    void printCountries()
+//    {
+//        ArrayList<Country> countries = new ArrayList<Country>();
+//        Country emp = new Country();
+//        emp.code = "NAT";
+//        emp.name = "Kevin";
+//        emp.population = 120000;
+//        emp.continent = "Engineer";
+//
+//        countries.add(emp);
+//        app.printCountries(countries);
+//    }
 }

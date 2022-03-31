@@ -17,6 +17,7 @@ public class Country {
     public String governmentForm;
     public  String headOfState;
     public int capital;
+    public String capital_n;
     public String code2;
 
 

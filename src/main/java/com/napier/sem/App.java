@@ -32,15 +32,15 @@ public class App {
          * Report for countries information
          */
         // Extract countries information in the world
-        ArrayList<Country> cou = a.getAllCountry();
+//        ArrayList<Country> cou = a.getAllCountry();
         // Extract countries information in a continent
-        ArrayList<Country> con = a.getAllContinent();
+//        ArrayList<Country> con = a.getAllContinent();
+
+
+
 
         // Extract countries information in a region
-        ArrayList<Country> reg = a.getAllRegion();
-
-        // Extract countries information in a region
-        ArrayList<Country> capitalinW = a.getAllCapitalinW();
+//        ArrayList<Country> capitalinW = a.getAllCapitalinW();
 
         // Display results
 //        a.displayCountry(cou);
@@ -52,13 +52,14 @@ public class App {
          * Report for city information
          */
         // Extract city information in a country
-        ArrayList<city> cit = a.getAllCity();
+//        ArrayList<city> cit = a.getAllCity();
         // Extract city information in world
-        ArrayList<city> cityinW = a.getAllCityinW();
+//        ArrayList<city> cityinW = a.getAllCityinW();
         // Extract city information in continent
-        ArrayList<city> cityinC = a.getAllCityContinent();
-
-        ArrayList<city> TopCityinW = a.getAllTopCityinW(5);
+//        ArrayList<city> cityinC = a.getAllCityContinent();
+        // Extract cities information in a region
+        ArrayList<city> reg = a.getAllCityRegion("Southern Europe");
+        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
 
         // Display results
 //        a.displayCity(cit);
@@ -66,8 +67,8 @@ public class App {
 //        a.displayCityinW(cityinW);
         // Display results
 //        a.displayCityContinent(cityinC);
-
-        a.displayTopCityinW(TopCityinW);
+        a.displayCityINRegion(reg);
+        a.displayCityInDist(dist);
         // Disconnect from database
         a.disconnect();
     }
@@ -168,10 +169,9 @@ public class App {
         // Check country is not null
         if (cou == null)
         {
-
-            System.out.println("No country and object is null");
+            System.out.println("No country");
+            return;
         }
-        else {
 
         // Print header
         System.out.println(String.format("%-10s %-15s %-20s %-8s", "Code", "Name", "Population", "Continent"));
@@ -179,19 +179,11 @@ public class App {
 
         for (Country emp : cou)
         {
-            if (emp == null) {
-                System.out.println("country object is null");
-            }
-            else {
-
-
 
             System.out.println (
                     emp.name + " "
                             + emp.continent + " "
                             + "\n");
-            }
-        }
         }
 //        try {
 //            new File("./reports/").mkdir();
@@ -447,36 +439,36 @@ public class App {
 //        }
     }
 
-    //All the countries in a region organised by largest population to smallest.
+    //All the city in a region organised by largest population to smallest.
 
-    public ArrayList<Country> getAllRegion()
+    public ArrayList<city> getAllCityRegion(String reg)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String reg = "Southern Europe";
+//            String reg = "Southern Europe";
             String strSelect = "SELECT * "
-                    + "FROM country "
-                    + " WHERE Region =" + "'" + reg + "'"
-                    + " ORDER BY Population DESC";
+                    + "FROM country, city "
+                    + " WHERE country.code= city.CountryCode AND country.Region =" + "'" + reg + "'"
+                    + " ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract list of country information in a region
-            ArrayList<Country> country = new ArrayList<Country>();
+            ArrayList<city> city = new ArrayList<city>();
             while (rset.next())
             {
-                Country emp = new Country();
-                emp.code = rset.getString("country.code");
-                emp.name = rset.getString("country.name");
-                emp.continent = rset.getString("country.continent");
-                emp.region = rset.getString("country.region");
-                emp.population = rset.getInt("country.population");
-                country.add(emp);
+                city emp = new city();
+
+                emp.Name = rset.getString("city.Name");
+                emp.cname = rset.getString("country.Name");
+                emp.District = rset.getString("city.District");
+                emp.Population = rset.getInt("city.Population");
+                city.add(emp);
 
             }
-            return country;
+            return city;
         }
         catch (Exception e)
         {
@@ -486,16 +478,19 @@ public class App {
         }
     }
 
-    public void displayRegion(ArrayList<Country> reg)
+    public void displayCityINRegion(ArrayList<city> reg)
     {
         StringBuilder sb = new StringBuilder();
-        System.out.println("All the countries in a continent organised by largest population to smallest.");
-        for (Country emp : reg)
+        System.out.println("All the cities in a region organised by largest population to smallest.");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println("|   Name    |   Population      | District    |   Country ");
+        for (city emp : reg)
         {
             System.out.println
                     (
-                            emp.code + " "
-                                    + emp.name + " " + emp.population
+                            emp.Name + "          "
+                                    + emp.Population + "          " + emp.District + "        "
+                                    + emp.cname + "     "
                                     + "\n");
 
         }
@@ -508,6 +503,74 @@ public class App {
 //            e.printStackTrace();
 //        }
     }
+
+//All the cities in a district organised by largest population to smallest.
+    public ArrayList<city> getAllCitiesINDist(String dist)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT * "
+                    + "FROM city,country"
+                    + " WHERE country.Code= city.CountryCode AND District =" + "'" + dist + "'"
+                    + " ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract list of country information in a region
+            ArrayList<city> city = new ArrayList<city>();
+            while (rset.next())
+            {
+                city emp = new city();
+
+                emp.Name = rset.getString("city.Name");
+                emp.cname =rset.getString("country.Name");
+
+//                emp.continent = rset.getString("city.Country");
+                emp.District = rset.getString("city.District");
+                emp.Population = rset.getInt("city.Population");
+                city.add(emp);
+
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in a region");
+            return null;
+        }
+    }
+
+//All the cities in a district organised by largest population to smallest.
+    public void displayCityInDist(ArrayList<city> con)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("Report all the cities in a district organised by largest population to smallest.\n");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println("|   Name    |   Population      | District    |   Country ");
+        for (city emp : con)
+        {
+            System.out.println (
+                    emp.Name + "    "
+                            + emp.Population + "       "
+                            + emp.District + "        "
+                            + emp.cname + "     "
+                            + "\n");
+
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
 
     public void printCountries(ArrayList<Country> countries)
     {
@@ -578,68 +641,6 @@ public class App {
                     (emp.name + " "
                                     + emp.capital_n + " " + emp.population
                                     + "\n");
-        }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    /**
-     * Gets all in the top city in the world
-     * @return A list of all city, or null if there is an error.
-     */
-    public ArrayList<city> getAllTopCityinW(int Num)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode ORDER BY city.Population desc limit " + Num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<city> city = new ArrayList<city>();
-
-
-            while (rset.next())
-            {
-                city emp = new city();
-
-//                emp.code = rset.getString("country.Code");
-                emp.cName = rset.getString("Country.name");
-                emp.Name = rset.getString("city.name");
-                emp.District = rset.getString("city.district");
-                emp.Population = rset.getInt("city.population");
-//                emp.Population = rset.getString("city.Population");
-
-                city.add(emp);
-            }
-            return city;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get City details");
-            return null;
-        }
-    }
-
-    public void displayTopCityinW(ArrayList<city> world)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("The top N populated cities in the world where N is provided by the user.");
-        for (city emp : world)
-        {
-            System.out.println
-                    (emp.cName + " "
-                            + emp.Name + " " + emp.District + " " + emp.Population
-                            + "\n");
         }
 //        try {
 //            new File("./reports/").mkdir();

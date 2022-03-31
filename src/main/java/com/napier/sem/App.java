@@ -32,16 +32,16 @@ public class App {
          * Report for countries information
          */
         // Extract countries information in the world
-        ArrayList<Country> cou = a.getAllCountry();
+//        ArrayList<Country> cou = a.getAllCountry();
         // Extract countries information in a continent
         ArrayList<Country> con = a.getAllContinent();
         // Extract countries information in a region
-        ArrayList<Country> reg = a.getAllRegion();
+//        ArrayList<Country> reg = a.getAllRegion();
 
         // Display results
-        a.displayCountry(cou);
+//        a.displayCountry(cou);
         a.displayContinent(con);
-        a.displayRegion(reg);
+//        a.displayRegion(reg);
 
         /**
          * Report for city information
@@ -54,9 +54,9 @@ public class App {
         ArrayList<city> cityinC = a.getAllCityContinent();
 
         // Display results
-        a.displayCity(cit);
-        // Display results
-        a.displayCityinW(cityinW);
+//        a.displayCity(cit);
+//        // Display results
+//        a.displayCityinW(cityinW);
         // Display results
         a.displayCityContinent(cityinC);
         // Disconnect from database
@@ -225,7 +225,10 @@ public class App {
     public void displayCity(ArrayList<city> cou)
     {
         StringBuilder sb = new StringBuilder();
-        System.out.println("report all the cities in a country organised by largest population to smallest #12\n ");
+        System.out.println("|------------------------------------------------------------------------------------------|");
+        System.out.println("|****Report all the cities in a country organised by largest population to smallest #12****|\n ");
+        System.out.println("|------------------------------------------------------------------------------------------|");
+
         for (city emp : cou)
         {
 

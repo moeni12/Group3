@@ -42,14 +42,11 @@ public class App {
         // Extract countries information in a region
         ArrayList<Country> capitalinW = a.getAllCapitalinW();
 
-        ArrayList<Country> capitalinContinent = a.getAllCapitalinContinent("Asia");
         // Display results
 //        a.displayCountry(cou);
 //      a.displayContinent(con);
 //      a.displayRegion(reg);
 //        a.displayCapitalinW(capitalinW);
-        a.displayCapitalinContinent(capitalinContinent);
-
 
         /**
          * Report for city information
@@ -61,12 +58,24 @@ public class App {
         // Extract city information in continent
         ArrayList<city> cityinC = a.getAllCityContinent();
 
+        ArrayList<Country> capitalinContinent = a.getAllCapitalinContinent("Asia");
+
+        ArrayList<city> TopCityinW = a.getAllTopCityinW(5);
+
+        ArrayList<city> TopCityinCONTIN = a.getAllTopCityinCONTIN(5, "Asia");
+
         // Display results
 //        a.displayCity(cit);
         // Display results
 //        a.displayCityinW(cityinW);
         // Display results
 //        a.displayCityContinent(cityinC);
+
+//        a.displayTopCityinW(TopCityinW);
+//
+//        a.displayTopCityinCONTIN(TopCityinCONTIN);
+
+        a.displayCapitalinContinent(capitalinContinent);
         // Disconnect from database
         a.disconnect();
     }
@@ -253,8 +262,8 @@ public class App {
     }
 
     /**
-     * Gets all city in the world
-     * @return all the cities in a continent organised by largest population to smallest.
+     * Gets all the current employees and salaries.
+     * @return A list of all employees and salaries, or null if there is an error.
      */
     public ArrayList<city> getAllCityinW()
     {
@@ -519,7 +528,7 @@ public class App {
         }
     }
     /**
-     * Gets all the Capital in a continent.
+     * Gets all the Capital in the world.
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<Country> getAllCapitalinW()
@@ -558,7 +567,6 @@ public class App {
         }
     }
 
-
     public void displayCapitalinW(ArrayList<Country> world)
     {
         StringBuilder sb = new StringBuilder();
@@ -580,9 +588,8 @@ public class App {
 //        }
     }
 
-
     /**
-     * Gets all the Capital in the Continent.
+     * Gets all the Capital in the continent.
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<Country> getAllCapitalinContinent(String continent)
@@ -643,6 +650,128 @@ public class App {
 //        }
     }
 
+    /**
+     * Gets all in the top city in the world
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<city> getAllTopCityinW(int Num)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<city> city = new ArrayList<city>();
+
+
+            while (rset.next())
+            {
+                city emp = new city();
+
+//                emp.code = rset.getString("country.Code");
+                emp.cName = rset.getString("Country.name");
+                emp.Name = rset.getString("city.name");
+                emp.Population = rset.getInt("city.population");
+//                emp.Population = rset.getString("city.Population");
+
+                city.add(emp);
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayTopCityinW(ArrayList<city> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("The top N populated cities in the world where N is provided by the user.");
+        for (city emp : world)
+        {
+            System.out.println
+                    (emp.cName + " "
+                            + emp.Name + " " + emp.Population
+                            + "\n");
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+
+    /**
+     * Gets all in the top city in the continent
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<city> getAllTopCityinCONTIN(int Num, String ContiN)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode and city.Continent = " + "'" + ContiN + "'" + "ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<city> city = new ArrayList<city>();
+
+
+            while (rset.next())
+            {
+                city emp = new city();
+
+//                emp.code = rset.getString("country.Code");
+                emp.cName = rset.getString("Country.name");
+                emp.Name = rset.getString("city.name");
+                emp.Population = rset.getInt("city.population");
+//                emp.Population = rset.getString("city.Population");
+
+                city.add(emp);
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayTopCityinCONTIN(ArrayList<city> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("The top N populated cities in a continent where N is provided by the user.");
+        for (city emp : world)
+        {
+            System.out.println
+                    (emp.cName + " "
+                            + emp.Name + " " + emp.Population
+                            + "\n");
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
 
 
 }

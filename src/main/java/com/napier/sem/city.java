@@ -7,6 +7,7 @@ public class city{
     public String CountryCode;
     public String District;
     public int Population;
+    public String cname;
 
 
 }

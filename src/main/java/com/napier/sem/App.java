@@ -35,13 +35,18 @@ public class App {
         ArrayList<Country> cou = a.getAllCountry();
         // Extract countries information in a continent
         ArrayList<Country> con = a.getAllContinent();
+
         // Extract countries information in a region
         ArrayList<Country> reg = a.getAllRegion();
 
+        // Extract countries information in a region
+        ArrayList<Country> capitalinW = a.getAllCapitalinW();
+
         // Display results
-        a.displayCountry(cou);
+//        a.displayCountry(cou);
 //      a.displayContinent(con);
 //      a.displayRegion(reg);
+        a.displayCapitalinW(capitalinW);
 
         /**
          * Report for city information
@@ -345,7 +350,7 @@ public class App {
         StringBuilder sb = new StringBuilder();
         System.out.println("Report all the cities in a continent organised by largest population to smallest.\n");
         System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println("|   Name    |   Popuation");
+        System.out.println("|   Name    |   Population");
         for (city emp : con)
         {
                             System.out.println (
@@ -510,7 +515,66 @@ public class App {
             System.out.println(emp_string);
         }
     }
+    /**
+     * Gets all the Capital in the world.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllCapitalinW()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Capital = city.ID ORDER BY city.Population desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
 
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+//                emp.code = rset.getString("country.Code");
+                emp.name = rset.getString("Country.name");
+                emp.capital_n = rset.getString("city.name");
+                emp.population = rset.getInt("city.population");
+//                emp.Population = rset.getString("city.Population");
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayCapitalinW(ArrayList<Country> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("All the countries in a continent organised by largest population to smallest.");
+        for (Country emp : world)
+        {
+            System.out.println
+                    (emp.name + " "
+                                    + emp.capital_n + " " + emp.population
+                                    + "\n");
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
 
 
 

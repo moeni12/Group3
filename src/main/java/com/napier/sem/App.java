@@ -168,9 +168,10 @@ public class App {
         // Check country is not null
         if (cou == null)
         {
-            System.out.println("No country");
-            return;
+
+            System.out.println("No country and object is null");
         }
+        else {
 
         // Print header
         System.out.println(String.format("%-10s %-15s %-20s %-8s", "Code", "Name", "Population", "Continent"));
@@ -178,11 +179,19 @@ public class App {
 
         for (Country emp : cou)
         {
+            if (emp == null) {
+                System.out.println("country object is null");
+            }
+            else {
+
+
 
             System.out.println (
                     emp.name + " "
                             + emp.continent + " "
                             + "\n");
+            }
+        }
         }
 //        try {
 //            new File("./reports/").mkdir();
@@ -605,6 +614,7 @@ public class App {
 //                emp.code = rset.getString("country.Code");
                 emp.cName = rset.getString("Country.name");
                 emp.Name = rset.getString("city.name");
+                emp.District = rset.getString("city.district");
                 emp.Population = rset.getInt("city.population");
 //                emp.Population = rset.getString("city.Population");
 
@@ -628,7 +638,7 @@ public class App {
         {
             System.out.println
                     (emp.cName + " "
-                            + emp.Name + " " + emp.Population
+                            + emp.Name + " " + emp.District + " " + emp.Population
                             + "\n");
         }
 //        try {

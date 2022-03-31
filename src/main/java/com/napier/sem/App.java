@@ -40,8 +40,8 @@ public class App {
 
         // Display results
         a.displayCountry(cou);
-        a.displayContinent(con);
-        a.displayRegion(reg);
+//      a.displayContinent(con);
+//      a.displayRegion(reg);
 
         /**
          * Report for city information
@@ -54,11 +54,11 @@ public class App {
         ArrayList<city> cityinC = a.getAllCityContinent();
 
         // Display results
-        a.displayCity(cit);
+//        a.displayCity(cit);
         // Display results
-        a.displayCityinW(cityinW);
+//        a.displayCityinW(cityinW);
         // Display results
-        a.displayCityContinent(cityinC);
+//        a.displayCityContinent(cityinC);
         // Disconnect from database
         a.disconnect();
     }

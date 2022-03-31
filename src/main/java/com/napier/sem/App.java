@@ -42,14 +42,11 @@ public class App {
         // Extract countries information in a region
         ArrayList<Country> capitalinW = a.getAllCapitalinW();
 
-        ArrayList<Country> capitalinContinent = a.getAllCapitalinContinent("Asia");
         // Display results
 //        a.displayCountry(cou);
 //      a.displayContinent(con);
 //      a.displayRegion(reg);
 //        a.displayCapitalinW(capitalinW);
-        a.displayCapitalinContinent(capitalinContinent);
-
 
         /**
          * Report for city information
@@ -61,12 +58,16 @@ public class App {
         // Extract city information in continent
         ArrayList<city> cityinC = a.getAllCityContinent();
 
+        ArrayList<city> TopCityinW = a.getAllTopCityinW(5);
+
         // Display results
 //        a.displayCity(cit);
         // Display results
 //        a.displayCityinW(cityinW);
         // Display results
 //        a.displayCityContinent(cityinC);
+
+        a.displayTopCityinW(TopCityinW);
         // Disconnect from database
         a.disconnect();
     }
@@ -253,8 +254,8 @@ public class App {
     }
 
     /**
-     * Gets all city in the world
-     * @return all the cities in a continent organised by largest population to smallest.
+     * Gets all the current employees and salaries.
+     * @return A list of all employees and salaries, or null if there is an error.
      */
     public ArrayList<city> getAllCityinW()
     {
@@ -519,7 +520,7 @@ public class App {
         }
     }
     /**
-     * Gets all the Capital in a continent.
+     * Gets all the Capital in the world.
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<Country> getAllCapitalinW()
@@ -558,7 +559,6 @@ public class App {
         }
     }
 
-
     public void displayCapitalinW(ArrayList<Country> world)
     {
         StringBuilder sb = new StringBuilder();
@@ -580,38 +580,37 @@ public class App {
 //        }
     }
 
-
     /**
-     * Gets all the Capital in the Continent.
+     * Gets all in the top city in the world
      * @return A list of all city, or null if there is an error.
      */
-    public ArrayList<Country> getAllCapitalinContinent(String continent)
+    public ArrayList<city> getAllTopCityinW(int Num)
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT * FROM country, city WHERE country.Capital = city.ID and country.Continent = " + "'" + continent + "'" + "ORDER BY city.Population desc";
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode ORDER BY city.Population desc limit " + Num;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
-            ArrayList<Country> Country = new ArrayList<Country>();
+            ArrayList<city> city = new ArrayList<city>();
 
 
             while (rset.next())
             {
-                Country emp = new Country();
+                city emp = new city();
 
 //                emp.code = rset.getString("country.Code");
-                emp.name = rset.getString("Country.name");
-                emp.capital_n = rset.getString("city.name");
-                emp.population = rset.getInt("city.population");
+                emp.cName = rset.getString("Country.name");
+                emp.Name = rset.getString("city.name");
+                emp.Population = rset.getInt("city.population");
 //                emp.Population = rset.getString("city.Population");
 
-                Country.add(emp);
+                city.add(emp);
             }
-            return Country;
+            return city;
         }
         catch (Exception e)
         {
@@ -621,16 +620,15 @@ public class App {
         }
     }
 
-
-    public void displayCapitalinContinent(ArrayList<Country> world)
+    public void displayTopCityinW(ArrayList<city> world)
     {
         StringBuilder sb = new StringBuilder();
-        System.out.println("All the capital cities in a continent organised by largest population to smallest.");
-        for (Country emp : world)
+        System.out.println("The top N populated cities in the world where N is provided by the user.");
+        for (city emp : world)
         {
             System.out.println
-                    (emp.name + " "
-                            + emp.capital_n + " " + emp.population
+                    (emp.cName + " "
+                            + emp.Name + " " + emp.Population
                             + "\n");
         }
 //        try {

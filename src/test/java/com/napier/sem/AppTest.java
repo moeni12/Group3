@@ -29,20 +29,6 @@ public class AppTest
     }
     
     @Test
-    void printCity()
-    {
-        ArrayList<city> city = new ArrayList<city>();
-        city emp = new city();
-        emp.Name = "NAT";
-        emp.District = "Aruba";
-        emp.Population = 120000;
-
-        city.add(emp);
-        app.printCities(city);
-    }
-    
-    
-    @Test
 void unitTest2()
 {
     assertEquals(5, 5);

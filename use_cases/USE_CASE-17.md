@@ -52,4 +52,4 @@ None.
 
 ## SCHEDULE
 
-**DUE DATE**: Release 3.0
+**DUE DATE**: Release 0.3

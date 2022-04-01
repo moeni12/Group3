@@ -1,9 +1,7 @@
 package com.napier.sem;
 
 
-public class country {
-
-  
+public class Country {
 
     public String code;
     public String name;
@@ -19,9 +17,10 @@ public class country {
     public String governmentForm;
     public  String headOfState;
     public int capital;
+    public String capital_n;
     public String code2;
 
 
-    public static void add(country emp) {
+    public static void add(Country emp) {
     }
 }

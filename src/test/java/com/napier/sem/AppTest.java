@@ -14,6 +14,14 @@ public class AppTest
     {
         app = new App();
     }
+    
+    
+    @Test
+void unitTest2()
+{
+    assertEquals(5, 5);
+}
+
 
    
 }

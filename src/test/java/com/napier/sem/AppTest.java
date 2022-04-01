@@ -15,6 +15,19 @@ public class AppTest
         app = new App();
     }
     
+     @Test
+    void printCountries()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.code = "NAT";
+        emp.name = "Aruba";
+        emp.population = 120000;
+        emp.continent = "North America";
+        countries.add(emp);
+        app.printCountries(countries);
+    }
+    
     
     @Test
 void unitTest2()

@@ -172,23 +172,19 @@ public class App {
             System.out.println("No country");
             return;
         }
-        else if ( cou.size() == 0){
-            System.out.println("on country in the object");
-            return;
+
+        // Print header
+        System.out.println(String.format("%-10s %-15s %-20s %-8s", "Code", "Name", "Population", "Continent"));
+        System.out.println("Reporting all the countries in the world organised by largest population to smallest ");
+
+        for (Country emp : cou)
+        {
+
+            System.out.println (
+                    emp.name + " "
+                            + emp.continent + " "
+                            + "\n");
         }
-        else {
-
-            // Print header
-            System.out.println(String.format("%-10s %-15s %-20s %-8s", "Code", "Name", "Population", "Continent"));
-            System.out.println("Reporting all the countries in the world organised by largest population to smallest ");
-
-            for (Country emp : cou) {
-
-                System.out.println(
-                        emp.name + " "
-                                + emp.continent + " "
-                                + "\n");
-            }
 //        try {
 //            new File("./reports/").mkdir();
 //            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
@@ -197,7 +193,6 @@ public class App {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        }
     }
     /**
      * Gets all the current city in a country.
@@ -220,7 +215,7 @@ public class App {
                 city emp = new city();
 //                emp.code = rset.getString("country.Code");
                 emp.Name = rset.getString("city.Name");
-                emp.cName = rset.getString("country.Name");
+                emp.CountryCode = rset.getString("city.CountryCode");
                emp.District = rset.getString("city.District");
 //                emp.Population = rset.getString("city.Population");
 
@@ -237,21 +232,14 @@ public class App {
         }
     }
 
-    public void displayCity(ArrayList<city> cou) {
+    public void displayCity(ArrayList<city> cou)
+    {
         StringBuilder sb = new StringBuilder();
-        if (cou == null) {
-            System.out.println("No city");
-            return;
-        }
-        else if (cou.size() == 0) {
-            System.out.println("on size in the object");
-            return;
-        }
-        else{
-            System.out.println("report all the cities in a country organised by largest population to smallest #12\n ");
-        for (city emp : cou) {
+        System.out.println("report all the cities in a country organised by largest population to smallest #12\n ");
+        for (city emp : cou)
+        {
 
-            System.out.println(
+            System.out.println (
                     emp.Name + " "
                             + emp.CountryCode + " "
                             + "\n");
@@ -264,7 +252,6 @@ public class App {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-    }
     }
 
     /**
@@ -646,25 +633,15 @@ public class App {
 
     public void displayCapitalinW(ArrayList<Country> world)
     {
-        // Check country is not null
-        if (world == null)
+        StringBuilder sb = new StringBuilder();
+        System.out.println("All the countries in a continent organised by largest population to smallest.");
+        for (Country emp : world)
         {
-            System.out.println("No capital");
-            return;
+            System.out.println
+                    (emp.name + " "
+                                    + emp.capital_n + " " + emp.population
+                                    + "\n");
         }
-        else if ( world.size() == 0){
-            System.out.println("on capital in the object");
-            return;
-        }
-        else {
-            StringBuilder sb = new StringBuilder();
-            System.out.println("All the countries in a continent organised by largest population to smallest.");
-            for (Country emp : world) {
-                System.out.println
-                        (emp.name + " "
-                                + emp.capital_n + " " + emp.population
-                                + "\n");
-            }
 //        try {
 //            new File("./reports/").mkdir();
 //            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
@@ -673,7 +650,6 @@ public class App {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        }
     }
 
 

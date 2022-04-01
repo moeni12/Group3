@@ -591,6 +591,26 @@ public class App {
             System.out.println(emp_string);
         }
     }
+    
+    public void printCities(ArrayList<city> city)
+    {
+        // Check country is not null
+        if (city == null)
+        {
+            System.out.println("No city");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-10s %-15s %-20s %-8s", "Name", "District", "Population"));
+        // Loop over all employees in the list
+        for (city emp : city)
+        {
+            String emp_string =
+                    String.format("%-10s %-15s %-20s %-8s",
+                            emp.Name, emp.District, emp.Population);
+            System.out.println(emp_string);
+        }
+    }
     /**
      * Gets all the Capital in the world.
      * @return A list of all city, or null if there is an error.

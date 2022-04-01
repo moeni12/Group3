@@ -58,8 +58,10 @@ public class App {
         // Extract city information in continent
 //        ArrayList<city> cityinC = a.getAllCityContinent();
         // Extract cities information in a region
-        ArrayList<city> reg = a.getAllCityRegion("Southern Europe");
-        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
+//        ArrayList<city> reg = a.getAllCityRegion("Southern Europe");
+//        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
+        ArrayList<city> cityDist = a.getAllTopCityinDist(6,"Gelderland");
+        ArrayList<city> cou = a.getAllTopCityinCou(4,"Austria");
 
         // Display results
 //        a.displayCity(cit);
@@ -67,8 +69,10 @@ public class App {
 //        a.displayCityinW(cityinW);
         // Display results
 //        a.displayCityContinent(cityinC);
-        a.displayCityINRegion(reg);
-        a.displayCityInDist(dist);
+//        a.displayCityINRegion(reg);
+//        a.displayCityInDist(dist);
+        a.displayTopCityinDist(cityDist);
+        a.displayTopCityinCou(cou);
         // Disconnect from database
         a.disconnect();
     }
@@ -651,6 +655,130 @@ public class App {
 //            e.printStackTrace();
 //        }
     }
+    /**
+     * Gets all in the top city in the district
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<city> getAllTopCityinDist(int Num, String dist)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode AND city.District = "+ "'" + dist + "'" + "ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<city> city = new ArrayList<city>();
+
+
+            while (rset.next())
+            {
+                city emp = new city();
+
+//                emp.code = rset.getString("country.Code");
+                emp.cName = rset.getString("Country.name");
+                emp.Name = rset.getString("city.name");
+                emp.Population = rset.getInt("city.population");
+//                emp.Population = rset.getString("city.Population");
+
+                city.add(emp);
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayTopCityinDist(ArrayList<city> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("The top N populated cities in the district where N is provided by the user.");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println("|   Country   |   City Name     | District    |   Population ");
+        for (city emp : world)
+        {
+            System.out.println
+                    (emp.cName + " "
+                            + emp.Name + " " + emp.Population
+                            + "\n");
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+    /**
+     * Gets all in the top city in a country
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<city> getAllTopCityinCou(int Num, String cou)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode AND country.Name = "+ "'" + cou + "'" + "ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<city> city = new ArrayList<city>();
+
+
+            while (rset.next())
+            {
+                city emp = new city();
+
+//                emp.code = rset.getString("country.Code");
+                emp.cName = rset.getString("Country.name");
+                emp.Name = rset.getString("city.name");
+                emp.Population = rset.getInt("city.population");
+//                emp.Population = rset.getString("city.Population");
+
+                city.add(emp);
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+    public void displayTopCityinCou(ArrayList<city> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("The top N populated cities in a country where N is provided by the user.");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println("|   Country   |   City Name     | District    |   Population ");
+        for (city emp : world)
+        {
+            System.out.println
+                    (emp.cName + " "
+                            + emp.Name + " " + emp.Population
+                            + "\n");
+        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
 
 
 

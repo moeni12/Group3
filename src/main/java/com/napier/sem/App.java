@@ -28,40 +28,19 @@ public class App {
 //        // Connect to database
 //        a.connect("db:3306", 30000);
         System.out.println("Never say Never !!!!");
-        /**
-         * Report for countries information
-         */
-        // Extract countries information in the world
-//        ArrayList<Country> cou = a.getAllCountry();
-        // Extract countries information in a continent
-//        ArrayList<Country> con = a.getAllContinent();
 
+        // Display results
+        a.displayCountry(cou);
 
+        // Extract country information
+        ArrayList<city> cit = a.getAllCity();
 
 
         // Extract countries information in a region
 //        ArrayList<Country> capitalinW = a.getAllCapitalinW();
 
         // Display results
-//        a.displayCountry(cou);
-//      a.displayContinent(con);
-//      a.displayRegion(reg);
-//        a.displayCapitalinW(capitalinW);
 
-        /**
-         * Report for city information
-         */
-        // Extract city information in a country
-//        ArrayList<city> cit = a.getAllCity();
-        // Extract city information in world
-//        ArrayList<city> cityinW = a.getAllCityinW();
-        // Extract city information in continent
-//        ArrayList<city> cityinC = a.getAllCityContinent();
-        // Extract cities information in a region
-//        ArrayList<city> reg = a.getAllCityRegion("Southern Europe");
-//        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
-        ArrayList<city> cityDist = a.getAllTopCityinDist(6,"Gelderland");
-        ArrayList<city> cou = a.getAllTopCityinCou(4,"Austria");
 
         // Display results
 //        a.displayCity(cit);
@@ -276,13 +255,7 @@ public class App {
             ArrayList<city> city = new ArrayList<city>();
             while (rset.next())
             {
-                city emp = new city();
-//                emp.code = rset.getString("city.Code");
-                emp.Name = rset.getString("city.Name");
-                emp.Population = rset.getInt("city.Population");
-//                emp.region = rset.getString("city.region");
 
-                city.add(emp);
             }
             return city;
         }
@@ -294,16 +267,7 @@ public class App {
         }
     }
 
-    public void displayCityinW(ArrayList<city> cou)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("Report all the cities in the world organised by largest population to smallest.\n ");
-        for (city emp : cou)
-        {
 
-            System.out.println (
-                    emp.Name + " "
-                            + emp.Population + " "
                             + "\n");
         }
 //        try {
@@ -314,134 +278,22 @@ public class App {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+
     }
-
-    public ArrayList<city> getAllCityContinent()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String cont = "North America";
-            String strSelect = "SELECT *"
-                    + "FROM country, city "
-                    + "WHERE country.Code= city.CountryCode AND country.Continent =" + "'" + cont + "'"
-                    + "ORDER BY city.Population DESC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<city> city = new ArrayList<city>();
-            while (rset.next())
-            {
-                city emp = new city();
-//                emp.code = rset.getString("city.Code");
-                emp.Name = rset.getString("city.Name");
-                emp.Population = rset.getInt("city.Population");
-//                emp.region = rset.getString("city.region");
-
-                city.add(emp);
-
-
-            }
-            return city;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population in continent");
-            return null;
-        }
-    }
-
-    public void displayCityContinent(ArrayList<city> con)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("Report all the cities in a continent organised by largest population to smallest.\n");
-        System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println("|   Name    |   Population");
-        for (city emp : con)
-        {
-                            System.out.println (
-                                    emp.Name + " "
-                                            + emp.Population + " "
-                                            + "\n");
-
-        }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
     /**
-     * Gets all the countries in a continent organised by largest population to smallest.
-     * @return the countries in a continent organised by largest population to smallest., or null if there is an error.
+     * Gets all the current city in a country.
+     * @return A list of all city, or null if there is an error.
      */
-    public ArrayList<Country> getAllContinent()
+
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String cont = "North America";
-            String strSelect = "SELECT * "
-                    + "FROM country "
-                    + " WHERE Continent =" + "'" + cont + "'"
-                    + " ORDER BY Population DESC";
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.Countrycode ORDER BY city.Population desc";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract list of country information in a continent
-            ArrayList<Country> Country = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country emp = new Country();
-                emp.code = rset.getString("country.code");
-                emp.name = rset.getString("country.name");
-                emp.continent = rset.getString("country.continent");
-                emp.region = rset.getString("country.region");
-                emp.population = rset.getInt("country.population");
-                Country.add(emp);
-
-            }
-            return Country;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population in continent");
-            return null;
-        }
-    }
-    public void displayContinent(ArrayList<Country> con)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("All the countries in a region organised by largest population to smallest.");
-
-        for (Country emp : con)
-        {
-            // Display country list information
-            System.out.println
-                    (
-                            emp.code + " "
-                                    + emp.name + " " + emp.population
-                                    + "\n");
-
-        }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
 
     //All the city in a region organised by largest population to smallest.
 
@@ -471,322 +323,23 @@ public class App {
                 emp.Population = rset.getInt("city.Population");
                 city.add(emp);
 
-            }
-            return city;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population in a region");
-            return null;
-        }
-    }
-
-    public void displayCityINRegion(ArrayList<city> reg)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("All the cities in a region organised by largest population to smallest.");
-        System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println("|   Name    |   Population      | District    |   Country ");
-        for (city emp : reg)
-        {
-            System.out.println
-                    (
-                            emp.Name + "          "
-                                    + emp.Population + "          " + emp.District + "        "
-                                    + emp.cname + "     "
-                                    + "\n");
-
-        }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-//All the cities in a district organised by largest population to smallest.
-    public ArrayList<city> getAllCitiesINDist(String dist)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-
-            String strSelect = "SELECT * "
-                    + "FROM city,country"
-                    + " WHERE country.Code= city.CountryCode AND District =" + "'" + dist + "'"
-                    + " ORDER BY city.Population DESC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract list of country information in a region
-            ArrayList<city> city = new ArrayList<city>();
-            while (rset.next())
-            {
-                city emp = new city();
-
-                emp.Name = rset.getString("city.Name");
-                emp.cname =rset.getString("country.Name");
-
-//                emp.continent = rset.getString("city.Country");
-                emp.District = rset.getString("city.District");
-                emp.Population = rset.getInt("city.Population");
                 city.add(emp);
-
             }
             return city;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population in a region");
+
             return null;
         }
     }
 
-//All the cities in a district organised by largest population to smallest.
-    public void displayCityInDist(ArrayList<city> con)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("Report all the cities in a district organised by largest population to smallest.\n");
-        System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println("|   Name    |   Population      | District    |   Country ");
-        for (city emp : con)
-        {
+
+
             System.out.println (
-                    emp.Name + "    "
-                            + emp.Population + "       "
-                            + emp.District + "        "
-                            + emp.cname + "     "
-                            + "\n");
-
-        }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-
-    public void printCountries(ArrayList<Country> countries)
-    {
-        // Check country is not null
-        if (countries == null)
-        {
-            System.out.println("No country");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-10s %-15s %-20s %-8s", "Code", "Name", "Population", "Continent"));
-        // Loop over all employees in the list
-        for (Country emp : countries)
-        {
-            String emp_string =
-                    String.format("%-10s %-15s %-20s %-8s",
-                            emp.code, emp.name, emp.population, emp.continent);
-            System.out.println(emp_string);
-        }
-    }
-    
-    public void printCities(ArrayList<city> city)
-    {
-        // Check country is not null
-        if (city == null)
-        {
-            System.out.println("No city");
-            return;
-        }
-        // Print header
-        System.out.println(String.format("%-10s %-15s %-20s %-8s", "Name", "District", "Population"));
-        // Loop over all employees in the list
-        for (city emp : city)
-        {
-            String emp_string =
-                    String.format("%-10s %-15s %-20s %-8s",
-                            emp.Name, emp.District, emp.Population);
-            System.out.println(emp_string);
-        }
-    }
-    /**
-     * Gets all the Capital in the world.
-     * @return A list of all city, or null if there is an error.
-     */
-    public ArrayList<Country> getAllCapitalinW()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect = "SELECT * FROM country, city WHERE country.Capital = city.ID ORDER BY city.Population desc";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<Country> Country = new ArrayList<Country>();
-
-
-            while (rset.next())
-            {
-                Country emp = new Country();
-
-//                emp.code = rset.getString("country.Code");
-                emp.name = rset.getString("Country.name");
-                emp.capital_n = rset.getString("city.name");
-                emp.population = rset.getInt("city.population");
-//                emp.Population = rset.getString("city.Population");
-
-                Country.add(emp);
-            }
-            return Country;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get City details");
-            return null;
-        }
-    }
-
-    public void displayCapitalinW(ArrayList<Country> world)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("All the countries in a continent organised by largest population to smallest.");
-        for (Country emp : world)
-        {
-            System.out.println
-                    (emp.name + " "
-                                    + emp.capital_n + " " + emp.population
-                                    + "\n");
-        }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-    /**
-     * Gets all in the top city in the district
-     * @return A list of all city, or null if there is an error.
-     */
-    public ArrayList<city> getAllTopCityinDist(int Num, String dist)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode AND city.District = "+ "'" + dist + "'" + "ORDER BY city.Population desc limit " + Num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<city> city = new ArrayList<city>();
-
-
-            while (rset.next())
-            {
-                city emp = new city();
-
-//                emp.code = rset.getString("country.Code");
-                emp.cName = rset.getString("Country.name");
-                emp.Name = rset.getString("city.name");
-                emp.Population = rset.getInt("city.population");
-//                emp.Population = rset.getString("city.Population");
-
-                city.add(emp);
-            }
-            return city;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get City details");
-            return null;
-        }
-    }
-
-    public void displayTopCityinDist(ArrayList<city> world)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("The top N populated cities in the district where N is provided by the user.");
-        System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println("|   Country   |   City Name     | District    |   Population ");
-        for (city emp : world)
-        {
-            System.out.println
-                    (emp.cName + " "
-                            + emp.Name + " " + emp.Population
-                            + "\n");
-        }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File(".//reports//" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-    /**
-     * Gets all in the top city in a country
-     * @return A list of all city, or null if there is an error.
-     */
-    public ArrayList<city> getAllTopCityinCou(int Num, String cou)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode AND country.Name = "+ "'" + cou + "'" + "ORDER BY city.Population desc limit " + Num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<city> city = new ArrayList<city>();
-
-
-            while (rset.next())
-            {
-                city emp = new city();
-
-//                emp.code = rset.getString("country.Code");
-                emp.cName = rset.getString("Country.name");
-                emp.Name = rset.getString("city.name");
-                emp.Population = rset.getInt("city.population");
-//                emp.Population = rset.getString("city.Population");
-
-                city.add(emp);
-            }
-            return city;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get City details");
-            return null;
-        }
-    }
-    public void displayTopCityinCou(ArrayList<city> world)
-    {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("The top N populated cities in a country where N is provided by the user.");
-        System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println("|   Country   |   City Name     | District    |   Population ");
-        for (city emp : world)
-        {
-            System.out.println
-                    (emp.cName + " "
-                            + emp.Name + " " + emp.Population
+                    emp.Name + " "
+                            + emp.CountryCode + " "
                             + "\n");
         }
 //        try {
@@ -800,7 +353,3 @@ public class App {
     }
 
 
-
-
-
-}

@@ -1,11 +1,13 @@
-# Group-3
+# Hello From Group-3 
 Master Build  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/moeni12/Group3/A%20workflow%20for%20my%20group3%20App/master)
 
 License ![GitHub](https://img.shields.io/github/license/moeni12/Group3)
 
 ![Releases](https://img.shields.io/github/release/moeni12/Group3)
 
-Group 3 Individual Team Member Contribution
+[![codecov](https://codecov.io/gh/moeni12/Group3/branch/master/graph/badge.svg?token=KSKYTOURYB)](https://codecov.io/gh/moeni12/Group3)
+
+Group 3 Individual Team Member Contribution 
 
   <table>
     <thead>
@@ -22,7 +24,7 @@ Group 3 Individual Team Member Contribution
         <tr>
             <td>40501796-Moe Ni Ni Chaw </td>
             <td>25</td>
-            <td></td>
+            <td>26</td>
             <td></td>
             <td></td>
             <td></td>
@@ -30,7 +32,7 @@ Group 3 Individual Team Member Contribution
         <tr>
             <td>40501803-Htet Eindra Wai</td>
             <td>25</td>
-            <td></td>
+            <td>26</td>
             <td></td>
              <td></td>
             <td></td>
@@ -38,7 +40,7 @@ Group 3 Individual Team Member Contribution
          <tr>
             <td> 40501828- Hnin Wutyi Lae</td>
             <td>25</td>
-            <td></td>
+            <td>26</td>
             <td></td>
              <td></td>
             <td></td>
@@ -46,7 +48,7 @@ Group 3 Individual Team Member Contribution
         <tr>
             <td> 40501800- Phoo Pwint Thin</td>
             <td>25</td>
-            <td></td>
+            <td>22</td>
             <td></td>
              <td></td>
             <td></td>

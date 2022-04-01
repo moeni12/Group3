@@ -47,6 +47,7 @@ public class AppTest
     void displayCities()
     {
         // Display results
+
         app.displayCity(null);
     }
 

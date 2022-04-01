@@ -35,7 +35,7 @@ public class AppTest
 //    }
 
     @Test
-    void displayCountries()
+    void displayCountries() {}
     {
         // Extract countries information in the world
         ArrayList<Country> cou = app.getAllCountry();

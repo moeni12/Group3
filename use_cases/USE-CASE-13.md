@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a report the top N populated cities in the continent  where N is provided by the user.
+As a reporter, we have to report the top N populated cities in the continent  where N is provided by the user.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.
+We have to define the query for the task and we have to think about the report design.
 
 ### Success End Condition
 
@@ -32,19 +32,19 @@ User.
 
 ### Trigger
 
-A request for the top N populated cities in the continent where N is provided by the user.
+A user request a report for the top N populated cities in the continent where N is provided by the user.
 
 ## MAIN SUCCESS SCENARIO
 
-1. The top N populated cities in the continent where N is provided by the user.
-2. Need to capture name of the top N populated cities in a continent to get population information for.
-3. Need to extract the name of the top N population information of all the top N populated cities in a continent.
-4. Need to  provide report to organization.
+1. User request for a report which can show the top N populated cities in the continent where N is provided by the user.
+2. To do this, we need to think about the query with the database first.
+3. We need to capture name of the top N populated cities in a continent to get population information for.
+4. We need to extract the name of the top N population information of all the top N populated cities in a continent.
+5. Finally, we can provide report to organization.
 
 ## EXTENSIONS
 
-3. **Lists of countries does not exist**:
-    1. User cannot view the lists of the top N populated cities in a continent .
+None.
 
 ## SUB-VARIATIONS
 
@@ -52,4 +52,4 @@ None.
 
 ## SCHEDULE
 
-**DUE DATE**: Release 1.0
+**DUE DATE**: Release 0.3

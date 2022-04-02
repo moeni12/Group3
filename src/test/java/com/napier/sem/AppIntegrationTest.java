@@ -19,6 +19,16 @@ public class AppIntegrationTest
         app.connect("localhost:33060", 30000);
 
     }
+    
+    @Test
+    void testGetAllCountries()
+    {
+        ArrayList<Country> countries = app.getAllCountry();
+        assertNotNull(countries);
+        assertEquals(countries.size() > 0, true);
+        app.displayCountry(countries);
+
+    }
 
     @Test
     void testGetCountry()

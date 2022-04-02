@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a report the top N populated capital cities in the world where N is provided by the user.
+As a reporter that we need to report the top N populated capital cities in the world where N is provided by the user.
 
 ### Scope
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.
+We need to understand the report design and need to think the SWL query to get correct information.
 
 ### Success End Condition
 
@@ -32,19 +32,19 @@ User.
 
 ### Trigger
 
-A request for the top N populated cities in the world where N is provided by the user.
+A user request for the top N populated cities in the world where N is provided.
 
 ## MAIN SUCCESS SCENARIO
 
-1. The top N populated cities in the world information for user.
-2. Need to capture the top N populated cities in the world to get population information for.
-3. Need to extract current population information of populated cities in the world.
-4. Need to  provide report to organization.
+1. User request for a report which can show the top N populated cities in the world information.
+2. To do this, we need to join with the database first.
+3. In addition, we need to capture the top N populated cities in the world to get population information for.
+4. Moreover, we need to extract current population information of populated cities in the world.
+5. Finally, we need to  provide report to organization.
 
 ## EXTENSIONS
 
-3. **Lists of populated cities does not exist**:
-    1. User cannot view the lists of the populated cities in the world.
+None.
 
 ## SUB-VARIATIONS
 

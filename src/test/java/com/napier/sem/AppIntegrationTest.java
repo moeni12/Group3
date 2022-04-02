@@ -20,15 +20,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetCountry()
-//    {
-//        ArrayList<Country> countries = app.getAllCountry();
-//        assertNotNull(countries);
-//        assertEquals(countries.size() > 0, true);
-//        app.printCountries(countries);
-//        System.out.println("");;
-//    }
+    @Test
+    void testGetCountry()
+    {
+        ArrayList<Country> countries = app.getAllCountry();
+        assertNotNull(countries);
+        assertEquals(countries.size() > 0, true);
+        app.printCountries(countries);
+
+    }
 
 
 }

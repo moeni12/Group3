@@ -20,10 +20,10 @@ public class AppTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country emp = new Country();
-        emp.code = "NAT";
-        emp.name = "Aruba";
-        emp.population = 120000;
-        emp.continent = "North America";
+        emp.setCode("NAT");
+        emp.setName("Aruba");
+        emp.setPopulation(120000);
+        emp.setContinent("North America");
         countries.add(emp);
         app.printCountries(countries);
     }

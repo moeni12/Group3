@@ -63,7 +63,8 @@ public class App {
 //        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
 //        ArrayList<city> cityDist = a.getAllTopCityinDist(6,"Gelderland");
 //        ArrayList<city> cou = a.getAllTopCityinCou(4,"Austria");
-
+        ArrayList<Country> CaptialinC = a.getAllCapitalinContinent("Asia"); //By HWYl
+        a.displayCapitalinContinent(CaptialinC);//By HWYL
         // Display results
 //        a.displayCity(cit);
         // Display results
@@ -271,6 +272,61 @@ public class App {
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("All the capital cities in a region organised by largest to smallest.\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-20s",  "Name", "Country","Population"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+
+        }
+
+    }
+
+    /**
+     * Gets all the Capital in the continent by HWYL.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllCapitalinContinent(String continent)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Capital = city.ID and country.Continent = " + "'" + continent + "'" + "ORDER BY city.Population desc";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+                emp.setName(rset.getString("country.Name"));
+                emp.setCapital_n(rset.getString("city.Name"));
+                emp.setPopulation(rset.getInt("city.Population"));
+
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+
+    public void displayCapitalinContinent(ArrayList<Country> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("All the capital cities in a continent organised by largest population to smallest.\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-20s",  "Name", "Country","Population"));
         for (Country emp : world)

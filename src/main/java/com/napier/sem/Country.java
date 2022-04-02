@@ -3,24 +3,73 @@ package com.napier.sem;
 
 public class Country {
 
-    public String code;
-    public String name;
-    public String continent;
-    public String region;
-    public Integer surfaceArea;
-    public Integer indepYear;
-    public Integer population;
-    public Integer lifeExpectancy;
-    public Integer gnp;
-    public Integer gnpOld;
-    public String localName;
-    public String governmentForm;
-    public  String headOfState;
-    public int capital;
-    public String capital_n;
-    public String code2;
+    private String code;
+    private String name;
+    private String continent;
+    private String region;
+    private int population;
+    private int capital;
+    private String capital_n;
 
 
-    public static void add(Country emp) {
+
+    public String getCode() {
+        return code;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getContinent() {
+        return continent;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public int getCapital() {
+        return capital;
+    }
+
+    public String getCapital_n() {
+        return capital_n;
+    }
+
+    public void setCode( String newcode) {
+        code = newcode;
+    }
+
+    public void setName( String newname) {
+        name= newname;
+    }
+
+    public void setContinent( String newcontinent) {
+        continent= newcontinent;
+    }
+
+    public void setRegion( String newregion) {
+        region= newregion;
+    }
+
+    public void setPopulation( int newpopulation) {
+        population = newpopulation;
+    }
+
+    public void setCapital( int newcapital) {
+        capital = newcapital;
+    }
+
+    public void setCapital_n( String newcapital_n) {
+        capital_n = newcapital_n;
+    }
+
+
+
+
 }

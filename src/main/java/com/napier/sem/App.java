@@ -39,7 +39,7 @@ public class App {
 //        ArrayList<Country> con = a.getAllContinent();
 
         // Display results
-        a.displayCountry(cou);//developed by moeni
+        a.displayCountry(cou,"countryinW");//developed by moeni
         a.displayCityinW(cityinW); //developed by moeni
 
 
@@ -179,9 +179,9 @@ public class App {
      * @return A list of all countries and population, or null if there is an error.
      */
 
-    public void displayCountry(ArrayList<Country> cou)
+    public void displayCountry(ArrayList<Country> cou, String filename)
     {
-        StringBuilder sb = new StringBuilder();
+
 
         // Check country is not null
         if (cou == null)
@@ -190,16 +190,26 @@ public class App {
             return;
         }
 
+        StringBuilder sb = new StringBuilder();
         // Print header
-
-        System.out.println("Reporting all the countries in the world organised by largest population to smallest ");
-        System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Country","Region","Population", "Continent"));
+        sb.append("Reporting all the countries in the world organised by largest population to smallest\n ");
+        sb.append("-----------------------------------------------------------------------------------\n");
+        sb.append(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Country","Region","Population", "Continent"));
+        sb.append("\n");
 
         for (Country emp : cou)
         {
-            System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            sb.append(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            sb.append("\n");
 
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

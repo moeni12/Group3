@@ -194,7 +194,7 @@ public class App {
 
         System.out.println("Reporting all the countries in the world organised by largest population to smallest ");
         System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Continent","Region","Population", "Continent"));
+        System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Country","Region","Population", "Continent"));
 
         for (Country emp : cou)
         {

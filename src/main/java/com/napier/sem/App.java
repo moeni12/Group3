@@ -35,13 +35,15 @@ public class App {
         ArrayList<Country> cou = a.getAllCountry(); // developed by moeni
         // Extract city information in world
         ArrayList<City> cityinW = a.getAllCityinW(); //developed by moeni
+        // Extract city information in continent
+        ArrayList<City> cityinC = a.getAllCityContinent("North America");// developed by moeni
         // Extract countries information in a continent
 //        ArrayList<Country> con = a.getAllContinent();
 
         // Display results
         a.displayCountry(cou,"countryinW");//developed by moeni
         a.displayCityinW(cityinW); //developed by moeni
-
+        a.displayCityContinent(cityinC);// developed by moeni
 
 
 
@@ -60,8 +62,7 @@ public class App {
         // Extract city information in the world
 //        ArrayList<City> cit = a.getAllCity();
 
-        // Extract city information in continent
-//        ArrayList<city> cityinC = a.getAllCityContinent();
+
         // Extract cities information in a region
 //        ArrayList<city> reg = a.getAllCityRegion("Southern Europe");
 //        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
@@ -72,7 +73,7 @@ public class App {
         // Display results
 //        a.displayCity(cit);
 
-//        a.displayCityContinent(cityinC);
+
 //        a.displayCityINRegion(reg);
 //        a.displayCityInDist(dist);
 //        a.displayTopCityinDist(cityDist);
@@ -92,7 +93,6 @@ public class App {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
-
         int retries = 10;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
@@ -276,6 +276,8 @@ public class App {
         }
     }
 
+
+
     public void displayCityinW(ArrayList<City> cou)
     {
         StringBuilder sb = new StringBuilder();
@@ -284,6 +286,65 @@ public class App {
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
         for (City emp : cou)
+        {
+
+            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+        }
+
+    }
+
+    /**
+     * Gets all the current city in a continent by Moe Ni Ni Chaw.
+     * @return A list of all city, or null if there is an error.
+     */
+
+    public ArrayList<City> getAllCityContinent(String cont)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            cont = "North America";
+            String strSelect = "SELECT *"
+                    + "FROM country, city "
+                    + "WHERE country.Code= city.CountryCode AND country.Continent =" + "'" + cont + "'"
+                    + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> city = new ArrayList<City>();
+            while (rset.next())
+            {
+                City emp = new City();
+//                emp.code = rset.getString("country.Code");
+                emp.setCityName(rset.getString("city.Name"));
+                emp.setConame(rset.getString("country.Name"));
+                emp.setDistrict(rset.getString("city.District"));
+                emp.setPopulation (rset.getInt("city.Population"));
+
+
+                city.add(emp);
+
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in continent");
+            return null;
+        }
+    }
+
+    public void displayCityContinent(ArrayList<City> con)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("Report All the countries in a continent organised by largest population to smallest. \n ");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
+        for (City emp : con)
         {
 
             System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));

@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Currency;
+
 public class App {
 
     /**
@@ -34,22 +36,26 @@ public class App {
         // Extract countries information in the world
         ArrayList<Country> cou = a.getAllCountry(); // developed by moeni
         // Extract city information in world
-        ArrayList<City> cityinW = a.getAllCityinW(); //developed by moeni
-        // Extract city information in continent
-        ArrayList<City> cityinC = a.getAllCityContinent("North America");// developed by moeni
-        // Extract countries information in a continent
-//        ArrayList<Country> con = a.getAllContinent();
+//        ArrayList<City> cityinW = a.getAllCityinW(); //developed by moeni
+//        // Extract city information in continent
+//        ArrayList<City> cityinC = a.getAllCityContinent("North America");// developed by moeni
+//        // Extract countries information in a continent
+////        ArrayList<Country> con = a.getAllContinent();
+//        // Extract countries information in a continent
+//        ArrayList<Country> topCountryinW = a.getAllTopCountryinW(6);//developed by moeni
 
         // Display results
-        a.displayCountry(cou,"countryinW");//developed by moeni
-        a.displayCityinW(cityinW); //developed by moeni
-        a.displayCityContinent(cityinC);// developed by moeni
+        a.displayCountry(cou, "all Country");//developed by moeni
+//        a.displayCityinW(cityinW); //developed by moeni
+//        a.displayCityContinent(cityinC);// developed by moeni
+//        a.displayTopCountryinw(topCountryinW,"TopcountriesinW.md");
+        // _________________________________________ Moe Ni Ni Chaw_____________________________//
 
 
 
         // Extract countries information in a region
 //        ArrayList<Country> capitalinW = a.getAllCapitalinW();
-        ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");
+//        ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");
 
 //      a.displayContinent(con);
 //      a.displayRegion(reg);
@@ -68,8 +74,8 @@ public class App {
 //        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
 //        ArrayList<city> cityDist = a.getAllTopCityinDist(6,"Gelderland");
 //        ArrayList<city> cou = a.getAllTopCityinCou(4,"Austria");
-        ArrayList<Country> CaptialinC = a.getAllCapitalinContinent("Asia"); //By HWYl
-        a.displayCapitalinContinent(CaptialinC);//By HWYL
+//        ArrayList<Country> CaptialinC = a.getAllCapitalinContinent("Asia"); //By HWYl
+//        a.displayCapitalinContinent(CaptialinC);//By HWYL
         // Display results
 //        a.displayCity(cit);
 
@@ -182,7 +188,7 @@ public class App {
     public void displayCountry(ArrayList<Country> cou, String filename)
     {
 
-
+        System.out.println(filename);
         // Check country is not null
         if (cou == null)
         {
@@ -201,7 +207,6 @@ public class App {
         {
             sb.append(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
             sb.append("\n");
-
         }
         try {
             new File("./reports/").mkdir();
@@ -211,7 +216,6 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -263,7 +267,6 @@ public class App {
                emp.setDistrict(rset.getString("city.District"));
                 emp.setPopulation (rset.getInt("city.Population"));
 
-
                 city.add(emp);
             }
             return city;
@@ -275,7 +278,6 @@ public class App {
             return null;
         }
     }
-
 
 
     public void displayCityinW(ArrayList<City> cou)
@@ -353,6 +355,83 @@ public class App {
     }
 
     /**
+     * Gets Top countries in the world by Moe Ni Ni Chaw.
+     * @return A list of all city, or null if there is an error.
+     */
+
+    public ArrayList<Country> getAllTopCountryinW(int Num)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> country = new ArrayList<Country>();
+
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+                emp.setCode(rset.getString("country.Code"));
+                emp.setName(rset.getString("country.Name"));
+                emp.setContinent(rset.getString("country.Continent")) ;
+                emp.setRegion(rset.getString("country.Region"));
+                emp.setPopulation(rset.getInt("country.Population"));
+                emp.setCapital_n(rset.getString("city.Name"));
+
+                country.add(emp);
+            }
+            return country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Country details");
+            return null;
+        }
+    }
+
+    public void displayTopCountryinw(ArrayList<Country> world, String filename)
+    {
+        // Check country is not null
+        if (world == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("Reporting The top N populated countries in the world where N is provided by the user.\n ");
+        sb.append("-----------------------------------------------------------------------------------\n");
+        sb.append(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Country","Region","Population", "Continent"));
+        sb.append("\n");
+
+        for (Country emp : world)
+        {
+            sb.append(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            sb.append("\n");
+
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // ------------------------ ending of Moe Ni Ni Chaw's Features____________________________
+
+    /**
      * Gets all the Capital in the region by PhooPwintThin.
      * @return A list of all city, or null if there is an error.
      */
@@ -409,6 +488,8 @@ public class App {
         }
 
     }
+
+
 
     /**
      * Gets all the Capital in the continent by HWYL.

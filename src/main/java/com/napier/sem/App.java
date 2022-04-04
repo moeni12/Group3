@@ -45,7 +45,7 @@ public class App {
 //        ArrayList<Country> topCountryinW = a.getAllTopCountryinW(6);//developed by moeni
 
         // Display results
-        a.displayCountry(cou, "all Country");//developed by moeni
+        a.displayCountry(cou, "allcountryinW.md");//developed by moeni
 //        a.displayCityinW(cityinW); //developed by moeni
 //        a.displayCityContinent(cityinC);// developed by moeni
 //        a.displayTopCountryinw(topCountryinW,"TopcountriesinW.md");

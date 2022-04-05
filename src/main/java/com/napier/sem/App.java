@@ -60,13 +60,16 @@ public class App {
         a.displayTopCapitalinContinent(topcapitalinCon);
 
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
+        //-------------------------------------------Htet EIndra Wai ---------------------------//
 
 //         ArrayList<Country> couR = a.getAllRegion("Southern Europe"); // developed by Htet EIndra Wai
-         ArrayList<Country> couC = a.getAllCountryINContinent("Asia"); // developed by Htet EIndra Wai
+//         ArrayList<Country> couC = a.getAllCountryINContinent("Asia"); // developed by Htet EIndra Wai
+        ArrayList<City> citiesINR = a.getAllCityInReg("South America"); // developed by Htet EIndra Wai
 
         //display Results
 //        a.displayCountryInReg(couR); //developed by Htet EIndra Wai
-        a.displayCountryInContinent(couC); //developed by Htet EIndra Wai
+//        a.displayCountryInContinent(couC); //developed by Htet EIndra Wai
+          a.displayCityInReg(citiesINR); // developed by Htet EIndra Wai
 
         // Extract countries information in a region
 //        ArrayList<Country> capitalinW = a.getAllCapitalinW();
@@ -939,6 +942,63 @@ public class App {
     }
 
 
+    /**
+     * Gets all the current city in a region by Htet Eindra Wai.
+     * @return A list of all city, or null if there is an error.
+     */
+
+    public ArrayList<City> getAllCityInReg(String reg)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT *"
+                    + "FROM country, city "
+                    + "WHERE country.Code= city.CountryCode AND country.Region =" + "'" + reg + "'"
+                    + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> city = new ArrayList<City>();
+            while (rset.next())
+            {
+                City emp = new City();
+//                emp.code = rset.getString("country.Code");
+                emp.setCityName(rset.getString("city.Name"));
+                emp.setConame(rset.getString("country.Name"));
+                emp.setDistrict(rset.getString("city.District"));
+                emp.setPopulation (rset.getInt("city.Population"));
+
+
+                city.add(emp);
+
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in continent");
+            return null;
+        }
+    }
+
+    public void displayCityInReg(ArrayList<City> con)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("Report All the cities in a region organised by largest population to smallest. \n ");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
+        for (City emp : con)
+        {
+
+            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+        }
+
+    }
 
 
 

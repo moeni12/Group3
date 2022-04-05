@@ -49,16 +49,18 @@ public class App {
         ArrayList<City> topCityinW = a.getAllTopcityinW(6);//developed by moeni
         ArrayList<Country> capitalinW = a.getAllCapitalinW();
         // Display results
-        a.displayCountry(cou, "allcountryinW.md");//developed by moeni
-        a.displayCityinW(cityinW); //developed by moeni
-        a.displayCityContinent(cityinC);// developed by moeni
-        a.displayTopCountryinW(topCountryinW,"TopcountriesinW.md");
-        a.displayCityCountry(cityinCou);// developed by moeni
-        a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
-        a.displayCapitalinW(capitalinW);
+//        a.displayCountry(cou, "allcountryinW.md");//developed by moeni
+//        a.displayCityinW(cityinW); //developed by moeni
+//        a.displayCityContinent(cityinC);// developed by moeni
+//        a.displayTopCountryinW(topCountryinW,"TopcountriesinW.md");
+//        a.displayCityCountry(cityinCou);// developed by moeni
+//        a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
+//        a.displayCapitalinW(capitalinW);
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
 
-
+ ArrayList<Country> couR = a.getAllRegion("Southern Europe"); // developed by Htet EIndra Wai
+        //display Results
+        a.displayCountryInReg(couR); //developed by Htet EIndra Wai
 
         // Extract countries information in a region
 //        ArrayList<Country> capitalinW = a.getAllCapitalinW();
@@ -732,5 +734,77 @@ public class App {
         }
 
     }
+
+
+    /**
+     * Gets all the countries in a Region organised by largest population to smallest by Htet Eindra Wai.
+     * @return the countries in a Region organised by largest population to smallest., or null if there is an error.
+     */
+    public ArrayList<Country> getAllRegion(String Reg)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT * "
+                    + "FROM country, city"
+                    + " WHERE country.Code = city.CountryCode and Region =" + "'" + Reg + "'"
+                    + " ORDER BY country.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract list of country information in a continent
+            ArrayList<Country> Country = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country emp = new Country();
+                emp.setCode(rset.getString("country.Code"));
+                emp.setName(rset.getString("country.Name"));
+                emp.setContinent(rset.getString("country.Continent")) ;
+                emp.setRegion(rset.getString("country.Region"));
+                emp.setPopulation(rset.getInt("country.Population"));
+                emp.setCapital_n(rset.getString("city.Name"));
+
+                Country.add(emp);
+
+
+
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population in a region");
+            return null;
+        }
+    }
+    public void displayCountryInReg(ArrayList<Country> cou)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        // Check country is not null
+        if (cou == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+
+        // Print header
+
+        System.out.println("Reporting all the countries in the region organised by largest population to smallest ");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Continent","Region","Population", "Capital"));
+
+        for (Country emp : cou)
+        {
+            System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+
+        }
+
+    }
+
+
 
 }

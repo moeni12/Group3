@@ -48,6 +48,8 @@ public class App {
         // Extract city information in the world
         ArrayList<City> topCityinW = a.getAllTopcityinW(6);//developed by moeni
         ArrayList<Country> capitalinW = a.getAllCapitalinW();
+        ArrayList<Country> topcapitalinCon = a.getAllTopCapitalinContinent(5,"Asia");
+
        ArrayList<Country> topcapitalinCon = a.getAllTopCapitalinContinent(5,"Asia");
         ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
         // Display results
@@ -58,8 +60,17 @@ public class App {
         a.displayCityCountry(cityinCou);// developed by moeni
         a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
         a.displayCapitalinW(capitalinW);
+
+
+        // _________________________________________ HWYL_____________________________//
+
+        ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
+        ArrayList<Country> topcapitalinW = a.getAllTopCapitalinW(5);//By HWYl
+
+        // Display results
         a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
         a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
+        a.displayTopCapitalinW(topcapitalinW);//By HWYL
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
         //-------------------------------------------Htet EIndra Wai ---------------------------//
 
@@ -1352,5 +1363,61 @@ public class App {
         }
     }
 
+    /**
+     * Gets all the Capital cities in the world by HWYL.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllTopCapitalinW(int Num)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT * FROM country, city WHERE country.Capital = city.ID ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+//                emp.code = rset.getString("country.Code");
+
+                emp.setName(rset.getString("country.Name"));
+                emp.setCapital_n(rset.getString("city.Name"));
+                emp.setPopulation(rset.getInt("city.Population"));
+
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayTopCapitalinW(ArrayList<Country> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("All the Top capital cities in a world organised by largest population to smallest.\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-20s",  "Country", "Capital","Population"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+
+        }
+
+    }
 
 }

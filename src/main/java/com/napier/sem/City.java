@@ -51,7 +51,6 @@ public class City {
 
     public void setPopulation( int newpopulation) {
         population = newpopulation;
-
     }
 
 

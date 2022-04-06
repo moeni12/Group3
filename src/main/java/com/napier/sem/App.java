@@ -49,6 +49,7 @@ public class App {
         ArrayList<City> topCityinW = a.getAllTopcityinW(6);//developed by moeni
         ArrayList<Country> capitalinW = a.getAllCapitalinW();
         ArrayList<Country> topcapitalinCon = a.getAllTopCapitalinContinent(5,"Asia");
+        ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
         // Display results
         a.displayCountry(cou, "allcountryinW.md");//developed by moeni
         a.displayCityinW(cityinW); //developed by moeni
@@ -57,7 +58,8 @@ public class App {
         a.displayCityCountry(cityinCou);// developed by moeni
         a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
         a.displayCapitalinW(capitalinW);
-        a.displayTopCapitalinContinent(topcapitalinCon);
+        a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
+        a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
 
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
         //-------------------------------------------Htet EIndra Wai ---------------------------//
@@ -1190,7 +1192,68 @@ public class App {
         }
     }
 
+    /**
+     * The top N populated cities in a continent where N is provided by the user by HWYL.
+     * @return A list of all city, or null if there is an error.
+     */
 
+    public ArrayList<City> getAllTopcityinContiN(int Num, String ContiN)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode and city.Continent = " + "'" + ContiN + "'" + "ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> city = new ArrayList<City>();
+
+
+            while (rset.next())
+            {
+                City emp = new City();
+//                emp.code = rset.getString("country.Code");
+                emp.setCityName(rset.getString("city.Name"));
+                emp.setConame(rset.getString("country.Name"));
+                emp.setDistrict(rset.getString("city.District"));
+                emp.setPopulation (rset.getInt("city.Population"));
+
+
+                city.add(emp);
+
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Country details");
+            return null;
+        }
+    }
+
+    public void displayTopCityinContiN(ArrayList<City> world, String filename)
+    {
+        // Check country is not null
+        if (world == null)
+        {
+            System.out.println("No city");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The top N populated cities in a Continent where N is provided by the user. \n ");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
+        for (City emp : world)
+        {
+
+            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+        }
+    }
 
 
 }

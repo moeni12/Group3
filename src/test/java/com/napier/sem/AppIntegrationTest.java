@@ -26,7 +26,7 @@ public class AppIntegrationTest
         ArrayList<Country> countries = app.getAllCountry();
         assertNotNull(countries);
         assertEquals(countries.size() > 0, true);
-        app.displayCountry(countries, "all Country");
+//        app.displayCountry(countries, "allcountryinW.md");
 
     }
 

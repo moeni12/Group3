@@ -47,8 +47,9 @@ public class App {
         ArrayList<City> cityinCou = a.getAllCityCountry("Myanmar");// developed by moeni
         // Extract city information in the world
         ArrayList<City> topCityinW = a.getAllTopcityinW(6);//developed by moeni
-        ArrayList<Country> capitalinW = a.getAllCapitalinW();
-       ArrayList<Country> topcapitalinCon = a.getAllTopCapitalinContinent(5,"Asia");
+        ArrayList<Country> capitalinW = a.getAllCapitalinW();//moeni
+       ArrayList<Country> topcapitalinCon = a.getAllTopCapitalinContinent(5,"Asia");//moeni
+        ArrayList<Country> popcitycontient = a.getAllPopulationCityContinent();//moeni
         ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
         // Display results
         a.displayCountry(cou, "allcountryinW.md");//developed by moeni
@@ -59,6 +60,7 @@ public class App {
         a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
         a.displayCapitalinW(capitalinW);
         a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
+        a.displayPoupulationCityContinent(popcitycontient);//By moeni
         a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
         //-------------------------------------------Htet EIndra Wai ---------------------------//
@@ -688,6 +690,82 @@ public class App {
         for (Country emp : world)
         {
             System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+
+        }
+
+    }
+
+    /**
+     * Gets all Population in Continent by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllPopulationCityContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT country.Continent, Sum(country.Population) as totalpopulation FROM country, city GROUP BY country.Continent";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+//                emp.code = rset.getString("country.Code");
+
+                emp.setContinent(rset.getString("country.Continent"));
+                emp.setPopulation_result(rset.getDouble("totalpopulation"));
+
+                System.out.println( emp.getContinent() + emp.getPopulation_result());
+
+
+                // Create an SQL statement
+                Statement stmt1 = con.createStatement();
+                // Create string for SQL statement
+
+                String strSelect1 = "SELECT Sum(city.Population) as totalcitypopulation FROM country, city WHERE country.Code = city.CountryCode and country.Continent = " + "'" + emp.getContinent() + "'";
+
+                // Execute SQL statement
+                ResultSet rset1 = stmt1.executeQuery(strSelect1);
+                while (rset1.next())
+                {
+                    emp.setPopulationcity_result(rset1.getDouble("totalcitypopulation"));
+                    Double result = emp.getPopulation_result() - emp.getPopulationcity_result();
+                    emp.setResult(result);
+                    System.out.println( emp.getPopulationcity_result() + emp.getResult());
+
+                }
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayPoupulationCityContinent(ArrayList<Country> world)
+    {
+
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The population of people, people living in cities, and people not living in cities in each region..\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-40s %-40s %-50s %-50s",  " Name of the continent", "Total population of the continent","Total population of the continent living in cities", "Total population of the continent not living in cities"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-40s %-40s %-40s %-40s",  emp.getContinent(), emp.getPopulation_result(),emp.getPopulationcity_result(),emp.getResult()));
 
         }
 
@@ -1358,7 +1436,7 @@ public class App {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode and city.Continent = " + "'" + ContiN + "'" + "ORDER BY city.Population desc limit " + Num;
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode and country.Continent = " + "'" + ContiN + "'" + "ORDER BY city.Population desc limit " + Num;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information

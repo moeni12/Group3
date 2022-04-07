@@ -10,6 +10,9 @@ public class Country {
     private int population;
     private int capital;
     private String capital_n;
+    private Double population_result;
+    private Double populationcity_result;
+    private Double result;
 
 
 
@@ -31,6 +34,16 @@ public class Country {
 
     public int getPopulation() {
         return population;
+    }
+
+    public double getPopulation_result() {
+        return population_result;
+    }
+    public double getPopulationcity_result() {
+        return populationcity_result;
+    }
+    public double getResult() {
+        return result;
     }
 
     public int getCapital() {
@@ -60,6 +73,19 @@ public class Country {
     public void setPopulation( int newpopulation) {
         population = newpopulation;
     }
+
+    public void setPopulation_result( double newpopulation_result) {
+        population_result = newpopulation_result;
+    }
+
+    public void setPopulationcity_result( double newpopulationcity_result) {
+        populationcity_result = newpopulationcity_result;
+    }
+
+    public void setResult( double newresult) {
+        result = newresult;
+    }
+
 
     public void setCapital( int newcapital) {
         capital = newcapital;

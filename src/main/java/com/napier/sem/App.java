@@ -261,7 +261,7 @@ public class App {
 //                emp.code = rset.getString("country.Code");
                 emp.setCityName(rset.getString("city.Name"));
                 emp.setConame(rset.getString("country.Name"));
-               emp.setDistrict(rset.getString("city.District"));
+                emp.setDistrict(rset.getString("city.District"));
                 emp.setPopulation (rset.getInt("city.Population"));
 
 
@@ -464,5 +464,83 @@ public class App {
         }
 
     }
+    /**
+     * Gets all Population in region by PhooPwintThin.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllPopulationCityRegion()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT country.Region, Sum(country.Population) as totalpopulation FROM country, city GROUP BY country.Region";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+//                emp.code = rset.getString("country.Code");
+
+                emp.setRegion(rset.getString("country.Region"));
+                emp.setPopulation_result(rset.getDouble("totalpopulation"));
+
+                System.out.println( emp.getRegion() + emp.getPopulation_result());
+
+
+                // Create an SQL statement
+                Statement stmt1 = con.createStatement();
+                // Create string for SQL statement
+
+                String strSelect1 = "SELECT Sum(city.Population) as totalcitypopulation FROM country, city WHERE country.Code = city.CountryCode and country.Region = " + "'" + emp.getRegion() + "'";
+
+                // Execute SQL statement
+                ResultSet rset1 = stmt1.executeQuery(strSelect1);
+                while (rset1.next())
+                {
+                    emp.setPopulationcity_result(rset1.getDouble("totalcitypopulation"));
+                    Double result = emp.getPopulation_result() - emp.getPopulationcity_result();
+                    emp.setResult(result);
+                    System.out.println( emp.getPopulationcity_result() + emp.getResult());
+
+                }
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayPoupulationCityContinent(ArrayList<Country> world)
+    {
+
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The population of people, people living in cities, and people not living in cities in each region..\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-40s %-40s %-50s %-50s",  " Name of the Region", "Total population of the Region","Total population of the Region living in cities", "Total population of the Region not living in cities"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-40s %-40s %-40s %-40s",  emp.getContinent(), emp.getPopulation_result(),emp.getPopulationcity_result(),emp.getResult()));
+
+        }
+
+    }
+
+    // ------------------------ ending of Phoo Pwint Thin's Features____________________________
+
 
 }

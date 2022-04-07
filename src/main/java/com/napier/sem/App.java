@@ -58,6 +58,7 @@ public class App {
         a.displayTopCountryinW(topCountryinW,"TopcountriesinW.md");
         a.displayCityCountry(cityinCou);// developed by moeni
         a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
+        a.displayTopCapitalinContinent(topcapitalinCon);
         a.displayCapitalinW(capitalinW);
 
 
@@ -67,7 +68,7 @@ public class App {
         ArrayList<Country> topcapitalinW = a.getAllTopCapitalinW(5);//By HWYl
 
         // Display results
-        a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
+
         a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
         a.displayTopCapitalinW(topcapitalinW);//By HWYL
         // _________________________________________ Moe Ni Ni Chaw_____________________________//

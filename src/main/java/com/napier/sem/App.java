@@ -32,23 +32,23 @@ public class App {
          * Report for countries information
          */
         // Extract countries information in the world
-        ArrayList<Country> cou = a.getAllCountry(); // developed by moeni
+        //ArrayList<Country> cou = a.getAllCountry(); // developed by moeni
         // Extract city information in world
-        ArrayList<City> cityinW = a.getAllCityinW(); //developed by moeni
+        //ArrayList<City> cityinW = a.getAllCityinW(); //developed by moeni
         // Extract countries information in a continent
 //        ArrayList<Country> con = a.getAllContinent();
 
         // Display results
-        a.displayCountry(cou,"countryinW");//developed by moeni
-        a.displayCityinW(cityinW); //developed by moeni
+        //a.displayCountry(cou,"countryinW");//developed by moeni
+        //a.displayCityinW(cityinW); //developed by moeni
 
 
 
 
         // Extract countries information in a region
 //        ArrayList<Country> capitalinW = a.getAllCapitalinW();
-        ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");
-
+        //ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");//By Phoo Pwint Thin
+        ArrayList<City> TopCityinR = a.getAllTopCityinR(5, "Central America");//By Phoo Pwint Thin
 //      a.displayContinent(con);
 //      a.displayRegion(reg);
 //        a.displayCapitalinW(capitalinW);
@@ -67,10 +67,11 @@ public class App {
 //        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
 //        ArrayList<city> cityDist = a.getAllTopCityinDist(6,"Gelderland");
 //        ArrayList<city> cou = a.getAllTopCityinCou(4,"Austria");
-        ArrayList<Country> CaptialinC = a.getAllCapitalinContinent("Asia"); //By HWYl
-        a.displayCapitalinContinent(CaptialinC);//By HWYL
+        //ArrayList<Country> CaptialinC = a.getAllCapitalinContinent("Asia"); //By HWYl
+        //a.displayCapitalinContinent(CaptialinC);//By HWYL
         // Display results
 //        a.displayCity(cit);
+        a.displayTopCityinR(TopCityinR);//By Phoo Pwint Thin
 
 //        a.displayCityContinent(cityinC);
 //        a.displayCityINRegion(reg);
@@ -400,6 +401,66 @@ public class App {
         {
             System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
 
+        }
+
+    }
+
+    public ArrayList<City> getAllTopCityinR(int Num, String Region)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT * FROM country, city WHERE country.Code = city.CountryCode and country.Region = " + "'" + Region + "'" + "ORDER BY city.Population desc limit " + Num;
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> city = new ArrayList<City>();
+
+
+            while (rset.next())
+            {
+                City emp = new City();
+//                emp.code = rset.getString("country.Code");
+                emp.setCityName(rset.getString("city.Name"));
+                emp.setConame(rset.getString("country.Name"));
+                emp.setDistrict(rset.getString("city.District"));
+                emp.setPopulation (rset.getInt("city.Population"));
+
+
+                city.add(emp);
+
+            }
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayTopCityinR(ArrayList<City> world)
+    {
+        // Check country is not null
+        if (world == null)
+        {
+            System.out.println("No city");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The top N populated cities in the region where N is provided by the user. \n ");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
+        for (City emp : world)
+        {
+
+            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
         }
 
     }

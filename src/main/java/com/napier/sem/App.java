@@ -331,7 +331,7 @@ public class App {
     }
 
     /**
-     * Gets all the current city in a continent by Moe Ni Ni Chaw.
+     * Gets all the current city in a continent by moeni.
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<City> getAllCityContinent(String cont)

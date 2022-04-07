@@ -64,7 +64,7 @@ public class App {
        
         a.displayPoupulationCityContinent(popcitycontient);//By moeni
         a.displayPoupulationinW(popinW);//By moeni
-        a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
+       
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
           // _________________________________________ HWYL_____________________________//
 

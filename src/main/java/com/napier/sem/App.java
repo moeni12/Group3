@@ -52,7 +52,7 @@ public class App {
  
         ArrayList<Country> popcitycontient = a.getAllPopulationCityContinent();//moeni
         ArrayList<Country> popinW = a.getAllPopulationinW();//moeni
-        ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
+     
         // Display results
         a.displayCountry(cou, "allcountryinW.md");//developed by moeni
         a.displayCityinW(cityinW); //developed by moeni
@@ -61,11 +61,20 @@ public class App {
         a.displayCityCountry(cityinCou);// developed by moeni
         a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
         a.displayCapitalinW(capitalinW);
-        a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
+       
         a.displayPoupulationCityContinent(popcitycontient);//By moeni
         a.displayPoupulationinW(popinW);//By moeni
         a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
+          // _________________________________________ HWYL_____________________________//
+
+        ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
+        ArrayList<Country> topcapitalinW = a.getAllTopCapitalinW(5);//By HWYl
+
+        // Display results
+        a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
+        a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
+        a.displayTopCapitalinW(topcapitalinW);//By HWYL
         //-------------------------------------------Htet EIndra Wai ---------------------------//
 
 //         ArrayList<Country> couR = a.getAllRegion("Southern Europe"); // developed by Htet EIndra Wai
@@ -85,10 +94,6 @@ public class App {
 //        a.displayTopCityinDist( citiesINDist,"TopcitiesinDist.md"); // developed by Htet Eindra Wai
          a.displayTopCountryinCont(countryInCont, "TopCountriesinCont.md");// developed by Htet Eindra Wai
          a.displayTopCountryinReg(TopcountryINReg, "TopcountryINReg.md");
-
-
-
-
 
         // Extract countries information in a region
 //        ArrayList<Country> capitalinW = a.getAllCapitalinW();
@@ -1541,6 +1546,63 @@ public class App {
 
             System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
         }
+    }
+    
+     /**
+     * Gets all the Capital cities in the world by HWYL.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllTopCapitalinW(int Num)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT * FROM country, city WHERE country.Capital = city.ID ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+//                emp.code = rset.getString("country.Code");
+
+                emp.setName(rset.getString("country.Name"));
+                emp.setCapital_n(rset.getString("city.Name"));
+                emp.setPopulation(rset.getInt("city.Population"));
+
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayTopCapitalinW(ArrayList<Country> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("All the Top capital cities in a world organised by largest population to smallest.\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-20s",  "Country", "Capital","Population"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+
+        }
+
     }
 
 

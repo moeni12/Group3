@@ -67,7 +67,7 @@ public class App {
        
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
         //______________________________________________Phoo Pwint THin______________________________//
-        //ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");//By Phoo Pwint Thin
+        ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");//By Phoo Pwint Thin
         ArrayList<City> TopCityinR = a.getAllTopCityinR(5, "Central America");//By Phoo Pwint Thin
         ArrayList<Country> AllPopulationCityRegion = a.getAllPopulationCityRegion();//By Phoo Pwint Thin
         

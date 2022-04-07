@@ -51,6 +51,7 @@ public class App {
         ArrayList<Country> topcapitalinCon = a.getAllTopCapitalinContinent(5,"Asia");//moeni
  
         ArrayList<Country> popcitycontient = a.getAllPopulationCityContinent();//moeni
+        ArrayList<Country> popinW = a.getAllPopulationinW();//moeni
         ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
         // Display results
         a.displayCountry(cou, "allcountryinW.md");//developed by moeni
@@ -62,6 +63,7 @@ public class App {
         a.displayCapitalinW(capitalinW);
         a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
         a.displayPoupulationCityContinent(popcitycontient);//By moeni
+        a.displayPoupulationinW(popinW);//By moeni
         a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
         //-------------------------------------------Htet EIndra Wai ---------------------------//
@@ -315,7 +317,6 @@ public class App {
         }
     }
 
-
     public void displayCityinW(ArrayList<City> cou)
     {
         StringBuilder sb = new StringBuilder();
@@ -325,17 +326,14 @@ public class App {
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
         for (City emp : cou)
         {
-
             System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
         }
-
     }
 
     /**
      * Gets all the current city in a continent by Moe Ni Ni Chaw.
      * @return A list of all city, or null if there is an error.
      */
-
     public ArrayList<City> getAllCityContinent(String cont)
     {
         try
@@ -779,6 +777,58 @@ public class App {
 
     }
 
+    /**
+     * Gets all Population in Continent by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllPopulationinW()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT Sum(country.Population) as totalpopulation FROM country";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+//                emp.code = rset.getString("country.Code");
+
+                emp.setPopulation_result(rset.getDouble("totalpopulation"));
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Total population in the world");
+            return null;
+        }
+    }
+
+    public void displayPoupulationinW(ArrayList<Country> world)
+    {
+
+
+        for (Country emp : world)
+        {
+            System.out.println("\n-----------------------------------------------------------------------------------");
+            System.out.println(String.format("%-40s %-40s",  "The population of the world", emp.getPopulation_result()));
+            System.out.println("-----------------------------------------------------------------------------------\n");
+
+        }
+
+    }
+
     // ------------------------ ending of Moe Ni Ni Chaw's Features____________________________
 
     /**
@@ -838,8 +888,6 @@ public class App {
         }
 
     }
-
-
 
     /**
      * Gets all the Capital in the continent by HWYL.

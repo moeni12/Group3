@@ -26,19 +26,19 @@ public class AppIntegrationTest
         ArrayList<Country> countries = app.getAllCountry();
         assertNotNull(countries);
         assertEquals(countries.size() > 0, true);
-        app.displayCountry(countries);
+//        app.displayCountry(countries, "allcountryinW.md");
 
     }
 
-//    @Test
-//    void testGetCountry()
-//    {
-//        ArrayList<Country> countries = app.getAllCountry();
-//        assertNotNull(countries);
-//        assertEquals(countries.size() > 0, true);
-//        app.printCountries(countries);
-//        System.out.println("");;
-//    }
+    @Test
+    void testGetCountry()
+    {
+        ArrayList<Country> countries = app.getAllCountry();
+        assertNotNull(countries);
+        assertEquals(countries.size() > 0, true);
+        app.printCountries(countries);
+
+    }
 
 
 }

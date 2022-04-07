@@ -348,6 +348,10 @@ public class App {
             System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
         }
     }
+
+
+   
+
   
   /**
      * Gets all the current city in a continent by Moe Ni Ni Chaw.

@@ -10,7 +10,7 @@ public class Country {
     private int population;
     private int capital;
     private String capital_n;
-    private Double population_result;
+    private Long population_result;
     private Double populationcity_result;
     private Double result;
 
@@ -36,7 +36,7 @@ public class Country {
         return population;
     }
 
-    public double getPopulation_result() {
+    public Long getPopulation_result() {
         return population_result;
     }
     public double getPopulationcity_result() {
@@ -74,7 +74,7 @@ public class Country {
         population = newpopulation;
     }
 
-    public void setPopulation_result( double newpopulation_result) {
+    public void setPopulation_result( long newpopulation_result) {
         population_result = newpopulation_result;
     }
 

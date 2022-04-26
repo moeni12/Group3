@@ -110,4 +110,14 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetCapitalinR()
+    {
+        ArrayList<Country> capitalinR = app.getAllCapitalinR("Central America");
+        assertNotNull(capitalinR);
+        assertEquals(capitalinR.size() > 0, true);
+        app.displayCapitalinR(capitalinR);
+
+    }
+
 }

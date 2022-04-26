@@ -635,7 +635,14 @@ public class App {
     }
 
     public void displayCityCountry(ArrayList<City> con)
+
     {
+        if (con == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("Report All the countries in a continent organised by largest population to smallest. \n ");

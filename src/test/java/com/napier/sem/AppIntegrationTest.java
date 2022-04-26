@@ -60,5 +60,24 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetCurrentcityinW()
+    {
+        ArrayList<City> currcity = app.getAllCityinW();
+        assertNotNull(currcity);
+        assertEquals(currcity.size() > 0, true);
+        app.displayCityinW(currcity);
+
+    }
+
+    @Test
+    void testGetTopcountriesinW()
+    {
+        ArrayList<Country> topcountry = app.getAllTopCountryinW(5);
+        assertNotNull(topcountry);
+        assertEquals(topcountry.size() > 0, true);
+        app.displayTopCountryinW(topcountry);
+
+    }
 
 }

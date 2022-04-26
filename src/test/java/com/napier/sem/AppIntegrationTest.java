@@ -119,5 +119,13 @@ public class AppIntegrationTest
         app.displayCapitalinR(capitalinR);
 
     }
+    @Test
+    void testGetCapitalinContinent()
+    {
+        ArrayList<Country> capitalinConti = app.getAllCapitalinContinent("Asia");
+        assertNotNull(capitalinConti);
+        assertEquals(capitalinConti.size() > 0, true);
+        app.displayCapitalinContinent(capitalinConti);
 
+    }
 }

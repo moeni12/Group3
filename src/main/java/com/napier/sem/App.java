@@ -419,7 +419,7 @@ public class App {
         }
     }
 
-    public void displayTopCityinW(ArrayList<City> world, String filename)
+    public void displayTopCityinW(ArrayList<City> world)
     {
         // Check country is not null
         if (world == null)

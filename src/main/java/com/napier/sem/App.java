@@ -48,6 +48,10 @@ public class App {
  
         ArrayList<Country> popcitycontient = a.getAllPopulationCityContinent();//moeni
         ArrayList<Country> popinW = a.getAllPopulationinW();//moeni
+        ArrayList<Country> popCont = a.getAllPopulationinCont("Asia");//moeni
+        System.out.println(popCont);
+
+        ArrayList<Language> languageArrayList = a.getAllLanguage();//moeni
      
         // Display results
           a.displayCountry(cou);//developed by moeni
@@ -57,10 +61,12 @@ public class App {
 //        a.displayCityCountry(cityinCou);// developed by moeni
 //        a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
 //        a.displayCapitalinW(capitalinW);
-//
+        a.displayLanguage(languageArrayList);//By moeni
         a.displayPoupulationCityContinent(popcitycontient);//By moeni
         a.displayPoupulationinW(popinW);//By moeni
-       
+        a.displayPoupulationinCont(popCont);//By moeni
+
+
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
         //______________________________________________Phoo Pwint THin______________________________//
         ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");//By Phoo Pwint Thin
@@ -790,7 +796,7 @@ public class App {
     }
 
     /**
-     * Gets all Population in Continent by MoeNiNiChaw.
+     * Gets all Population of the world by MoeNiNiChaw.
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<Country> getAllPopulationinW()
@@ -801,7 +807,7 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
 
-            String strSelect = "SELECT Sum(country.Population) as totalpopulation FROM country";
+            String strSelect = "SELECT Sum(country.Population) as totalpopulation FROM country ";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -841,9 +847,112 @@ public class App {
 
     }
 
+    /**
+     * Gets all Population of a continent by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllPopulationinCont(String cont)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT Sum(country.Population) as totalpopulation FROM country WHERE country.Continent =" + "'" + cont + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country emp = new Country();
+                emp.setContinent(cont);
+                emp.setPopulation_result(rset.getLong("totalpopulation"));
+
+                System.out.println(emp.getPopulation_result());
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Total population in a Continent");
+            return null;
+        }
+    }
+
+    public void displayPoupulationinCont(ArrayList<Country> world)
+    {
+
+            System.out.println("\n-----------------------------------------------------------------------------------\n");
+            System.out.println("The population in a Continent\n\n");
+            System.out.println("\n-----------------------------------------------------------------------------------\n");
+            System.out.println(String.format("%-40s %-40s ",  "Continent", "Population"));
+            for (Country emp : world)
+            {
+                System.out.println(String.format("%-40s %-40s",  emp.getContinent(), emp.getPopulation_result()));
+
+            }
+    }
+
+    /**
+     * Gets all lanaguage by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Language> getAllLanguage()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT Language, Sum(countrylanguage.Percentage) as totalpercentage FROM countrylanguage GROUP BY Language ORDER BY totalpercentage desc";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Language> Language = new ArrayList<Language>();
+            while (rset.next())
+            {
+                Language emp = new Language();
+
+                emp.setLanguage(rset.getString("Language"));
+
+                emp.setTotalpercentage(rset.getLong("totalpercentage"));
+
+                Language.add(emp);
+            }
+            return Language;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get languages percentage");
+            return null;
+        }
+    }
+
+    public void displayLanguage(ArrayList<Language> world)
+    {
+
+
+            System.out.println("\n-----------------------------------------------------------------------------------\n");
+            System.out.println("Languages.\n\n");
+            System.out.println("\n-----------------------------------------------------------------------------------\n");
+            System.out.println(String.format("%-40s %-40s ",  "Languages", "Total percentage"));
+            for (Language emp : world)
+            {
+                System.out.println(String.format("%-40s %-40s",  emp.getLanguage(), emp.getTotalpercentage()));
+
+            }
+
+    }
+
     // ------------------------ ending of Moe Ni Ni Chaw's Features____________________________
-
-
     /**
      * Gets all the Capital in the region by PhooPwintThin.
      * @return A list of all city, or null if there is an error.

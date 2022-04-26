@@ -50,7 +50,15 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGettopcityinW()
+    {
+        ArrayList<City> topcity = app.getAllTopcityinW(3);
+        assertNotNull(topcity);
+        assertEquals(topcity.size() > 0, true);
+        app.displayTopCityinW(topcity);
 
+    }
 
 
 }

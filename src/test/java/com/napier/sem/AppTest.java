@@ -218,5 +218,39 @@ public class AppTest
         cities.add(emp);
         app.displayTopCityinW(cities);
     }
+    // Test for displayCityContinent //
 
+    @Test
+    void displayCityContinentTestNull (){
+        app.displayCityCountry(null);
+
+    }
+    @Test
+    void displayCityContinent()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayCityContinent(cities);
+    }
+
+    @Test
+    void displayCityContinentContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayCityContinent(cities);
+    }
+
+    @Test
+    void displayCityContinentTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinW(cities);
+    }
 }

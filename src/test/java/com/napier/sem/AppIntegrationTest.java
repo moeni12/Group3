@@ -40,6 +40,16 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetTopCapitalinConti()
+    {
+        ArrayList<Country> countries = app.getAllTopCapitalinContinent(5, "Asia");
+        assertNotNull(countries);
+        assertEquals(countries.size() > 0, true);
+        app.displayTopCapitalinContinent(countries);
+
+    }
+
 
 
 

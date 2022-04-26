@@ -31,6 +31,16 @@ public class AppIntegrationTest
     }
 
     @Test
+    void testGetCityContinent()
+    {
+        ArrayList<City> city = app.getAllCityContinent("Asia");
+        assertNotNull(city);
+        assertEquals(city.size() > 0, true);
+        app.displayCityContinent(city);
+
+    }
+
+    @Test
     void testGetCountry()
     {
         ArrayList<Country> countries = app.getAllCountry();

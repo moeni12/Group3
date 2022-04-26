@@ -866,6 +866,7 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
 
+
             String strSelect = "SELECT Sum(country.Population) as totalpopulation FROM country WHERE country.Continent =" + "'" + cont + "'";
 
             // Execute SQL statement
@@ -902,6 +903,7 @@ public class App {
             {
                 System.out.println(String.format("%-40s %-40s",  emp.getContinent(), emp.getPopulation_result()));
 
+          
             }
     }
 

@@ -425,7 +425,7 @@ public class App {
         }
     }
 
-    public void displayTopCityinW(ArrayList<City> world, String filename)
+    public void displayTopCityinW(ArrayList<City> world)
     {
         // Check country is not null
         if (world == null)
@@ -563,7 +563,7 @@ public class App {
         }
     }
 
-    public void displayTopCountryinW(ArrayList<Country> world, String filename)
+    public void displayTopCountryinW(ArrayList<Country> world)
     {
         // Check country is not null
         if (world == null)
@@ -585,14 +585,14 @@ public class App {
 //            sb.append("\n");
 
         }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
@@ -641,7 +641,14 @@ public class App {
     }
 
     public void displayCityCountry(ArrayList<City> con)
+
     {
+        if (con == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("Report All the countries in a continent organised by largest population to smallest. \n ");

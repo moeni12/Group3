@@ -26,7 +26,7 @@ Group 3 Individual Team Member Contribution
             <td>25</td>
             <td>26</td>
             <td>26</td>
-            <td></td>
+            <td>28</td>
             <td></td>
         </tr>
         <tr>
@@ -34,7 +34,7 @@ Group 3 Individual Team Member Contribution
             <td>25</td>
             <td>26</td>
             <td>26</td>
-             <td></td>
+             <td>25</td>
             <td></td>
         </tr>
          <tr>
@@ -42,7 +42,7 @@ Group 3 Individual Team Member Contribution
             <td>25</td>
             <td>26</td>
             <td>24</td>
-             <td></td>
+             <td>24</td>
             <td></td>
         </tr>
         <tr>
@@ -50,7 +50,7 @@ Group 3 Individual Team Member Contribution
             <td>25</td>
             <td>22</td>
             <td>24</td>
-             <td></td>
+             <td>24</td>
             <td></td>
         </tr>
         <tr>
@@ -58,7 +58,7 @@ Group 3 Individual Team Member Contribution
         <td> 100 </td>
          <td> 100 </td>
           <td> 100 </td>
-          <td> 0 </td>
+          <td> 100 </td>
         <td></td>
         </tr>
     </tbody>

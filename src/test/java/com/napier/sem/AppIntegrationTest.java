@@ -80,4 +80,24 @@ public class AppIntegrationTest
 
     }
 
+//    @Test
+//    void testGetCurrentcityinCoun()
+//    {
+//        ArrayList<City> currcityinCoun = app.getAllCityCountry("Asia");
+//        assertNotNull(currcityinCoun);
+//        assertEquals(currcityinCoun.size() > 0, true);
+//        app.displayCityCountry(currcityinCoun);
+//
+//    }
+
+    @Test
+    void testGetPopulationCityC()
+    {
+        ArrayList<Country> populationCC = app.getAllPopulationCityContinent();
+        assertNotNull(populationCC);
+        assertEquals(populationCC.size() > 0, true);
+        app.displayPoupulationCityContinent(populationCC);
+
+    }
+
 }

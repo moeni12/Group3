@@ -100,4 +100,14 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetPopulationContinent()
+    {
+        ArrayList<Country> populationinW = app.getAllPopulationinW();
+        assertNotNull(populationinW);
+        assertEquals(populationinW.size() > 0, true);
+        app.displayPoupulationinW(populationinW);
+
+    }
+
 }

@@ -703,7 +703,7 @@ public class App {
     }
 
     /**
-     * Gets all Population in Continent by MoeNiNiChaw.
+     * Gets all Population city in Continent by MoeNiNiChaw.
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<Country> getAllPopulationCityContinent()

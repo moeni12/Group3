@@ -783,6 +783,11 @@ public class App {
 
     public void displayPoupulationCityContinent(ArrayList<Country> world)
     {
+        if (con == null)
+        {
+            System.out.println("No country");
+            return;
+        }
 
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("The population of people, people living in cities, and people not living in cities in each Continent.\n\n");
@@ -836,7 +841,11 @@ public class App {
 
     public void displayPoupulationinW(ArrayList<Country> world)
     {
-
+        if (world == null)
+        {
+            System.out.println("No country");
+            return;
+        }
 
         for (Country emp : world)
         {
@@ -896,6 +905,12 @@ public class App {
 
     public void displayCapitalinR(ArrayList<Country> world)
     {
+        if (con == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("All the capital cities in a region organised by largest to smallest.\n");

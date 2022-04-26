@@ -147,4 +147,41 @@ public class AppTest
         app.displayTopCityinW(cities);
     }
 
+    //Test for displayTopCountryinW //
+    @Test
+    void displayTopCountryinWTestNull (){
+        app.displayCountry(null);
+    }
+    @Test
+    void displayTopCountryinW()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayTopCountryinW(countries);
+    }
+
+    @Test
+    void displayTopCountryinWContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayTopCountryinW(countries);
+    }
+
+    @Test
+    void displayTopCountryinWTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setCode("NAT");
+        emp.setName("Aruba");
+        emp.setPopulation(120000);
+        emp.setRegion("Caribbean");
+        emp.setContinent("North America");
+        emp.setCapital_n("Oranjestad");
+        countries.add(emp);
+        app.displayCountry(countries);
+
+    }
+
+
 }

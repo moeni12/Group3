@@ -557,7 +557,7 @@ public class App {
         }
     }
 
-    public void displayTopCountryinW(ArrayList<Country> world, String filename)
+    public void displayTopCountryinW(ArrayList<Country> world)
     {
         // Check country is not null
         if (world == null)
@@ -579,14 +579,14 @@ public class App {
 //            sb.append("\n");
 
         }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            new File("./reports/").mkdir();
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+//            writer.write(sb.toString());
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

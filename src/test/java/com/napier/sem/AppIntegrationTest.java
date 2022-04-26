@@ -111,7 +111,7 @@ public class AppIntegrationTest
     }
 
     @Test
-    void testGetCapitalinR()
+    void testGetCapitalinRegion()
     {
         ArrayList<Country> capitalinR = app.getAllCapitalinR("Central America");
         assertNotNull(capitalinR);

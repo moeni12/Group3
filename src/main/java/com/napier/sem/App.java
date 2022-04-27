@@ -49,9 +49,11 @@ public class App {
         ArrayList<Country> popcitycontient = a.getAllPopulationCityContinent();//moeni
         ArrayList<Country> popinW = a.getAllPopulationinW();//moeni
         ArrayList<Country> popCont = a.getAllPopulationinCont("Asia");//moeni
-        System.out.println(popCont);
+        ArrayList<Country> popReg = a.getAllPopulationinReg("Central Africa");//moeni
+        ArrayList<Country> popCou = a.getAllPopulationinCou("Myanmar");//moeni
 
-        ArrayList<Language> languageArrayList = a.getAllLanguage();//moeni
+
+        a.getAllLanguage("English");//moeni
      
         // Display results
           a.displayCountry(cou);//developed by moeni
@@ -61,10 +63,12 @@ public class App {
 //        a.displayCityCountry(cityinCou);// developed by moeni
 //        a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
 //        a.displayCapitalinW(capitalinW);
-        a.displayLanguage(languageArrayList);//By moeni
+
         a.displayPoupulationCityContinent(popcitycontient);//By moeni
         a.displayPoupulationinW(popinW);//By moeni
         a.displayPoupulationinCont(popCont);//By moeni
+        a.displayPoupulationinReg(popReg);//By moeni
+        a.displayPoupulationinCou(popCou);//By moeni
 
 
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
@@ -870,8 +874,6 @@ public class App {
                 Country emp = new Country();
                 emp.setContinent(cont);
                 emp.setPopulation_result(rset.getLong("totalpopulation"));
-
-                System.out.println(emp.getPopulation_result());
                 Country.add(emp);
             }
             return Country;
@@ -899,10 +901,10 @@ public class App {
     }
 
     /**
-     * Gets all lanaguage by MoeNiNiChaw.
+     * Gets all Population of a region by MoeNiNiChaw.
      * @return A list of all city, or null if there is an error.
      */
-    public ArrayList<Language> getAllLanguage()
+    public ArrayList<Country> getAllPopulationinReg(String reg)
     {
         try
         {
@@ -910,29 +912,152 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
 
-            String strSelect = "SELECT Language, Sum(countrylanguage.Percentage) as totalpercentage FROM countrylanguage GROUP BY Language ORDER BY totalpercentage desc";
+            String strSelect = "SELECT Sum(country.Population) as totalpopulation FROM country WHERE country.Region =" + "'" + reg + "'";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
-            ArrayList<Language> Language = new ArrayList<Language>();
+            ArrayList<Country> Country = new ArrayList<Country>();
             while (rset.next())
             {
-                Language emp = new Language();
-
-                emp.setLanguage(rset.getString("Language"));
-
-                emp.setTotalpercentage(rset.getLong("totalpercentage"));
-
-                Language.add(emp);
+                Country emp = new Country();
+                emp.setRegion(reg);
+                emp.setPopulation_result(rset.getLong("totalpopulation"));
+                Country.add(emp);
             }
-            return Language;
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Total population in a Continent");
+            return null;
+        }
+    }
+
+    public void displayPoupulationinReg(ArrayList<Country> world)
+    {
+
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The population in a Region\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-40s %-40s ",  "Region", "Population"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-40s %-40s",  emp.getRegion(), emp.getPopulation_result()));
+
+        }
+    }
+
+    /**
+     * Gets all Population of a Country by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllPopulationinCou(String Cou)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT Sum(country.Population) as totalpopulation FROM country WHERE country.Name =" + "'" + Cou + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country emp = new Country();
+                emp.setName(Cou);
+                emp.setPopulation_result(rset.getLong("totalpopulation"));
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Total population in a Continent");
+            return null;
+        }
+    }
+
+    public void displayPoupulationinCou(ArrayList<Country> world)
+    {
+
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The population in a Region\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-40s %-40s ",  "Region", "Population"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-40s %-40s",  emp.getName(), emp.getPopulation_result()));
+
+        }
+    }
+
+    /**
+     * Gets all lanaguage by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public void getAllLanguage(String languages)
+    {
+        try
+        {
+            float totalpopulation ;
+            float totalworldpopulation ;
+            float percentage = 0;
+
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT Sum((countrylanguage.Percentage/100)*country.Population) as totalpopulation FROM countrylanguage, country WHERE country.Code = countrylanguage.CountryCode and countrylanguage.Language =" + "'" + languages + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Create an SQL statement
+            Statement stmt1 = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect1 = "SELECT Sum(country.Population) as totalworldpopulation FROM country";
+
+            // Execute SQL statement
+            ResultSet rset1 = stmt1.executeQuery(strSelect1);
+
+
+            while (rset.next() & rset1.next())
+            {
+                totalpopulation = rset.getLong("totalpopulation") ;
+                System.out.println(totalpopulation);
+
+                totalworldpopulation = rset1.getLong("totalworldpopulation");
+                System.out.println(totalworldpopulation);
+
+                percentage = (totalpopulation/totalworldpopulation)*100;
+                System.out.println(percentage);
+            }
+
+
+
+
+            System.out.println("\n-----------------------------------------------------------------------------------\n");
+            System.out.println("Languages.\n\n");
+            System.out.println("\n-----------------------------------------------------------------------------------\n");
+            System.out.println(String.format("%-40s %-40s ",  "Languages", "Total percentage"));
+
+            System.out.println(String.format("%-40s %-40s",  languages, percentage));
+
+
+
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get languages percentage");
-            return null;
         }
     }
 

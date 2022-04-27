@@ -422,6 +422,37 @@ void displayPoupulationinWTestNull (){
         cities.add(emp);
         app.displayTopCityinW(cities);
     }
+    // Test for displayPoupulationCityRegion //
 
+    @Test
+    void displayPoupulationCityRegionTestNull (){
+        app.displayPoupulationCityRegion(null);
+    }
+    @Test
+    void displayPoupulationCityRegion()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPoupulationCityRegion(countries);
+    }
+
+    @Test
+    void displayPoupulationCityRegionContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPoupulationCityRegion(countries);
+    }
+
+    @Test
+    void displayPoupulationCityRegionTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setRegion("Caribbean");
+        emp.setPopulation_result(50000);
+        emp.setPopulationcity_result(100000);
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
 
 }

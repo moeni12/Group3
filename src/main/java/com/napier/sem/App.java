@@ -948,7 +948,10 @@ public class App {
         }
 
     }
-
+    /**
+     * Gets all the Capital in the continent by HWYL.
+     * @return A list of all city, or null if there is an error.
+     */
     public ArrayList<City> getAllTopCityinR(int Num, String Region)
     {
         try

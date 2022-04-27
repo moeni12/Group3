@@ -432,21 +432,25 @@ public class App {
     public void displayTopCityinW(ArrayList<City> world)
     {
         // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No city");
-            return;
-        }
 
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("The top N populated cities in the world where N is provided by the user. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : world)
-        {
 
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+        if (con == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+
+        else {
+            for (City emp : world) {
+
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
     }
 
@@ -569,12 +573,6 @@ public class App {
 
     public void displayTopCountryinW(ArrayList<Country> world)
     {
-        // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No country");
-            return;
-        }
 
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -583,11 +581,19 @@ public class App {
         System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Country","Region","Population", "Continent"));
 //        sb.append("\n");
 
-        for (Country emp : world)
+        if (con == null)
         {
-            System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            System.out.println("No country");
+            return;
+        }
+        else {
+
+
+            for (Country emp : world) {
+                System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", emp.getCode(), emp.getName(), emp.getContinent(), emp.getRegion(), emp.getPopulation(), emp.getCapital_n()));
 //            sb.append("\n");
 
+            }
         }
 //        try {
 //            new File("./reports/").mkdir();
@@ -647,21 +653,29 @@ public class App {
     public void displayCityCountry(ArrayList<City> con)
 
     {
-        if (con == null)
-        {
-            System.out.println("No country");
-            return;
-        }
 
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("Report All the countries in a continent organised by largest population to smallest. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
-        System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : con)
+        System.out.println(String.format("%-35s %-40s %-35s %-20s", "Name", "Country", "District", "Population"));
+        if (con == null)
         {
+            System.out.println("No country");
+            return;
+        }
+        else if (con.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+
+            for (City emp : con) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
 
     }

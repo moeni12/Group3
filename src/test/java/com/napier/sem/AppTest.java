@@ -741,4 +741,40 @@ void displayCityInDIstTestNull (){
         cities.add(emp);
         app.displayTopCityinR(cities);
     }
+
+    // Test for displayTopCityinContiN //
+
+    @Test
+    void displayTopCityinContiNTestNull (){
+        app.displayTopCityinContiN(null);
+
+    }
+    @Test
+    void displayTopCityinContiN()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayTopCityinContiN(cities);
+    }
+
+    @Test
+    void displayTopCityinContiNContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayTopCityinDist(cities);
+    }
+
+    @Test
+    void displayTopCityinContiNTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
 }

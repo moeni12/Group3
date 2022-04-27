@@ -152,7 +152,7 @@ public class AppIntegrationTest
 //    @Test
 //    void testGetcountryinROrga()
 //    {
-//        ArrayList<Country> CountryRO = app.getAllRegion("China");
+//        ArrayList<Country> CountryRO = app.getAllRegion("Central Africa");
 //        assertNotNull(CountryRO);
 //        assertEquals(CountryRO.size() > 0, true);
 //        app.displayCountryInReg(CountryRO);
@@ -183,7 +183,7 @@ public class AppIntegrationTest
     @Test
     void testGetCurrentcityinD()
     {
-        ArrayList<City> currcityinD = app.getAllCityInDist("China");
+        ArrayList<City> currcityinD = app.getAllCityInDist("Central Africa");
         assertNotNull(currcityinD);
 //        assertEquals(currcityinD.size() > 0, true);
         app.displayCityInDIst(currcityinD);
@@ -197,6 +197,16 @@ public class AppIntegrationTest
         assertNotNull(topcounContin);
         assertEquals(topcounContin.size() > 0, true);
         app.displayTopCountryinCont(topcounContin);
+
+    }
+
+    @Test
+    void testGettopNpopCountinR()
+    {
+        ArrayList<Country> topNPCountR = app.getAllTopCountryinReg(4, "Central Africa");
+        assertNotNull(topNPCountR);
+//        assertEquals(topNPCountR.size() > 0, true);
+        app.displayTopCountryinReg(topNPCountR);
 
     }
 

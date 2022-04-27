@@ -98,7 +98,7 @@ public class App {
 //        a.displayTopCityinCoun(citiesINCount, "TopcitiesinCountry.md"); // developed by Htet Eindra Wai
 //        a.displayTopCityinDist( citiesINDist,"TopcitiesinDist.md"); // developed by Htet Eindra Wai
          a.displayTopCountryinCont(countryInCont);// developed by Htet Eindra Wai
-         a.displayTopCountryinReg(TopcountryINReg, "TopcountryINReg.md");
+         a.displayTopCountryinReg(TopcountryINReg);
 
 
         // Extract countries information in a region
@@ -1466,7 +1466,7 @@ public class App {
         }
     }
 
-    public void displayTopCountryinReg(ArrayList<Country> world, String filename)
+    public void displayTopCountryinReg(ArrayList<Country> world)
     {
         // Check country is not null
         if (world == null)
@@ -1487,14 +1487,6 @@ public class App {
             System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
 //            sb.append("\n");
 
-        }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }

@@ -149,5 +149,26 @@ public class AppIntegrationTest
 
     }
 
+//    @Test
+//    void testGetcountryinROrga()
+//    {
+//        ArrayList<Country> CountryRO = app.getAllRegion("China");
+//        assertNotNull(CountryRO);
+//        assertEquals(CountryRO.size() > 0, true);
+//        app.displayCountryInReg(CountryRO);
+//
+//    }
+
+    @Test
+    void testGetcountriesinContiOrg()
+    {
+        ArrayList<Country> countriesCO = app.getAllCountryINContinent("Asia");
+        assertNotNull(countriesCO);
+        assertEquals(countriesCO.size() > 0, true);
+        app.displayCountryInContinent(countriesCO);
+
+    }
+
+
 
 }

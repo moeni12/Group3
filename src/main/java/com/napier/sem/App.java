@@ -624,14 +624,7 @@ public class App {
 
             }
         }
-//        try {
-//            new File("./reports/").mkdir();
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-//            writer.write(sb.toString());
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
 
     }
 
@@ -784,7 +777,7 @@ public class App {
     }
 
     /**
-     * Gets all Population in Continent by MoeNiNiChaw.
+     * Gets all Population city in Continent by MoeNiNiChaw.
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<Country> getAllPopulationCityContinent()
@@ -1074,6 +1067,7 @@ public class App {
      * @return A list of all city, or null if there is an error.
      */
     public ArrayList<Country> getAllPopulationinCou(String Cou)
+
     {
         try
         {

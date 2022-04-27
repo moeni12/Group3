@@ -190,4 +190,14 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGettopcountincontin()
+    {
+        ArrayList<Country> topcounContin = app.getAllTopCountryinCont(4, "Asia");
+        assertNotNull(topcounContin);
+        assertEquals(topcounContin.size() > 0, true);
+        app.displayTopCountryinCont(topcounContin);
+
+    }
+
 }

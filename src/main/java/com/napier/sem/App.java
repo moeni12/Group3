@@ -97,7 +97,7 @@ public class App {
 //        a.displayCityInDIst( citiesIND); // developed by Htet Eindra Wai
 //        a.displayTopCityinCoun(citiesINCount, "TopcitiesinCountry.md"); // developed by Htet Eindra Wai
 //        a.displayTopCityinDist( citiesINDist,"TopcitiesinDist.md"); // developed by Htet Eindra Wai
-         a.displayTopCountryinCont(countryInCont, "TopCountriesinCont.md");// developed by Htet Eindra Wai
+         a.displayTopCountryinCont(countryInCont);// developed by Htet Eindra Wai
          a.displayTopCountryinReg(TopcountryINReg, "TopcountryINReg.md");
 
 
@@ -1395,7 +1395,7 @@ public class App {
         }
     }
 
-    public void displayTopCountryinCont(ArrayList<Country> world, String filename)
+    public void displayTopCountryinCont(ArrayList<Country> world)
     {
         // Check country is not null
         if (world == null)
@@ -1418,14 +1418,7 @@ public class App {
 //            sb.append("\n");
 
         }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
 

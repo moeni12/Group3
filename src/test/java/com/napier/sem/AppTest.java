@@ -777,4 +777,39 @@ void displayCityInDIstTestNull (){
         cities.add(emp);
         app.displayTopCityinR(cities);
     }
+
+    // Test for displayTopCapitalinW //
+
+
+    @Test
+    void displayTopCapitalinWTestNull (){
+        app.displayTopCapitalinW(null);
+    }
+    @Test
+    void displayTopCapitalinW()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayTopCapitalinW(countries);
+    }
+
+    @Test
+    void displayTopCapitalinWContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayTopCapitalinW(countries);
+    }
+
+    @Test
+    void displayTopCapitalinWTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setName("Aruba");
+        emp.setCapital_n("Kabul");
+        emp.setPopulation(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
 }

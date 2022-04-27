@@ -812,4 +812,40 @@ void displayCityInDIstTestNull (){
         countries.add(emp);
         app.displayCountry(countries);
     }
+
+    // Test for displayPopulationCityCountry //
+
+
+    @Test
+    void displayPopulationCityCountryTestNull (){
+        app.displayPopulationCityCountry(null);
+    }
+    @Test
+    void displayPopulationCityCountry()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPopulationCityCountry(countries);
+    }
+
+    @Test
+    void displayPopulationCityCountryContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPopulationCityCountry(countries);
+    }
+
+    @Test
+    void displayPopulationCityCountryTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setName("Aruba");
+        emp.setPopulation_result(20600);
+        emp.setPopulationcity_result(30000);
+        emp.setResult(50000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
 }

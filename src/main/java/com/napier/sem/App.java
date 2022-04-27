@@ -107,8 +107,8 @@ public class App {
 //        a.displayCityInDIst( citiesIND); // developed by Htet Eindra Wai
 //        a.displayTopCityinCoun(citiesINCount, "TopcitiesinCountry.md"); // developed by Htet Eindra Wai
 //        a.displayTopCityinDist( citiesINDist,"TopcitiesinDist.md"); // developed by Htet Eindra Wai
-         a.displayTopCountryinCont(countryInCont, "TopCountriesinCont.md");// developed by Htet Eindra Wai
-         a.displayTopCountryinReg(TopcountryINReg, "TopcountryINReg.md");
+         a.displayTopCountryinCont(countryInCont);// developed by Htet Eindra Wai
+         a.displayTopCountryinReg(TopcountryINReg);
 
 
         // Extract countries information in a region
@@ -380,10 +380,23 @@ public class App {
         System.out.println("All the capital cities in the world organised by largest population to smallest.\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-20s",  "Country", "Capital","Population"));
-        for (Country emp : world)
+        if (world == null)
         {
-            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-20s", emp.getName(), emp.getCapital_n(), emp.getPopulation()));
+
+            }
         }
 
     }
@@ -524,9 +537,21 @@ public class App {
         System.out.println("Report all the cities in the world organised by largest population to smallest \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : cou)
+        if (cou == null)
         {
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+            System.out.println("No country");
+            return;
+        }
+        else if (cou.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (City emp : cou) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
     }
     /**
@@ -590,6 +615,7 @@ public class App {
 
 
             for (Country emp : world) {
+                if (emp == null) continue;
                 System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", emp.getCode(), emp.getName(), emp.getContinent(), emp.getRegion(), emp.getPopulation(), emp.getCapital_n()));
 //            sb.append("\n");
 
@@ -830,10 +856,24 @@ public class App {
         System.out.println("The population of people, people living in cities, and people not living in cities in each Continent.\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-40s %-40s %-50s %-50s",  " Name of the continent", "Total population of the continent","Total population of the continent living in cities", "Total population of the continent not living in cities"));
-        for (Country emp : world)
-        {
-            System.out.println(String.format("%-40s %-40s %-50s %-50s",  emp.getContinent(), emp.getPopulation_result(),emp.getPopulationcity_result(),emp.getResult()));
 
+        if (world == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s %-50s %-50s", emp.getContinent(), emp.getPopulation_result(), emp.getPopulationcity_result(), emp.getResult()));
+
+            }
         }
 
     }
@@ -878,18 +918,26 @@ public class App {
 
     public void displayPoupulationinW(ArrayList<Country> world)
     {
+
         if (world == null)
         {
             System.out.println("No country");
             return;
         }
-
-        for (Country emp : world)
+        else if (world.size() == 0 )
         {
-            System.out.println("\n-----------------------------------------------------------------------------------");
-            System.out.println(String.format("%-40s %-40s",  "The population of the world", emp.getPopulation_result()));
-            System.out.println("-----------------------------------------------------------------------------------\n");
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println("\n-----------------------------------------------------------------------------------");
+                System.out.println(String.format("%-40s %-40s", "The population of the world", emp.getPopulation_result()));
+                System.out.println("-----------------------------------------------------------------------------------\n");
+
+            }
         }
 
     }
@@ -937,12 +985,24 @@ public class App {
             System.out.println("The population in a Continent\n\n");
             System.out.println("\n-----------------------------------------------------------------------------------\n");
             System.out.println(String.format("%-40s %-40s ",  "Continent", "Population"));
-            for (Country emp : world)
-            {
-                System.out.println(String.format("%-40s %-40s",  emp.getContinent(), emp.getPopulation_result()));
+        if (world == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s", emp.getContinent(), emp.getPopulation_result()));
 
-          
+
             }
+        }
     }
 
     /**
@@ -987,10 +1047,22 @@ public class App {
         System.out.println("The population in a Region\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-40s %-40s ",  "Region", "Population"));
-        for (Country emp : world)
+        if (world == null)
         {
-            System.out.println(String.format("%-40s %-40s",  emp.getRegion(), emp.getPopulation_result()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s", emp.getRegion(), emp.getPopulation_result()));
 
+            }
         }
     }
 
@@ -1036,10 +1108,22 @@ public class App {
         System.out.println("The population in a Region\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-40s %-40s ",  "Region", "Population"));
-        for (Country emp : world)
+        if (world == null)
         {
-            System.out.println(String.format("%-40s %-40s",  emp.getName(), emp.getPopulation_result()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s", emp.getName(), emp.getPopulation_result()));
 
+            }
         }
     }
 
@@ -1105,11 +1189,24 @@ public class App {
             System.out.println("Languages.\n\n");
             System.out.println("\n-----------------------------------------------------------------------------------\n");
             System.out.println(String.format("%-40s %-40s ",  "Languages", "Total percentage"));
-            for (Language emp : world)
-            {
-                System.out.println(String.format("%-40s %-40s",  emp.getLanguage(), emp.getTotalpercentage()));
+        if (world == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+
+            for (Language emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s", emp.getLanguage(), emp.getTotalpercentage()));
 
             }
+        }
     }
 
     // ------------------------ ending of Moe Ni Ni Chaw's Features____________________________
@@ -1158,21 +1255,28 @@ public class App {
 
     public void displayCapitalinR(ArrayList<Country> world)
     {
-        if (con == null)
-        {
-            System.out.println("No country");
-            return;
-        }
 
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("All the capital cities in a region organised by largest to smallest.\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-20s",  "Name", "Country","Population"));
-        for (Country emp : world)
+        if (world == null)
         {
-            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-20s", emp.getName(), emp.getCapital_n(), emp.getPopulation()));
 
+            }
         }
 
     }
@@ -1224,10 +1328,23 @@ public class App {
         System.out.println("All the capital cities in a continent organised by largest population to smallest.\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-20s",  "Name", "Country","Population"));
-        for (Country emp : world)
+        if (world == null)
         {
-            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-20s", emp.getName(), emp.getCapital_n(), emp.getPopulation()));
+
+            }
         }
 
     }
@@ -1272,22 +1389,30 @@ public class App {
 
     public void displayTopCityinR(ArrayList<City> world)
     {
-        // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No city");
-            return;
-        }
+
 
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("The top N populated cities in the region where N is provided by the user. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : world)
+        if (world == null)
         {
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+            for (City emp : world) {
+                if (emp == null) continue;
+
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
 
     }
@@ -1365,10 +1490,23 @@ public class App {
         System.out.println("The population of people, people living in cities, and people not living in cities in each region..");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-40s %-40s %-50s %-50s",  " Name of the Region", "Total population of the Region","Total population of the Region living in cities", "Total population of the Region not living in cities"));
-        for (Country emp : world)
+        if (world == null)
         {
-            System.out.println(String.format("%-40s %-40s %-50s %-50s",  emp.getRegion(), emp.getPopulation_result(),emp.getPopulationcity_result(),emp.getResult()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s %-50s %-50s", emp.getRegion(), emp.getPopulation_result(), emp.getPopulationcity_result(), emp.getResult()));
+
+            }
         }
 
     }
@@ -1424,23 +1562,30 @@ public class App {
     {
         StringBuilder sb = new StringBuilder();
 
-        // Check country is not null
-        if (cou == null)
-        {
-            System.out.println("No country");
-            return;
-        }
+
 
         // Print header
 
         System.out.println("Reporting all the countries in the region organised by largest population to smallest ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Continent","Region","Population", "Capital"));
-
-        for (Country emp : cou)
+        if (cou == null)
         {
-            System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            System.out.println("No country");
+            return;
+        }
+        else if (cou.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
+            for (Country emp : cou) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", emp.getCode(), emp.getName(), emp.getContinent(), emp.getRegion(), emp.getPopulation(), emp.getCapital_n()));
+
+            }
         }
 
     }
@@ -1494,23 +1639,28 @@ public class App {
     {
         StringBuilder sb = new StringBuilder();
 
-        // Check country is not null
-        if (cou == null)
-        {
-            System.out.println("No country");
-            return;
-        }
 
         // Print header
 
         System.out.println("Reporting all the countries in the region organised by largest population to smallest ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Continent","Region","Population", "Capital"));
-
-        for (Country emp : cou)
+        if (cou == null)
         {
-            System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            System.out.println("No country");
+            return;
+        }
+        else if (cou.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (Country emp : cou) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", emp.getCode(), emp.getName(), emp.getContinent(), emp.getRegion(), emp.getPopulation(), emp.getCapital_n()));
 
+            }
         }
 
     }
@@ -1566,10 +1716,24 @@ public class App {
         System.out.println("Report All the cities in a region organised by largest population to smallest. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : con)
+        if (con == null)
         {
+            System.out.println("No country");
+            return;
+        }
+        else if (con.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+            for (City emp : con) {
+
+                if (emp == null) continue;
+
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
 
     }
@@ -1624,10 +1788,24 @@ public class App {
         System.out.println("Report All the cities in a district organised by largest population to smallest. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : con)
+        if (con == null)
         {
+            System.out.println("No country");
+            return;
+        }
+        else if (con.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+            for (City emp : con) {
+
+                if (emp == null) continue;
+
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
 
     }
@@ -1675,14 +1853,8 @@ public class App {
         }
     }
 
-    public void displayTopCountryinCont(ArrayList<Country> world, String filename)
+    public void displayTopCountryinCont(ArrayList<Country> world)
     {
-        // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No country");
-            return;
-        }
 
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1691,21 +1863,26 @@ public class App {
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Continent","Region","Population", "Capital"));
 //        sb.append("\n");
-
-        for (Country emp : world)
+        if (world== null)
         {
-            System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", emp.getCode(), emp.getName(), emp.getContinent(), emp.getRegion(), emp.getPopulation(), emp.getCapital_n()));
 //            sb.append("\n");
 
+            }
         }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
 
@@ -1753,14 +1930,9 @@ public class App {
         }
     }
 
-    public void displayTopCountryinReg(ArrayList<Country> world, String filename)
+    public void displayTopCountryinReg(ArrayList<Country> world)
     {
-        // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No country");
-            return;
-        }
+
 
         StringBuilder sb = new StringBuilder();
         // Print header
@@ -1768,21 +1940,26 @@ public class App {
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", "Code", "Name", "Continent","Region","Population", "Capital"));
 //        sb.append("\n");
-
-        for (Country emp : world)
+        if (world == null)
         {
-            System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s",  emp.getCode(), emp.getName(), emp.getContinent(),emp.getRegion(),emp.getPopulation(), emp.getCapital_n()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-10s %-40s %-15s %-35s %-20s %-8s", emp.getCode(), emp.getName(), emp.getContinent(), emp.getRegion(), emp.getPopulation(), emp.getCapital_n()));
 //            sb.append("\n");
 
+            }
         }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
     /**
@@ -1827,24 +2004,32 @@ public class App {
         }
     }
 
-    public void displayTopCityinCoun(ArrayList<City> world, String filename)
+    public void displayTopCityinCoun(ArrayList<City> world)
     {
-        // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No city");
-            return;
-        }
+
 
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("The top N populated cities in a country where N is provided by the user. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : world)
-        {
 
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+        if (world== null)
+        {
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (City emp : world) {
+                if (emp == null) continue;
+
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
     }
 
@@ -1891,24 +2076,31 @@ public class App {
         }
     }
 
-    public void displayTopCityinDist(ArrayList<City> world, String filename)
+    public void displayTopCityinDist(ArrayList<City> world)
     {
-        // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No city");
-            return;
-        }
 
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("The top N populated cities in a district where N is provided by the user. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : world)
+        if (world == null)
         {
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
 
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+            for (City emp : world) {
+                if (emp == null) continue;
+
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
     }
 
@@ -1952,24 +2144,29 @@ public class App {
         }
     }
 
-    public void displayTopCityinContiN(ArrayList<City> world, String filename)
+    public void displayTopCityinContiN(ArrayList<City> world)
     {
-        // Check country is not null
-        if (world == null)
-        {
-            System.out.println("No city");
-            return;
-        }
 
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("The top N populated cities in a Continent where N is provided by the user. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : world)
+        if (world == null)
         {
-
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (City emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
     }
     /**
@@ -2021,10 +2218,24 @@ public class App {
         System.out.println("All the Top capital cities in a world organised by largest population to smallest.\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-20s",  "Country", "Capital","Population"));
-        for (Country emp : world)
-        {
-            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
 
+        if (world == null)
+        {
+            System.out.println("No country");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+
+            for (Country emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-20s", emp.getName(), emp.getCapital_n(), emp.getPopulation()));
+
+            }
         }
 
     }

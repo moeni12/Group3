@@ -714,15 +714,28 @@ public class App {
 
     public void displayCityContinent(ArrayList<City> con)
     {
+
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("Report All the cities in a country organised by largest population to smallest. \n ");
         System.out.println("-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-35s %-20s",  "Name", "Country","District","Population"));
-        for (City emp : con)
+        // Check country is not null
+        if (con == null)
         {
-
-            System.out.println(String.format("%-35s %-40s %-35s %-20s",  emp.getCityName(), emp.getCoName(),emp.getDistrict(),emp.getPopulation()));
+            System.out.println("No country");
+            return;
+        }
+        else if (con.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (City emp : con) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-35s %-40s %-35s %-20s", emp.getCityName(), emp.getCoName(), emp.getDistrict(), emp.getPopulation()));
+            }
         }
 
     }
@@ -1027,8 +1040,6 @@ public class App {
             float totalpopulation ;
             float totalworldpopulation ;
             float percentage = 0;
-
-
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -1059,17 +1070,12 @@ public class App {
                 System.out.println(percentage);
             }
 
-
-
-
             System.out.println("\n-----------------------------------------------------------------------------------\n");
             System.out.println("Languages.\n\n");
             System.out.println("\n-----------------------------------------------------------------------------------\n");
             System.out.println(String.format("%-40s %-40s ",  "Languages", "Total percentage"));
 
             System.out.println(String.format("%-40s %-40s",  languages, percentage));
-
-
 
         }
         catch (Exception e)
@@ -1081,8 +1087,6 @@ public class App {
 
     public void displayLanguage(ArrayList<Language> world)
     {
-
-
             System.out.println("\n-----------------------------------------------------------------------------------\n");
             System.out.println("Languages.\n\n");
             System.out.println("\n-----------------------------------------------------------------------------------\n");
@@ -1092,7 +1096,6 @@ public class App {
                 System.out.println(String.format("%-40s %-40s",  emp.getLanguage(), emp.getTotalpercentage()));
 
             }
-
     }
 
     // ------------------------ ending of Moe Ni Ni Chaw's Features____________________________

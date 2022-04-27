@@ -364,7 +364,7 @@ void displayPoupulationinWTestNull (){
     void displayCapitalinContinent()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCountry(countries);
+        app.displayCapitalinContinent(countries);
     }
 
     @Test
@@ -372,7 +372,7 @@ void displayPoupulationinWTestNull (){
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
-        app.displayCountry(countries);
+        app.displayCapitalinContinent(countries);
     }
 
     @Test
@@ -385,10 +385,43 @@ void displayPoupulationinWTestNull (){
         emp.setPopulation(103000);
 
         countries.add(emp);
-        app.displayCountry(countries);
+        app.displayCapitalinContinent(countries);
+    }
+// Test for displayTopCityinR //
+
+    @Test
+    void displayTopCityinRTestNull (){
+        app.displayTopCityinR(null);
+
+    }
+    @Test
+    void displayTopCityinR()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayTopCityinR(cities);
     }
 
+    @Test
+    void displayTopCityinRContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayTopCityinR(cities);
+    }
 
+    @Test
+    void displayTopCityinRTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinW(cities);
+    }
 
 
 }

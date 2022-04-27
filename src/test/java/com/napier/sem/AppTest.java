@@ -420,7 +420,7 @@ void displayPoupulationinWTestNull (){
         emp.setPopulation(1780000);
 
         cities.add(emp);
-        app.displayTopCityinW(cities);
+        app.displayTopCityinR(cities);
     }
     // Test for displayPoupulationCityRegion //
 
@@ -452,7 +452,45 @@ void displayPoupulationinWTestNull (){
         emp.setPopulation_result(50000);
         emp.setPopulationcity_result(100000);
         countries.add(emp);
-        app.displayCountry(countries);
+        app.displayPoupulationCityRegion(countries);
+    }
+
+    // Test for displayCountryInReg //
+
+
+    @Test
+    void displayCountryInRegTestNull (){
+        app.displayCapitalinContinent(null);
+    }
+    @Test
+    void displayCountryInReg()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayCountryInReg(countries);
+    }
+
+    @Test
+    void displayCountryInRegContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayCountryInReg(countries);
+    }
+
+    @Test
+    void displayCountryInRegContinentTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setCode("ABW");
+        emp.setName("Aruba");
+        emp.setContinent("North America");
+        emp.setRegion("Caribbean");
+        emp.setPopulation(103000);
+        emp.setCapital_n("Kabul");
+
+        countries.add(emp);
+        app.displayCountryInReg(countries);
     }
 
 }

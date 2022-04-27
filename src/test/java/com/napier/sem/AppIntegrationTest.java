@@ -169,6 +169,25 @@ public class AppIntegrationTest
 
     }
 
+//    @Test
+//    void testGetCurrentCityinR()
+//    {
+//        ArrayList<City> currentcityR = app.getAllCityInReg("Asia");
+//        assertNotNull(currentcityR);
+//        assertEquals(currentcityR.size() > 0, true);
+//        app.displayCityInReg(currentcityR);
+//
+//    }
 
+
+    @Test
+    void testGetCurrentcityinD()
+    {
+        ArrayList<City> currcityinD = app.getAllCityInDist("China");
+        assertNotNull(currcityinD);
+//        assertEquals(currcityinD.size() > 0, true);
+        app.displayCityInDIst(currcityinD);
+
+    }
 
 }

@@ -280,7 +280,7 @@ public class AppTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country emp = new Country();
-        emp.setContinent("");
+        emp.setContinent("North America");
         emp.setPopulation_result(5);
         emp.setPopulationcity_result(2);
 
@@ -350,6 +350,40 @@ void displayPoupulationinWTestNull (){
         emp.setCapital_n("Caribbean");
         emp.setPopulation(103000);
 
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+
+    // Test for displayCapitalinContinent //
+
+    @Test
+    void displayCapitalinContinentTestNull (){
+        app.displayCapitalinContinent(null);
+    }
+    @Test
+    void displayCapitalinContinent()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayCountry(countries);
+    }
+
+    @Test
+    void displayCapitalinContinentContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayCountry(countries);
+    }
+
+    @Test
+    void displayCapitalinContinentTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setName("Aruba");
+        emp.setCapital_n("Kabul");
+        emp.setPopulation(103000);
 
         countries.add(emp);
         app.displayCountry(countries);

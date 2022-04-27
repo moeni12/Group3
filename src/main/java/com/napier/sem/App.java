@@ -905,7 +905,7 @@ public class App {
 
     public void displayCapitalinR(ArrayList<Country> world)
     {
-        if (con == null)
+        if (world == null)
         {
             System.out.println("No country");
             return;
@@ -966,6 +966,11 @@ public class App {
 
     public void displayCapitalinContinent(ArrayList<Country> world)
     {
+        if (world == null)
+        {
+            System.out.println("No country");
+            return;
+        }
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("All the capital cities in a continent organised by largest population to smallest.\n\n");

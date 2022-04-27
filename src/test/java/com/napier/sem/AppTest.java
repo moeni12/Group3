@@ -599,5 +599,40 @@ void displayCityInDIstTestNull (){
         cities.add(emp);
         app.displayTopCityinR(cities);
     }
+    // Test for displayTopCountryinCont //
+
+
+    @Test
+    void displayTopCountryinContTestNull (){
+        app.displayTopCountryinCont(null);
+    }
+    @Test
+    void displayTopCountryinCont()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayTopCountryinCont(countries);
+    }
+
+    @Test
+    void displayTopCountryinContContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayTopCountryinCont(countries);
+    }
+
+    @Test
+    void displayTopCountryinContTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setCode("ABW");
+        emp.setName("Aruba");
+        emp.setCapital_n("Kabul");
+        emp.setPopulation(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
 
 }

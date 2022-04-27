@@ -492,5 +492,41 @@ void displayPoupulationinWTestNull (){
         countries.add(emp);
         app.displayCountryInReg(countries);
     }
+// Test for displayCountryInContinent //
 
+
+    @Test
+    void displayCountryInContinentTestNull (){
+        app.displayCapitalinContinent(null);
+    }
+    @Test
+    void displayCountryInContinent()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayCountryInContinent(countries);
+    }
+
+    @Test
+    void displayCountryInContinentContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayCountryInContinent(countries);
+    }
+
+    @Test
+    void displayCountryInContinentTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setCode("ABW");
+        emp.setName("Aruba");
+        emp.setContinent("North America");
+        emp.setRegion("Caribbean");
+        emp.setPopulation(103000);
+        emp.setCapital_n("Kabul");
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
 }

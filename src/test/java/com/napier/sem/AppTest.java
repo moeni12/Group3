@@ -529,4 +529,41 @@ void displayPoupulationinWTestNull (){
         countries.add(emp);
         app.displayCountry(countries);
     }
+
+    // Test for displayCityInReg //
+
+    @Test
+    void displayCityInRegTestNull (){
+        app.displayCityInReg(null);
+
+    }
+    @Test
+    void displayCityInReg()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayCityInReg(cities);
+    }
+
+    @Test
+    void displayCityInRegContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayCityInReg(cities);
+    }
+
+    @Test
+    void displayCityInRegTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+
 }

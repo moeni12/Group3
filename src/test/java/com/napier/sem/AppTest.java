@@ -972,4 +972,24 @@ void displayCityInDIstTestNull (){
         app.displayCountry(countries);
     }
 
+// Test for displaylanguage //
+
+    @Test
+    void displayLanguageTestNull (){
+        app.displayLanguage(null);
+    }
+    @Test
+    void displayLanguage()
+    {
+        ArrayList<Language> language = new ArrayList<Language>();
+        app.displayLanguage(language);
+    }
+
+    @Test
+    void displayLanguageContainsNull()
+    {
+        ArrayList<Language> language = new ArrayList<Language>();
+        language.add(null);
+        app.displayLanguage(language);
+    }
 }

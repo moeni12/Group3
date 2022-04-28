@@ -906,4 +906,37 @@ void displayCityInDIstTestNull (){
         countries.add(emp);
         app.displayCountry(countries);
     }
+    // Test for displayPoupulationinReg //
+
+    @Test
+    void displayPoupulationinRegTestNull (){
+        app.displayPoupulationinReg(null);
+    }
+    @Test
+    void displayPoupulationinReg()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPoupulationinReg(countries);
+    }
+
+    @Test
+    void displayPoupulationinRegContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPoupulationinReg(countries);
+    }
+
+    @Test
+    void displayPoupulationinRegTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setContinent("North America");
+        emp.setPopulation_result(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+
 }

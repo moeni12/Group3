@@ -2310,15 +2310,29 @@ public class App {
     public void displayPopulationCityCountry(ArrayList<Country> world)
     {
 
+
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("The population of people, people living in cities, and people not living in cities in each Country.\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-40s %-40s %-50s %-50s",  " Name of the country", "Total population of the country","Total population of the country living in cities", "Total population of the country not living in cities"));
-        for (Country emp : world)
-        {
-            System.out.println(String.format("%-40s %-40s %-50s %-50s",  emp.getName(), emp.getPopulation_result(),emp.getPopulationcity_result(),emp.getResult()));
 
+        if (world == null)
+        {System.out.println("No country");
+            return;
         }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no country data");
+            return;
+        }
+        else {
+            for (Country emp : world)
+            {
+                System.out.println(String.format("%-40s %-40s %-50s %-50s",  emp.getName(), emp.getPopulation_result(),emp.getPopulationcity_result(),emp.getResult()));
+
+            }
+        }
+
 
     }
 

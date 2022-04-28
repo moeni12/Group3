@@ -874,4 +874,36 @@ void displayCityInDIstTestNull (){
         app.displayTopCityinR(cities);
     }
 
+    // Test for displayPoupulationinCont //
+
+    @Test
+    void displayPoupulationinContTestNull (){
+        app.displayPoupulationinCont(null);
+    }
+    @Test
+    void displayPoupulationinCont()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPoupulationinCont(countries);
+    }
+
+    @Test
+    void displayPoupulationinContContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPoupulationinCont(countries);
+    }
+
+    @Test
+    void displayPoupulationinContTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setContinent("North America");
+        emp.setPopulation_result(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
 }

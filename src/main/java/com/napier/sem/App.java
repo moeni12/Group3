@@ -51,10 +51,12 @@ public class App {
         ArrayList<Country> popCont = a.getAllPopulationinCont("Asia");//moeni
         ArrayList<Country> popReg = a.getAllPopulationinReg("Central Africa");//moeni
         ArrayList<Country> popCou = a.getAllPopulationinCou("Myanmar");//moeni
+        ArrayList<Language> languages = a.getAllLanguage();//moeni
 
 
-        a.getAllLanguage("English");//moeni
-     
+
+
+
         // Display results
           a.displayCountry(cou);//developed by moeni
 //        a.displayCityinW(cityinW); //developed by moeni
@@ -69,6 +71,7 @@ public class App {
         a.displayPoupulationinCont(popCont);//By moeni
         a.displayPoupulationinReg(popReg);//By moeni
         a.displayPoupulationinCou(popCou);//By moeni
+        a.displayLanguage(languages);// by moeni
 
 
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
@@ -1128,17 +1131,17 @@ public class App {
      * Gets all lanaguage by MoeNiNiChaw.
      * @return A list of all city, or null if there is an error.
      */
-    public void getAllLanguage(String languages)
+    public  ArrayList<Language> getAllLanguage()
     {
         try
         {
             float totalpopulation ;
-            float totalworldpopulation ;
+            float totalworldpopulation = 0;
             float percentage = 0;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT Sum((countrylanguage.Percentage/100)*country.Population) as totalpopulation FROM countrylanguage, country WHERE country.Code = countrylanguage.CountryCode and countrylanguage.Language =" + "'" + languages + "'";
+            String strSelect = "SELECT countrylanguage.Language, Sum((countrylanguage.Percentage/100)*country.Population) as totalpopulation FROM countrylanguage, country WHERE country.Code = countrylanguage.CountryCode AND countrylanguage.Language IN (" + "'Chinese'" + " , "+ "'English'"+" , "+"'Hindi'"+", "+"'Spanish'"+", "+"'Arabic'"+" ) GROUP BY countrylanguage.Language ORDER BY totalpopulation desc";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -1152,32 +1155,35 @@ public class App {
             // Execute SQL statement
             ResultSet rset1 = stmt1.executeQuery(strSelect1);
 
-
-            while (rset.next() & rset1.next())
+            ArrayList<Language> language = new ArrayList<Language>();
+            while (rset1.next())
             {
-                totalpopulation = rset.getLong("totalpopulation") ;
-                System.out.println(totalpopulation);
-
                 totalworldpopulation = rset1.getLong("totalworldpopulation");
                 System.out.println(totalworldpopulation);
 
-                percentage = (totalpopulation/totalworldpopulation)*100;
+            }
+            while (rset.next())
+            {
+                Language emp = new Language();
+                emp.setTotalpoupulation(rset.getFloat("totalpopulation"));
+                emp.setLanguage(rset.getString("countrylanguage.Language"));
+
+                System.out.println(totalworldpopulation);
+                percentage = (emp.getTotalpopulation()/totalworldpopulation)*100;
                 System.out.println(percentage);
+                emp.setTotalpercentage(percentage);
+                language.add(emp);
             }
 
-            System.out.println("\n-----------------------------------------------------------------------------------\n");
-            System.out.println("Languages.\n\n");
-            System.out.println("\n-----------------------------------------------------------------------------------\n");
-            System.out.println(String.format("%-40s %-40s ",  "Languages", "Total percentage"));
-
-            System.out.println(String.format("%-40s %-40s",  languages, percentage));
-
+            return language;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get languages percentage");
+            return null;
         }
+
     }
 
     public void displayLanguage(ArrayList<Language> world)

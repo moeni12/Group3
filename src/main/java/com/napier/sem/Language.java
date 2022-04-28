@@ -5,7 +5,11 @@ public class Language {
     private String countrycode;
     private String language;
     private boolean official;
-    private double totalpercentage;
+    private float totalpercentage;
+    private float totalpoupulation;
+
+
+
 
     public String getCountryCode() {
         return countrycode;
@@ -19,9 +23,14 @@ public class Language {
         return official;
     }
 
-    public double getTotalpercentage() {
+    public float getTotalpercentage() {
         return totalpercentage;
     }
+
+    public float getTotalpopulation() {
+        return totalpoupulation;
+    }
+
 
     public void setCountrycode( String newcountrycode) {
         countrycode = newcountrycode;
@@ -35,9 +44,14 @@ public class Language {
         official = newOfficial;
     }
 
-    public void setTotalpercentage( double newpercentage) {
+    public void setTotalpercentage( float newpercentage) {
         totalpercentage = newpercentage;
     }
+
+    public void setTotalpoupulation( float newpopulation) {
+        totalpoupulation = newpopulation;
+    }
+
 
 
 

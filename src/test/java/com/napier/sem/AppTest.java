@@ -443,17 +443,6 @@ void displayPoupulationinWTestNull (){
         app.displayPoupulationCityRegion(countries);
     }
 
-    @Test
-    void displayPoupulationCityRegionTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setRegion("Caribbean");
-        emp.setPopulation_result(50000);
-        emp.setPopulationcity_result(100000);
-        countries.add(emp);
-        app.displayPoupulationCityRegion(countries);
-    }
 
     // Test for displayCountryInReg //
 

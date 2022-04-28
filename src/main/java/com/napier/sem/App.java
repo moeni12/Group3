@@ -2328,6 +2328,7 @@ public class App {
         else {
             for (Country emp : world)
             {
+                if (emp == null) continue;
                 System.out.println(String.format("%-40s %-40s %-50s %-50s",  emp.getName(), emp.getPopulation_result(),emp.getPopulationcity_result(),emp.getResult()));
 
             }

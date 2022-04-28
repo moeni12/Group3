@@ -280,7 +280,7 @@ public class AppTest
     {
         ArrayList<Country> countries = new ArrayList<Country>();
         Country emp = new Country();
-        emp.setContinent("");
+        emp.setContinent("North America");
         emp.setPopulation_result(5);
         emp.setPopulationcity_result(2);
 
@@ -354,6 +354,498 @@ void displayPoupulationinWTestNull (){
         countries.add(emp);
         app.displayCountry(countries);
     }
+    // Test for displayCapitalinContinent //
+
+    @Test
+    void displayCapitalinContinentTestNull (){
+        app.displayCapitalinContinent(null);
+    }
+    @Test
+    void displayCapitalinContinent()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayCapitalinContinent(countries);
+    }
+
+    @Test
+    void displayCapitalinContinentContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayCapitalinContinent(countries);
+    }
+
+    @Test
+    void displayCapitalinContinentTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setName("Aruba");
+        emp.setCapital_n("Kabul");
+        emp.setPopulation(103000);
+
+        countries.add(emp);
+        app.displayCapitalinContinent(countries);
+    }
+// Test for displayTopCityinR //
+
+    @Test
+    void displayTopCityinRTestNull (){
+        app.displayTopCityinR(null);
+
+    }
+    @Test
+    void displayTopCityinR()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayTopCityinR(cities);
+    }
+
+    @Test
+    void displayTopCityinRContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayTopCityinR(cities);
+    }
+
+    @Test
+    void displayTopCityinRTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+    // Test for displayPoupulationCityRegion //
+
+    @Test
+    void displayPoupulationCityRegionTestNull (){
+        app.displayPoupulationCityRegion(null);
+    }
+    @Test
+    void displayPoupulationCityRegion()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPoupulationCityRegion(countries);
+    }
+
+    @Test
+    void displayPoupulationCityRegionContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPoupulationCityRegion(countries);
+    }
+
+    @Test
+    void displayPoupulationCityRegionTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setRegion("Caribbean");
+        emp.setPopulation_result(50000);
+        emp.setPopulationcity_result(100000);
+        countries.add(emp);
+        app.displayPoupulationCityRegion(countries);
+    }
+
+    // Test for displayCountryInReg //
 
 
+    @Test
+    void displayCountryInRegTestNull (){
+        app.displayCapitalinContinent(null);
+    }
+    @Test
+    void displayCountryInReg()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayCountryInReg(countries);
+    }
+
+    @Test
+    void displayCountryInRegContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayCountryInReg(countries);
+    }
+
+    @Test
+    void displayCountryInRegContinentTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setCode("ABW");
+        emp.setName("Aruba");
+        emp.setContinent("North America");
+        emp.setRegion("Caribbean");
+        emp.setPopulation(103000);
+        emp.setCapital_n("Kabul");
+
+        countries.add(emp);
+        app.displayCountryInReg(countries);
+    }
+// Test for displayCountryInContinent //
+
+
+    @Test
+    void displayCountryInContinentTestNull (){
+        app.displayCapitalinContinent(null);
+    }
+    @Test
+    void displayCountryInContinent()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayCountryInContinent(countries);
+    }
+
+    @Test
+    void displayCountryInContinentContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayCountryInContinent(countries);
+    }
+
+    @Test
+    void displayCountryInContinentTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setCode("ABW");
+        emp.setName("Aruba");
+        emp.setContinent("North America");
+        emp.setRegion("Caribbean");
+        emp.setPopulation(103000);
+        emp.setCapital_n("Kabul");
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+
+    // Test for displayCityInReg //
+
+    @Test
+    void displayCityInRegTestNull (){
+        app.displayCityInReg(null);
+
+    }
+    @Test
+    void displayCityInReg()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayCityInReg(cities);
+    }
+
+    @Test
+    void displayCityInRegContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayCityInReg(cities);
+    }
+
+    @Test
+    void displayCityInRegTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+// Test for displayCityInDIst //
+@Test
+void displayCityInDIstTestNull (){
+    app.displayCityInDIst(null);
+
+}
+    @Test
+    void displayCityInDIst()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayCityInDIst(cities);
+    }
+
+    @Test
+    void displayCityInDIstContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayCityInDIst(cities);
+    }
+
+    @Test
+    void displayCityInDIstTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+    // Test for displayTopCountryinCont //
+
+
+    @Test
+    void displayTopCountryinContTestNull (){
+        app.displayTopCountryinCont(null);
+    }
+    @Test
+    void displayTopCountryinCont()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayTopCountryinCont(countries);
+    }
+
+    @Test
+    void displayTopCountryinContContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayTopCountryinCont(countries);
+    }
+
+    @Test
+    void displayTopCountryinContTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setCode("ABW");
+        emp.setName("Aruba");
+        emp.setCapital_n("Kabul");
+        emp.setPopulation(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+    // Test for displayTopCountryinReg //
+
+
+
+    @Test
+    void displayTopCountryinRegTestNull (){
+        app.displayTopCountryinReg(null);
+    }
+    @Test
+    void displayTopCountryinReg()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayTopCountryinReg(countries);
+    }
+
+    @Test
+    void displayTopCountryinRegContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayTopCountryinReg(countries);
+    }
+
+    @Test
+    void displayTopCountryinRegTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+
+        emp.setCode("ABW");
+        emp.setName("Aruba");
+        emp.setContinent("North America");
+        emp.setRegion("Caribbean");
+        emp.setPopulation(103000);
+        emp.setCapital_n("Kabul");
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+
+    // Test for displayTopCityinCoun //
+
+    @Test
+    void displayTopCityinCounTestNull (){
+        app.displayTopCityinCoun(null);
+
+    }
+    @Test
+    void displayTopCityinCoun()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayTopCityinCoun(cities);
+    }
+
+    @Test
+    void displayTopCityinCounContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayTopCityinCoun(cities);
+    }
+
+    @Test
+    void displayTopCityinCounTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+    // Test for displayTopCityinDist //
+    @Test
+    void displayTopCityinDistTestNull (){
+        app.displayTopCityinDist(null);
+
+    }
+    @Test
+    void displayTopCityinDist()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayTopCityinDist(cities);
+    }
+
+    @Test
+    void displayTopCityinDistContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayTopCityinDist(cities);
+    }
+
+    @Test
+    void displayTopCityinDistTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+
+    // Test for displayTopCityinContiN //
+
+    @Test
+    void displayTopCityinContiNTestNull (){
+        app.displayTopCityinContiN(null);
+
+    }
+    @Test
+    void displayTopCityinContiN()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayTopCityinContiN(cities);
+    }
+
+    @Test
+    void displayTopCityinContiNContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayTopCityinDist(cities);
+    }
+
+    @Test
+    void displayTopCityinContiNTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+
+    // Test for displayTopCapitalinW //
+
+
+    @Test
+    void displayTopCapitalinWTestNull (){
+        app.displayTopCapitalinW(null);
+    }
+    @Test
+    void displayTopCapitalinW()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayTopCapitalinW(countries);
+    }
+
+    @Test
+    void displayTopCapitalinWContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayTopCapitalinW(countries);
+    }
+
+    @Test
+    void displayTopCapitalinWTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setName("Aruba");
+        emp.setCapital_n("Kabul");
+        emp.setPopulation(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+
+    // Test for displayPopulationCityCountry //
+
+
+    @Test
+    void displayPopulationCityCountryTestNull (){
+        app.displayPopulationCityCountry(null);
+    }
+    @Test
+    void displayPopulationCityCountry()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPopulationCityCountry(countries);
+    }
+
+    @Test
+    void displayPopulationCityCountryContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPopulationCityCountry(countries);
+    }
+
+    @Test
+    void displayPopulationCityCountryTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setName("Aruba");
+        emp.setPopulation_result(20600);
+        emp.setPopulationcity_result(30000);
+        emp.setResult(50000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
 }

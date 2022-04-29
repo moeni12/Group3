@@ -250,4 +250,15 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetpopincountry()
+    {
+        ArrayList<Country> popincoun = app.getAllPopulationCityCountry();
+        assertNotNull(popincoun);
+        assertEquals(popincoun.size() > 0, true);
+        app.displayPopulationCityCountry(popincoun);
+
+    }
+
+
 }

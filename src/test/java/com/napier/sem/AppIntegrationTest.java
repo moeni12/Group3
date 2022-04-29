@@ -230,6 +230,15 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGettopNpopcityinConti()
+    {
+        ArrayList<City> topNpopctyConti = app.getAllTopcityinContiN(4, "Asia");
+        assertNotNull(topNpopctyConti);
+        assertEquals(topNpopctyConti.size() > 0, true);
+        app.displayTopCityinContiN(topNpopctyConti);
+
+    }
 
 
 

@@ -290,5 +290,14 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetPopincity()
+    {
+        ArrayList<City> popincty = app.getAllPopulationincity("Yangon");
+        assertNotNull(popincty);
+        assertEquals(popincty.size() > 0, true);
+        app.displayPoupulationincity(popincty);
+
+    }
 
 }

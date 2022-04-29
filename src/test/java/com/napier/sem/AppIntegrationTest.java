@@ -270,5 +270,16 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetLanaguage()
+    {
+        ArrayList<Language> lanag = app.getAllLanguage();
+        assertNotNull(lanag);
+        assertEquals(lanag.size() > 0, true);
+        app.displayLanguage(lanag);
+
+    }
+
+
 
 }

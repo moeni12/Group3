@@ -300,4 +300,14 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetTopPopctyincountry()
+    {
+        ArrayList<City> toppopctycoun = app.getAllTopcityinCoun(5, "Asia");
+        assertNotNull(toppopctycoun);
+//        assertEquals(toppopctycoun.size() > 0, true);
+        app.displayTopCityinCoun(toppopctycoun);
+
+    }
+
 }

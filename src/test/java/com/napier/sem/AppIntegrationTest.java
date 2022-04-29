@@ -91,7 +91,7 @@ public class AppIntegrationTest
     }
 
     @Test
-    void testGetCurrentcityinCoun()
+    void testGetCurrentcityinCountry()
     {
         ArrayList<City> currcityinCoun = app.getAllCityCountry("Asia");
         assertNotNull(currcityinCoun);

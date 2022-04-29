@@ -220,6 +220,17 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGettopNpopcityinD()
+    {
+        ArrayList<City> topNpopctyD = app.getAllTopcityinDist(4, "Gelderland");
+        assertNotNull(topNpopctyD);
+        assertEquals(topNpopctyD.size() > 0, true);
+        app.displayTopCityinDist(topNpopctyD);
+
+    }
+
+
 
 
 }

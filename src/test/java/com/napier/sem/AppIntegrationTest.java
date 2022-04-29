@@ -139,15 +139,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetTopcityinR()
-//    {
-//        ArrayList<City> topcityinR = app.getAllTopCityinR(5, "China");
-//        assertNotNull(topcityinR);
+    @Test
+    void testGetTopcityinR()
+    {
+        ArrayList<City> topcityinR = app.getAllTopCityinR(5, "China");
+        assertNotNull(topcityinR);
 //        assertEquals(topcityinR.size() > 0, true);
-//        app.displayTopCityinR(topcityinR);
-//
-//    }
+        app.displayTopCityinR(topcityinR);
+
+    }
 
     @Test
     void testGetpopucityR()
@@ -159,15 +159,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetcountryinROrga()
-//    {
-//        ArrayList<Country> CountryRO = app.getAllRegion("Central Africa");
-//        assertNotNull(CountryRO);
-//        assertEquals(CountryRO.size() > 0, true);
-//        app.displayCountryInReg(CountryRO);
-//
-//    }
+    @Test
+    void testGetcountryinROrga()
+    {
+        ArrayList<Country> CountryRO = app.getAllRegion("Central Africa");
+        assertNotNull(CountryRO);
+        assertEquals(CountryRO.size() > 0, true);
+        app.displayCountryInReg(CountryRO);
+
+    }
 
     @Test
     void testGetcountriesinContiOrg()

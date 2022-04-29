@@ -329,4 +329,14 @@ public class AppIntegrationTest
         app.displayPoupulationinReg(popReg);
 
     }
+
+    @Test
+    void testGetpopofacountry()
+    {
+        ArrayList<Country> popcou = app.getAllPopulationinCou("Myanmar");
+        assertNotNull(popcou);
+        assertEquals(popcou.size() > 0, true);
+        app.displayPoupulationinCou(popcou);
+
+    }
 }

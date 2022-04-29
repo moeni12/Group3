@@ -27,7 +27,7 @@ Group 3 Individual Team Member Contribution
             <td>26</td>
             <td>26</td>
             <td>28</td>
-            <td></td>
+            <td>28</td>
         </tr>
         <tr>
             <td>40501803-Htet Eindra Wai</td>
@@ -35,7 +35,7 @@ Group 3 Individual Team Member Contribution
             <td>26</td>
             <td>26</td>
              <td>25</td>
-            <td></td>
+            <td>25</td>
         </tr>
          <tr>
             <td> 40501828- Hnin Wutyi Lae</td>
@@ -43,7 +43,7 @@ Group 3 Individual Team Member Contribution
             <td>26</td>
             <td>24</td>
              <td>24</td>
-            <td></td>
+            <td>25</td>
         </tr>
         <tr>
             <td> 40501800- Phoo Pwint Thin</td>
@@ -51,7 +51,7 @@ Group 3 Individual Team Member Contribution
             <td>22</td>
             <td>24</td>
              <td>24</td>
-            <td></td>
+            <td>22</td>
         </tr>
         <tr>
         <td> Total</td>
@@ -59,7 +59,7 @@ Group 3 Individual Team Member Contribution
          <td> 100 </td>
           <td> 100 </td>
           <td> 100 </td>
-        <td></td>
+        <td>100</td>
         </tr>
     </tbody>
   </table>

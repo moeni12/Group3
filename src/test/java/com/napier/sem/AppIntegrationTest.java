@@ -90,15 +90,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetCurrentcityinCoun()
-//    {
-//        ArrayList<City> currcityinCoun = app.getAllCityCountry("Asia");
-//        assertNotNull(currcityinCoun);
+    @Test
+    void testGetCurrentcityinCountry()
+    {
+        ArrayList<City> currcityinCoun = app.getAllCityCountry("Asia");
+        assertNotNull(currcityinCoun);
 //        assertEquals(currcityinCoun.size() > 0, true);
-//        app.displayCityCountry(currcityinCoun);
-//
-//    }
+        app.displayCityCountry(currcityinCoun);
+
+    }
 
     @Test
     void testGetPopulationCityC()
@@ -139,15 +139,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetTopcityinR()
-//    {
-//        ArrayList<City> topcityinR = app.getAllTopCityinR(5, "China");
-//        assertNotNull(topcityinR);
+    @Test
+    void testGetTopcityinR()
+    {
+        ArrayList<City> topcityinR = app.getAllTopCityinR(5, "China");
+        assertNotNull(topcityinR);
 //        assertEquals(topcityinR.size() > 0, true);
-//        app.displayTopCityinR(topcityinR);
-//
-//    }
+        app.displayTopCityinR(topcityinR);
+
+    }
 
     @Test
     void testGetpopucityR()
@@ -159,15 +159,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetcountryinROrga()
-//    {
-//        ArrayList<Country> CountryRO = app.getAllRegion("Central Africa");
-//        assertNotNull(CountryRO);
-//        assertEquals(CountryRO.size() > 0, true);
-//        app.displayCountryInReg(CountryRO);
-//
-//    }
+    @Test
+    void testGetcountryinROrga()
+    {
+        ArrayList<Country> CountryRO = app.getAllRegion("Central Africa");
+        assertNotNull(CountryRO);
+        assertEquals(CountryRO.size() > 0, true);
+        app.displayCountryInReg(CountryRO);
+
+    }
 
     @Test
     void testGetcountriesinContiOrg()
@@ -179,15 +179,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetCurrentCityinR()
-//    {
-//        ArrayList<City> currentcityR = app.getAllCityInReg("Asia");
-//        assertNotNull(currentcityR);
+    @Test
+    void testGetCurrentCityinR()
+    {
+        ArrayList<City> currentcityR = app.getAllCityInReg("South America");
+        assertNotNull(currentcityR);
 //        assertEquals(currentcityR.size() > 0, true);
-//        app.displayCityInReg(currentcityR);
-//
-//    }
+        app.displayCityInReg(currentcityR);
+
+    }
 
 
     @Test
@@ -220,4 +220,123 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGettopNpopcityinD()
+    {
+        ArrayList<City> topNpopctyD = app.getAllTopcityinDist(4, "Gelderland");
+        assertNotNull(topNpopctyD);
+        assertEquals(topNpopctyD.size() > 0, true);
+        app.displayTopCityinDist(topNpopctyD);
+
+    }
+
+    @Test
+    void testGettopNpopcityinConti()
+    {
+        ArrayList<City> topNpopctyConti = app.getAllTopcityinContiN(4, "Asia");
+        assertNotNull(topNpopctyConti);
+        assertEquals(topNpopctyConti.size() > 0, true);
+        app.displayTopCityinContiN(topNpopctyConti);
+
+    }
+
+    @Test
+    void testGetCapitalcityinW()
+    {
+        ArrayList<Country> capitalctyW = app.getAllTopCapitalinW(4);
+        assertNotNull(capitalctyW);
+        assertEquals(capitalctyW.size() > 0, true);
+        app.displayTopCapitalinW(capitalctyW);
+
+    }
+
+    @Test
+    void testGetpopincountry()
+    {
+        ArrayList<Country> popincoun = app.getAllPopulationCityCountry();
+        assertNotNull(popincoun);
+        assertEquals(popincoun.size() > 0, true);
+        app.displayPopulationCityCountry(popincoun);
+
+    }
+
+    @Test
+    void testGetCapitalinWorld()
+    {
+        ArrayList<Country> capitalW = app.getAllCapitalinW();
+        assertNotNull(capitalW);
+        assertEquals(capitalW.size() > 0, true);
+        app.displayCapitalinW(capitalW);
+
+    }
+
+    @Test
+    void testGetLanaguage()
+    {
+        ArrayList<Language> lanag = app.getAllLanguage();
+        assertNotNull(lanag);
+        assertEquals(lanag.size() > 0, true);
+        app.displayLanguage(lanag);
+
+    }
+
+    @Test
+    void testGetPopofaDistr()
+    {
+        ArrayList<City> popdistr = app.getAllPopulationindist("Noord-Holland");
+        assertNotNull(popdistr);
+        assertEquals(popdistr.size() > 0, true);
+        app.displayPoupulationinDist(popdistr);
+
+    }
+
+    @Test
+    void testGetPopincity()
+    {
+        ArrayList<City> popincty = app.getAllPopulationincity("Yangon");
+        assertNotNull(popincty);
+        assertEquals(popincty.size() > 0, true);
+        app.displayPoupulationincity(popincty);
+
+    }
+
+    @Test
+    void testGetTopPopctyincountry()
+    {
+        ArrayList<City> toppopctycoun = app.getAllTopcityinCoun(5, "Asia");
+        assertNotNull(toppopctycoun);
+//        assertEquals(toppopctycoun.size() > 0, true);
+        app.displayTopCityinCoun(toppopctycoun);
+
+    }
+
+    @Test
+    void testGetpopofacontinent()
+    {
+        ArrayList<Country> popcontinent = app.getAllPopulationinCont("Myanmar");
+        assertNotNull(popcontinent);
+        assertEquals(popcontinent.size() > 0, true);
+        app.displayPoupulationinCont(popcontinent);
+
+    }
+
+    @Test
+    void testGetpopofaRegion()
+    {
+        ArrayList<Country> popReg = app.getAllPopulationinReg("Central Africa");
+        assertNotNull(popReg);
+        assertEquals(popReg.size() > 0, true);
+        app.displayPoupulationinReg(popReg);
+
+    }
+
+    @Test
+    void testGetpopofacountry()
+    {
+        ArrayList<Country> popcou = app.getAllPopulationinCou("Myanmar");
+        assertNotNull(popcou);
+        assertEquals(popcou.size() > 0, true);
+        app.displayPoupulationinCou(popcou);
+
+    }
 }

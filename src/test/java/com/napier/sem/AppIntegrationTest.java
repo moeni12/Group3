@@ -280,6 +280,15 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetPopofaDistr()
+    {
+        ArrayList<City> popdistr = app.getAllPopulationindist("Noord-Holland");
+        assertNotNull(popdistr);
+        assertEquals(popdistr.size() > 0, true);
+        app.displayPoupulationinDist(popdistr);
+
+    }
 
 
 }

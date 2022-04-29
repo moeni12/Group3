@@ -51,6 +51,8 @@ public class App {
         ArrayList<Country> popCont = a.getAllPopulationinCont("Asia");//moeni
         ArrayList<Country> popReg = a.getAllPopulationinReg("Central Africa");//moeni
         ArrayList<Country> popCou = a.getAllPopulationinCou("Myanmar");//moeni
+        ArrayList<City> PopDist = a.getAllPopulationindist("Noord-Holland");//moeni
+
         ArrayList<Language> languages = a.getAllLanguage();//moeni
 
 
@@ -71,6 +73,7 @@ public class App {
         a.displayPoupulationinCont(popCont);//By moeni
         a.displayPoupulationinReg(popReg);//By moeni
         a.displayPoupulationinCou(popCou);//By moeni
+        a.displayPoupulationinDist(PopDist);//By moeni
         a.displayLanguage(languages);// by moeni
 
 
@@ -1100,7 +1103,6 @@ public class App {
             return null;
         }
     }
-
     public void displayPoupulationinCou(ArrayList<Country> world)
     {
 
@@ -1122,6 +1124,130 @@ public class App {
             for (Country emp : world) {
                 if (emp == null) continue;
                 System.out.println(String.format("%-40s %-40s", emp.getName(), emp.getPopulation_result()));
+
+            }
+        }
+    }
+
+    /**
+     * Gets all Population of a district  by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<City> getAllPopulationindist(String Dist)
+
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT Sum(city.Population) as totalpopulation FROM city WHERE city.District =" + "'" + Dist + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> City = new ArrayList<City>();
+            while (rset.next())
+            {
+                City emp = new City();
+                emp.setDistrict(Dist);
+                emp.setPopulation(rset.getInt("totalpopulation"));
+                City.add(emp);
+            }
+            return City;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Total population in a District");
+            return null;
+        }
+    }
+
+    public void displayPoupulationinDist(ArrayList<City> world)
+    {
+
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The population in a District\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-40s %-40s ",  "District", "Population"));
+        if (world == null)
+        {
+            System.out.println("No population");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no population data");
+            return;
+        }
+        else {
+            for (City emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s", emp.getDistrict(), emp.getPopulation()));
+
+            }
+        }
+    }
+
+    /**
+     * Gets all Population of a City  by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<City> getAllPopulationincity(String city)
+
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT Sum(city.Population) as totalpopulation FROM city WHERE city.Name =" + "'" + city + "'";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> City = new ArrayList<City>();
+            while (rset.next())
+            {
+                City emp = new City();
+                emp.setCityName(city);
+                emp.setPopulation(rset.getInt("totalpopulation"));
+                City.add(emp);
+            }
+            return City;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Total population in a District");
+            return null;
+        }
+    }
+
+    public void displayPoupulationincity(ArrayList<City> world)
+    {
+
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("The population in a City\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-40s %-40s ",  "City", "Population"));
+        if (world == null)
+        {
+            System.out.println("No population");
+            return;
+        }
+        else if (world.size() == 0 )
+        {
+            System.out.println("There is no population data");
+            return;
+        }
+        else {
+            for (City emp : world) {
+                if (emp == null) continue;
+                System.out.println(String.format("%-40s %-40s", emp.getCityName(), emp.getPopulation()));
 
             }
         }

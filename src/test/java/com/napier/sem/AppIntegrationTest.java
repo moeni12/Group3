@@ -179,15 +179,15 @@ public class AppIntegrationTest
 
     }
 
-//    @Test
-//    void testGetCurrentCityinR()
-//    {
-//        ArrayList<City> currentcityR = app.getAllCityInReg("Asia");
-//        assertNotNull(currentcityR);
+    @Test
+    void testGetCurrentCityinR()
+    {
+        ArrayList<City> currentcityR = app.getAllCityInReg("South America");
+        assertNotNull(currentcityR);
 //        assertEquals(currentcityR.size() > 0, true);
-//        app.displayCityInReg(currentcityR);
-//
-//    }
+        app.displayCityInReg(currentcityR);
+
+    }
 
 
     @Test

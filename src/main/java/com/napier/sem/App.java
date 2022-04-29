@@ -52,6 +52,8 @@ public class App {
         ArrayList<Country> popReg = a.getAllPopulationinReg("Central Africa");//moeni
         ArrayList<Country> popCou = a.getAllPopulationinCou("Myanmar");//moeni
         ArrayList<City> PopDist = a.getAllPopulationindist("Noord-Holland");//moeni
+        ArrayList<City> PopCity = a.getAllPopulationincity("Yangon");//moeni
+
 
         ArrayList<Language> languages = a.getAllLanguage();//moeni
 
@@ -74,6 +76,8 @@ public class App {
         a.displayPoupulationinReg(popReg);//By moeni
         a.displayPoupulationinCou(popCou);//By moeni
         a.displayPoupulationinDist(PopDist);//By moeni
+        a.displayPoupulationincity(PopCity);//By moeni
+
         a.displayLanguage(languages);// by moeni
 
 
@@ -254,7 +258,8 @@ public class App {
         }
     }
     /**
-     * Display all the countires info in the world developed by Moe Ni Ni Chaw.
+     * Display all the count
+     * ires info in the world developed by Moe Ni Ni Chaw.
      * @return A list of all countries and population, or null if there is an error.
      */
 

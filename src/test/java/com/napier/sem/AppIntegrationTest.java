@@ -349,4 +349,15 @@ public class AppIntegrationTest
         app.displayPoupulationCityContinent(popctyconti);
 
     }
+
+    @Test
+    void testGetTopcapitalinR()
+    {
+        ArrayList<Country> topCapitalR = app.getAllTopCapitalinRegion(5, "Asia");
+        assertNotNull(topCapitalR);
+//        assertEquals(topCapitalR.size() > 0, true);
+        app.displayTopCapitalinRegion(topCapitalR);
+
+    }
+
 }

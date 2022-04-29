@@ -320,4 +320,13 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetpopofaRegion()
+    {
+        ArrayList<Country> popReg = app.getAllPopulationinReg("Central Africa");
+        assertNotNull(popReg);
+        assertEquals(popReg.size() > 0, true);
+        app.displayPoupulationinReg(popReg);
+
+    }
 }

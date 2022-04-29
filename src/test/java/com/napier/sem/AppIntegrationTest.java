@@ -260,5 +260,15 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetCapitalinW()
+    {
+        ArrayList<Country> capitalW = app.getAllCapitalinW();
+        assertNotNull(capitalW);
+        assertEquals(capitalW.size() > 0, true);
+        app.displayCapitalinW(capitalW);
+
+    }
+
 
 }

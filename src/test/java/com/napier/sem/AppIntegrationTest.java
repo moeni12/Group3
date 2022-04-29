@@ -240,6 +240,14 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetCapitalcityinW()
+    {
+        ArrayList<Country> capitalctyW = app.getAllTopCapitalinW(4);
+        assertNotNull(capitalctyW);
+        assertEquals(capitalctyW.size() > 0, true);
+        app.displayTopCapitalinW(capitalctyW);
 
+    }
 
 }

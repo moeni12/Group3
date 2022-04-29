@@ -992,4 +992,72 @@ void displayCityInDIstTestNull (){
         language.add(null);
         app.displayLanguage(language);
     }
+
+    // Test for displayPoupulationinDist //
+
+    @Test
+    void displayPoupulationinDistTestNull (){
+        app.displayPoupulationinDist(null);
+
+    }
+    @Test
+    void displayPoupulationinDist()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayPoupulationinDist(cities);
+    }
+
+    @Test
+    void displayPoupulationinDistContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayPoupulationinDist(cities);
+    }
+
+    @Test
+    void displayPoupulationinDistTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayPoupulationinDist(cities);
+    }
+
+    // Test for displayPoupulationincity //
+
+    @Test
+    void displayPoupulationincityTestNull (){
+        app.displayPoupulationincity(null);
+
+    }
+    @Test
+    void displayPoupulationincity()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayPoupulationincity(cities);
+    }
+
+    @Test
+    void displayPoupulationincityContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayPoupulationincity(cities);
+    }
+
+    @Test
+    void displayPoupulationincityTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayPoupulationincity(cities);
+    }
 }

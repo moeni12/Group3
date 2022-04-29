@@ -837,4 +837,227 @@ void displayCityInDIstTestNull (){
         countries.add(emp);
         app.displayCountry(countries);
     }
+
+    // Test for displayCityinW //
+
+    @Test
+    void displayCityinWTestNull (){
+        app.displayCityinW(null);
+
+    }
+    @Test
+    void displayCityinW()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayTopCityinContiN(cities);
+    }
+
+    @Test
+    void displayCityinWContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayCityinW(cities);
+    }
+
+    @Test
+    void displayCityinWTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setConame("Aruba");
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayTopCityinR(cities);
+    }
+
+    // Test for displayPoupulationinCont //
+
+    @Test
+    void displayPoupulationinContTestNull (){
+        app.displayPoupulationinCont(null);
+    }
+    @Test
+    void displayPoupulationinCont()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPoupulationinCont(countries);
+    }
+
+    @Test
+    void displayPoupulationinContContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPoupulationinCont(countries);
+    }
+
+    @Test
+    void displayPoupulationinContTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setContinent("North America");
+        emp.setPopulation_result(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+    // Test for displayPoupulationinReg //
+
+    @Test
+    void displayPoupulationinRegTestNull (){
+        app.displayPoupulationinReg(null);
+    }
+    @Test
+    void displayPoupulationinReg()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPoupulationinReg(countries);
+    }
+
+    @Test
+    void displayPoupulationinRegContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPoupulationinReg(countries);
+    }
+
+    @Test
+    void displayPoupulationinRegTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setContinent("North America");
+        emp.setPopulation_result(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+
+    // Test for displayPoupulationinCou //
+
+    @Test
+    void displayPoupulationinCouTestNull (){
+        app.displayPoupulationinCou(null);
+    }
+    @Test
+    void displayPoupulationinCou()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.displayPoupulationinCou(countries);
+    }
+
+    @Test
+    void displayPoupulationinCouContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.displayPoupulationinCou(countries);
+    }
+
+    @Test
+    void displayPoupulationinCouTest()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country emp = new Country();
+        emp.setContinent("North America");
+        emp.setPopulation_result(103000);
+
+        countries.add(emp);
+        app.displayCountry(countries);
+    }
+
+// Test for displaylanguage //
+
+    @Test
+    void displayLanguageTestNull (){
+        app.displayLanguage(null);
+    }
+    @Test
+    void displayLanguage()
+    {
+        ArrayList<Language> language = new ArrayList<Language>();
+        app.displayLanguage(language);
+    }
+
+    @Test
+    void displayLanguageContainsNull()
+    {
+        ArrayList<Language> language = new ArrayList<Language>();
+        language.add(null);
+        app.displayLanguage(language);
+    }
+
+    // Test for displayPoupulationinDist //
+
+    @Test
+    void displayPoupulationinDistTestNull (){
+        app.displayPoupulationinDist(null);
+
+    }
+    @Test
+    void displayPoupulationinDist()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayPoupulationinDist(cities);
+    }
+
+    @Test
+    void displayPoupulationinDistContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayPoupulationinDist(cities);
+    }
+
+    @Test
+    void displayPoupulationinDistTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setDistrict("Kabol");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayPoupulationinDist(cities);
+    }
+
+    // Test for displayPoupulationincity //
+
+    @Test
+    void displayPoupulationincityTestNull (){
+        app.displayPoupulationincity(null);
+
+    }
+    @Test
+    void displayPoupulationincity()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.displayPoupulationincity(cities);
+    }
+
+    @Test
+    void displayPoupulationincityContainsNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.displayPoupulationincity(cities);
+    }
+
+    @Test
+    void displayPoupulationincityTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City emp = new City();
+        emp.setCityName("Kabul");
+        emp.setPopulation(1780000);
+
+        cities.add(emp);
+        app.displayPoupulationincity(cities);
+    }
 }

@@ -1,11 +1,14 @@
 package com.napier.sem;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class AppTest
+public class AppIntegrationTest
 {
     static App app;
 
@@ -13,1051 +16,327 @@ public class AppTest
     static void init()
     {
         app = new App();
-    }
+        app.connect("localhost:33060", 30000);
 
-    @Test
-    void displayTestNull (){
-        app.displayCountry(null);
     }
+    
     @Test
-    void displayCountryTestEmpty()
+    void testGetAllCountries()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void displayCountryContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void Countries()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setCode("NAT");
-        emp.setName("Aruba");
-        emp.setPopulation(120000);
-        emp.setRegion("Caribbean");
-        emp.setContinent("North America");
-        emp.setCapital_n("Oranjestad");
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
-   
- // Test for displayTopCapitalinContinent //
- @Test
- void displayTopCapitalinContinentTestNull (){
-     app.displayCountry(null);
- }
-    @Test
-    void displayCountry()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void displayTopCapitalinContinentContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void displayTopCapitalinContinentTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setName("Aruba");
-        emp.setPopulation(120000);
-        emp.setCapital_n("Oranjestad");
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
-    // Test for displayCapitalinW //
-
-    @Test
-    void displayCapitalinWTestNull (){
-        app.displayCountry(null);
-    }
-    @Test
-    void displayCapitalinW()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void displayCapitalinWContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void displayCapitalinWTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setName("Aruba");
-        emp.setPopulation(120000);
-        emp.setCapital_n("Oranjestad");
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
-
-    // Test for displayTopCityinW //
-    @Test
-    void displayTopCityinWTestNull (){
-        app.displayTopCityinW(null);
-    }
-    @Test
-    void displayTopCityinW()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayTopCityinW(cities);
-    }
-
-    @Test
-    void displayTopCityinWContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayTopCityinW(cities);
-    }
-
-    @Test
-    void displayTopCityinWTest()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-       cities.add(emp);
-        app.displayTopCityinW(cities);
-    }
-
-    //Test for displayTopCountryinW //
-    @Test
-    void displayTopCountryinWTestNull (){
-        app.displayTopCountryinW(null);
-    }
-    @Test
-    void displayTopCountryinW()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayTopCountryinW(countries);
-    }
-
-    @Test
-    void displayTopCountryinWContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayTopCountryinW(countries);
-    }
-
-    @Test
-    void displayTopCountryinWTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setCode("NAT");
-        emp.setName("Aruba");
-        emp.setPopulation(120000);
-        emp.setRegion("Caribbean");
-        emp.setContinent("North America");
-        emp.setCapital_n("Oranjestad");
-        countries.add(emp);
+        ArrayList<Country> countries = app.getAllCountry();
+        assertNotNull(countries);
+        assertEquals(countries.size() > 0, true);
         app.displayCountry(countries);
 
     }
 
-    //Test for displayCityCountry //
-
-    @Test
-    void displayCityCountryTestNull (){
-        app.displayCityCountry(null);
-
-    }
-    @Test
-    void displayCityCountry()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayCityCountry(cities);
-    }
-
-    @Test
-    void displayCityCountryContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayCityCountry(cities);
-    }
-
-    @Test
-    void displayCityCountryTest()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinW(cities);
-    }
-    // Test for displayCityContinent //
-
-    @Test
-    void displayCityContinentTestNull (){
-        app.displayCityCountry(null);
-
-    }
-    @Test
-    void displayCityContinent()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayCityContinent(cities);
-    }
-
-    @Test
-    void displayCityContinentContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayCityContinent(cities);
-    }
-
-    @Test
-    void displayCityContinentTest()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinW(cities);
-    }
-
-    // Test for displayPoupulationCityContinent //
-
-    @Test
-    void displayPoupulationCityContinentTestNull (){
-        app.displayPoupulationCityContinent(null);
-    }
-    @Test
-    void displayPoupulationCityContinent()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayPoupulationCityContinent(countries);
-    }
-
-    @Test
-    void displayPoupulationCityContinentContainsNullTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayPoupulationCityContinent(countries);
-    }
-
-    @Test
-    void displayPoupulationCityContinentTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setContinent("North America");
-        emp.setPopulation_result(5);
-        emp.setPopulationcity_result(2);
-
-
-        countries.add(emp);
-        app.displayCountry(countries);
-
-    }
-// Test for displayPoupulationinW //
-@Test
-void displayPoupulationinWTestNull (){
-    app.displayPoupulationinW(null);
-}
-    @Test
-    void displayPoupulationinW()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void displayPoupulationinWContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCountry(countries);
-    }
-
-    @Test
-    void displayPoupulationinWTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.getPopulation_result();
-
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
-
-    // Test for displayCapitalinR //
-
-    @Test
-    void displayCapitalinRTestNull (){
-        app.displayCapitalinR(null);
-    }
     @Test
-    void displayCapitalinR()
+    void testGetCityContinent()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCapitalinR(countries);
-    }
+        ArrayList<City> city = app.getAllCityContinent("Asia");
+        assertNotNull(city);
+        assertEquals(city.size() > 0, true);
+        app.displayCityContinent(city);
 
-    @Test
-    void displayCapitalinRContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCapitalinR(countries);
     }
 
     @Test
-    void displayCapitalinRTest()
+    void testGetCountry()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setName("Aruba");
-        emp.setCapital_n("Caribbean");
-        emp.setPopulation(103000);
-
-
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
-    // Test for displayCapitalinContinent //
+        ArrayList<Country> countries = app.getAllCountry();
+        assertNotNull(countries);
+        assertEquals(countries.size() > 0, true);
+        app.printCountries(countries);
 
-    @Test
-    void displayCapitalinContinentTestNull (){
-        app.displayCapitalinContinent(null);
-    }
-    @Test
-    void displayCapitalinContinent()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCapitalinContinent(countries);
     }
 
     @Test
-    void displayCapitalinContinentContainsNull()
+    void testGetTopCapitalinConti()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCapitalinContinent(countries);
-    }
+        ArrayList<Country> countries = app.getAllTopCapitalinContinent(5, "Asia");
+        assertNotNull(countries);
+        assertEquals(countries.size() > 0, true);
+        app.displayTopCapitalinContinent(countries);
 
-    @Test
-    void displayCapitalinContinentTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setName("Aruba");
-        emp.setCapital_n("Kabul");
-        emp.setPopulation(103000);
-
-        countries.add(emp);
-        app.displayCapitalinContinent(countries);
     }
-// Test for displayTopCityinR //
 
     @Test
-    void displayTopCityinRTestNull (){
-        app.displayTopCityinR(null);
-
-    }
-    @Test
-    void displayTopCityinR()
+    void testGettopcityinW()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayTopCityinR(cities);
-    }
+        ArrayList<City> topcity = app.getAllTopcityinW(3);
+        assertNotNull(topcity);
+        assertEquals(topcity.size() > 0, true);
+        app.displayTopCityinW(topcity);
 
-    @Test
-    void displayTopCityinRContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayTopCityinR(cities);
     }
 
     @Test
-    void displayTopCityinRTest()
+    void testGetCurrentcityinW()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinR(cities);
-    }
-    // Test for displayPoupulationCityRegion //
+        ArrayList<City> currcity = app.getAllCityinW();
+        assertNotNull(currcity);
+        assertEquals(currcity.size() > 0, true);
+        app.displayCityinW(currcity);
 
-    @Test
-    void displayPoupulationCityRegionTestNull (){
-        app.displayPoupulationCityRegion(null);
     }
-    @Test
-    void displayPoupulationCityRegion()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayPoupulationCityRegion(countries);
-    }
 
     @Test
-    void displayPoupulationCityRegionContainsNull()
+    void testGetTopcountriesinW()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayPoupulationCityRegion(countries);
-    }
+        ArrayList<Country> topcountry = app.getAllTopCountryinW(5);
+        assertNotNull(topcountry);
+        assertEquals(topcountry.size() > 0, true);
+        app.displayTopCountryinW(topcountry);
 
-
-    // Test for displayCountryInReg //
-
-
-    @Test
-    void displayCountryInRegTestNull (){
-        app.displayCapitalinContinent(null);
-    }
-    @Test
-    void displayCountryInReg()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCountryInReg(countries);
     }
 
     @Test
-    void displayCountryInRegContainsNull()
+    void testGetCurrentcityinCountry()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCountryInReg(countries);
-    }
+        ArrayList<City> currcityinCoun = app.getAllCityCountry("Asia");
+        assertNotNull(currcityinCoun);
+//        assertEquals(currcityinCoun.size() > 0, true);
+        app.displayCityCountry(currcityinCoun);
 
-    @Test
-    void displayCountryInRegContinentTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setCode("ABW");
-        emp.setName("Aruba");
-        emp.setContinent("North America");
-        emp.setRegion("Caribbean");
-        emp.setPopulation(103000);
-        emp.setCapital_n("Kabul");
-
-        countries.add(emp);
-        app.displayCountryInReg(countries);
     }
-// Test for displayCountryInContinent //
 
-
-    @Test
-    void displayCountryInContinentTestNull (){
-        app.displayCapitalinContinent(null);
-    }
     @Test
-    void displayCountryInContinent()
+    void testGetPopulationCityC()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayCountryInContinent(countries);
-    }
+        ArrayList<Country> populationCC = app.getAllPopulationCityContinent();
+        assertNotNull(populationCC);
+        assertEquals(populationCC.size() > 0, true);
+        app.displayPoupulationCityContinent(populationCC);
 
-    @Test
-    void displayCountryInContinentContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayCountryInContinent(countries);
     }
 
     @Test
-    void displayCountryInContinentTest()
+    void testGetPopulationContinent()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setCode("ABW");
-        emp.setName("Aruba");
-        emp.setContinent("North America");
-        emp.setRegion("Caribbean");
-        emp.setPopulation(103000);
-        emp.setCapital_n("Kabul");
-
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
+        ArrayList<Country> populationinW = app.getAllPopulationinW();
+        assertNotNull(populationinW);
+        assertEquals(populationinW.size() > 0, true);
+        app.displayPoupulationinW(populationinW);
 
-    // Test for displayCityInReg //
-
-    @Test
-    void displayCityInRegTestNull (){
-        app.displayCityInReg(null);
-
-    }
-    @Test
-    void displayCityInReg()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayCityInReg(cities);
     }
 
     @Test
-    void displayCityInRegContainsNull()
+    void testGetCapitalinRegion()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayCityInReg(cities);
-    }
+        ArrayList<Country> capitalinR = app.getAllCapitalinR("Central America");
+        assertNotNull(capitalinR);
+        assertEquals(capitalinR.size() > 0, true);
+        app.displayCapitalinR(capitalinR);
 
-    @Test
-    void displayCityInRegTest()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinR(cities);
-    }
-// Test for displayCityInDIst //
-@Test
-void displayCityInDIstTestNull (){
-    app.displayCityInDIst(null);
-
-}
-    @Test
-    void displayCityInDIst()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayCityInDIst(cities);
     }
-
     @Test
-    void displayCityInDIstContainsNull()
+    void testGetCapitalinContinent()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayCityInDIst(cities);
-    }
+        ArrayList<Country> capitalinConti = app.getAllCapitalinContinent("Asia");
+        assertNotNull(capitalinConti);
+        assertEquals(capitalinConti.size() > 0, true);
+        app.displayCapitalinContinent(capitalinConti);
 
-    @Test
-    void displayCityInDIstTest()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinR(cities);
     }
-    // Test for displayTopCountryinCont //
-
 
-    @Test
-    void displayTopCountryinContTestNull (){
-        app.displayTopCountryinCont(null);
-    }
     @Test
-    void displayTopCountryinCont()
+    void testGetTopcityinR()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayTopCountryinCont(countries);
-    }
+        ArrayList<City> topcityinR = app.getAllTopCityinR(5, "China");
+        assertNotNull(topcityinR);
+//        assertEquals(topcityinR.size() > 0, true);
+        app.displayTopCityinR(topcityinR);
 
-    @Test
-    void displayTopCountryinContContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayTopCountryinCont(countries);
     }
 
     @Test
-    void displayTopCountryinContTest()
+    void testGetpopucityR()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setCode("ABW");
-        emp.setName("Aruba");
-        emp.setCapital_n("Kabul");
-        emp.setPopulation(103000);
-
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
-    // Test for displayTopCountryinReg //
-
+        ArrayList<Country> populacityR = app.getAllPopulationCityRegion();
+        assertNotNull(populacityR);
+        assertEquals(populacityR.size() > 0, true);
+        app.displayPoupulationCityRegion(populacityR);
 
-
-    @Test
-    void displayTopCountryinRegTestNull (){
-        app.displayTopCountryinReg(null);
     }
-    @Test
-    void displayTopCountryinReg()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayTopCountryinReg(countries);
-    }
 
     @Test
-    void displayTopCountryinRegContainsNull()
+    void testGetcountryinROrga()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayTopCountryinReg(countries);
-    }
+        ArrayList<Country> CountryRO = app.getAllRegion("Central Africa");
+        assertNotNull(CountryRO);
+        assertEquals(CountryRO.size() > 0, true);
+        app.displayCountryInReg(CountryRO);
 
-    @Test
-    void displayTopCountryinRegTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-
-        emp.setCode("ABW");
-        emp.setName("Aruba");
-        emp.setContinent("North America");
-        emp.setRegion("Caribbean");
-        emp.setPopulation(103000);
-        emp.setCapital_n("Kabul");
-        countries.add(emp);
-        app.displayCountry(countries);
     }
-
-    // Test for displayTopCityinCoun //
 
     @Test
-    void displayTopCityinCounTestNull (){
-        app.displayTopCityinCoun(null);
-
-    }
-    @Test
-    void displayTopCityinCoun()
+    void testGetcountriesinContiOrg()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayTopCityinCoun(cities);
-    }
+        ArrayList<Country> countriesCO = app.getAllCountryINContinent("Asia");
+        assertNotNull(countriesCO);
+        assertEquals(countriesCO.size() > 0, true);
+        app.displayCountryInContinent(countriesCO);
 
-    @Test
-    void displayTopCityinCounContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayTopCityinCoun(cities);
     }
 
     @Test
-    void displayTopCityinCounTest()
+    void testGetCurrentCityinR()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-        cities.add(emp);
-        app.displayTopCityinR(cities);
-    }
-    // Test for displayTopCityinDist //
-    @Test
-    void displayTopCityinDistTestNull (){
-        app.displayTopCityinDist(null);
+        ArrayList<City> currentcityR = app.getAllCityInReg("South America");
+        assertNotNull(currentcityR);
+//        assertEquals(currentcityR.size() > 0, true);
+        app.displayCityInReg(currentcityR);
 
-    }
-    @Test
-    void displayTopCityinDist()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayTopCityinDist(cities);
     }
 
-    @Test
-    void displayTopCityinDistContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayTopCityinDist(cities);
-    }
 
     @Test
-    void displayTopCityinDistTest()
+    void testGetCurrentcityinD()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinR(cities);
-    }
-
-    // Test for displayTopCityinContiN //
-
-    @Test
-    void displayTopCityinContiNTestNull (){
-        app.displayTopCityinContiN(null);
+        ArrayList<City> currcityinD = app.getAllCityInDist("Central Africa");
+        assertNotNull(currcityinD);
+//        assertEquals(currcityinD.size() > 0, true);
+        app.displayCityInDIst(currcityinD);
 
-    }
-    @Test
-    void displayTopCityinContiN()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayTopCityinContiN(cities);
     }
 
     @Test
-    void displayTopCityinContiNContainsNull()
+    void testGettopcountincontin()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayTopCityinDist(cities);
-    }
+        ArrayList<Country> topcounContin = app.getAllTopCountryinCont(4, "Asia");
+        assertNotNull(topcounContin);
+        assertEquals(topcounContin.size() > 0, true);
+        app.displayTopCountryinCont(topcounContin);
 
-    @Test
-    void displayTopCityinContiNTest()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinR(cities);
     }
 
-    // Test for displayTopCapitalinW //
-
-
-    @Test
-    void displayTopCapitalinWTestNull (){
-        app.displayTopCapitalinW(null);
-    }
     @Test
-    void displayTopCapitalinW()
+    void testGettopNpopCountinR()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayTopCapitalinW(countries);
-    }
+        ArrayList<Country> topNPCountR = app.getAllTopCountryinReg(4, "Central Africa");
+        assertNotNull(topNPCountR);
+//        assertEquals(topNPCountR.size() > 0, true);
+        app.displayTopCountryinReg(topNPCountR);
 
-    @Test
-    void displayTopCapitalinWContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayTopCapitalinW(countries);
     }
 
     @Test
-    void displayTopCapitalinWTest()
+    void testGettopNpopcityinD()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setName("Aruba");
-        emp.setCapital_n("Kabul");
-        emp.setPopulation(103000);
-
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
+        ArrayList<City> topNpopctyD = app.getAllTopcityinDist(4, "Gelderland");
+        assertNotNull(topNpopctyD);
+        assertEquals(topNpopctyD.size() > 0, true);
+        app.displayTopCityinDist(topNpopctyD);
 
-    // Test for displayPopulationCityCountry //
-
-
-    @Test
-    void displayPopulationCityCountryTestNull (){
-        app.displayPopulationCityCountry(null);
-    }
-    @Test
-    void displayPopulationCityCountry()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayPopulationCityCountry(countries);
     }
 
     @Test
-    void displayPopulationCityCountryContainsNull()
+    void testGettopNpopcityinConti()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayPopulationCityCountry(countries);
-    }
+        ArrayList<City> topNpopctyConti = app.getAllTopcityinContiN(4, "Asia");
+        assertNotNull(topNpopctyConti);
+        assertEquals(topNpopctyConti.size() > 0, true);
+        app.displayTopCityinContiN(topNpopctyConti);
 
-    @Test
-    void displayPopulationCityCountryTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setName("Aruba");
-        emp.setPopulation_result(20600);
-        emp.setPopulationcity_result(30000);
-        emp.setResult(50000);
-
-        countries.add(emp);
-        app.displayCountry(countries);
     }
-
-    // Test for displayCityinW //
-
-    @Test
-    void displayCityinWTestNull (){
-        app.displayCityinW(null);
 
-    }
     @Test
-    void displayCityinW()
+    void testGetCapitalcityinW()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayTopCityinContiN(cities);
-    }
+        ArrayList<Country> capitalctyW = app.getAllTopCapitalinW(4);
+        assertNotNull(capitalctyW);
+        assertEquals(capitalctyW.size() > 0, true);
+        app.displayTopCapitalinW(capitalctyW);
 
-    @Test
-    void displayCityinWContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayCityinW(cities);
     }
 
     @Test
-    void displayCityinWTest()
+    void testGetpopincountry()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setConame("Aruba");
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayTopCityinR(cities);
-    }
-
-    // Test for displayPoupulationinCont //
+        ArrayList<Country> popincoun = app.getAllPopulationCityCountry();
+        assertNotNull(popincoun);
+        assertEquals(popincoun.size() > 0, true);
+        app.displayPopulationCityCountry(popincoun);
 
-    @Test
-    void displayPoupulationinContTestNull (){
-        app.displayPoupulationinCont(null);
-    }
-    @Test
-    void displayPoupulationinCont()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayPoupulationinCont(countries);
     }
 
     @Test
-    void displayPoupulationinContContainsNull()
+    void testGetCapitalinWorld()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayPoupulationinCont(countries);
-    }
+        ArrayList<Country> capitalW = app.getAllCapitalinW();
+        assertNotNull(capitalW);
+        assertEquals(capitalW.size() > 0, true);
+        app.displayCapitalinW(capitalW);
 
-    @Test
-    void displayPoupulationinContTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setContinent("North America");
-        emp.setPopulation_result(103000);
-
-        countries.add(emp);
-        app.displayCountry(countries);
     }
-    // Test for displayPoupulationinReg //
 
     @Test
-    void displayPoupulationinRegTestNull (){
-        app.displayPoupulationinReg(null);
-    }
-    @Test
-    void displayPoupulationinReg()
+    void testGetLanaguage()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayPoupulationinReg(countries);
-    }
+        ArrayList<Language> lanag = app.getAllLanguage();
+        assertNotNull(lanag);
+        assertEquals(lanag.size() > 0, true);
+        app.displayLanguage(lanag);
 
-    @Test
-    void displayPoupulationinRegContainsNull()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayPoupulationinReg(countries);
     }
 
     @Test
-    void displayPoupulationinRegTest()
+    void testGetPopofaDistr()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setContinent("North America");
-        emp.setPopulation_result(103000);
-
-        countries.add(emp);
-        app.displayCountry(countries);
-    }
+        ArrayList<City> popdistr = app.getAllPopulationindist("Noord-Holland");
+        assertNotNull(popdistr);
+        assertEquals(popdistr.size() > 0, true);
+        app.displayPoupulationinDist(popdistr);
 
-    // Test for displayPoupulationinCou //
-
-    @Test
-    void displayPoupulationinCouTestNull (){
-        app.displayPoupulationinCou(null);
     }
-    @Test
-    void displayPoupulationinCou()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        app.displayPoupulationinCou(countries);
-    }
 
     @Test
-    void displayPoupulationinCouContainsNull()
+    void testGetPopincity()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        countries.add(null);
-        app.displayPoupulationinCou(countries);
-    }
+        ArrayList<City> popincty = app.getAllPopulationincity("Yangon");
+        assertNotNull(popincty);
+        assertEquals(popincty.size() > 0, true);
+        app.displayPoupulationincity(popincty);
 
-    @Test
-    void displayPoupulationinCouTest()
-    {
-        ArrayList<Country> countries = new ArrayList<Country>();
-        Country emp = new Country();
-        emp.setContinent("North America");
-        emp.setPopulation_result(103000);
-
-        countries.add(emp);
-        app.displayCountry(countries);
     }
-
-// Test for displaylanguage //
 
     @Test
-    void displayLanguageTestNull (){
-        app.displayLanguage(null);
-    }
-    @Test
-    void displayLanguage()
+    void testGetTopPopctyincountry()
     {
-        ArrayList<Language> language = new ArrayList<Language>();
-        app.displayLanguage(language);
-    }
+        ArrayList<City> toppopctycoun = app.getAllTopcityinCoun(5, "Asia");
+        assertNotNull(toppopctycoun);
+//        assertEquals(toppopctycoun.size() > 0, true);
+        app.displayTopCityinCoun(toppopctycoun);
 
-    @Test
-    void displayLanguageContainsNull()
-    {
-        ArrayList<Language> language = new ArrayList<Language>();
-        language.add(null);
-        app.displayLanguage(language);
     }
-
-    // Test for displayPoupulationinDist //
-
-    @Test
-    void displayPoupulationinDistTestNull (){
-        app.displayPoupulationinDist(null);
 
-    }
     @Test
-    void displayPoupulationinDist()
+    void testGetpopofacontinent()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayPoupulationinDist(cities);
-    }
+        ArrayList<Country> popcontinent = app.getAllPopulationinCont("Myanmar");
+        assertNotNull(popcontinent);
+        assertEquals(popcontinent.size() > 0, true);
+        app.displayPoupulationinCont(popcontinent);
 
-    @Test
-    void displayPoupulationinDistContainsNull()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayPoupulationinDist(cities);
     }
 
     @Test
-    void displayPoupulationinDistTest()
+    void testGetpopofaRegion()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setDistrict("Kabol");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayPoupulationinDist(cities);
-    }
-
-    // Test for displayPoupulationincity //
+        ArrayList<Country> popReg = app.getAllPopulationinReg("Central Africa");
+        assertNotNull(popReg);
+        assertEquals(popReg.size() > 0, true);
+        app.displayPoupulationinReg(popReg);
 
-    @Test
-    void displayPoupulationincityTestNull (){
-        app.displayPoupulationincity(null);
-
-    }
-    @Test
-    void displayPoupulationincity()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        app.displayPoupulationincity(cities);
     }
 
     @Test
-    void displayPoupulationincityContainsNull()
+    void testGetpopofacountry()
     {
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        app.displayPoupulationincity(cities);
-    }
+        ArrayList<Country> popcou = app.getAllPopulationinCou("Myanmar");
+        assertNotNull(popcou);
+        assertEquals(popcou.size() > 0, true);
+        app.displayPoupulationinCou(popcou);
 
-    @Test
-    void displayPoupulationincityTest()
-    {
-        ArrayList<City> cities = new ArrayList<City>();
-        City emp = new City();
-        emp.setCityName("Kabul");
-        emp.setPopulation(1780000);
-
-        cities.add(emp);
-        app.displayPoupulationincity(cities);
     }
 }

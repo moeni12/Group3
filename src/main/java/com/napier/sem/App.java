@@ -37,15 +37,17 @@ public class App {
         ArrayList<City> cityinW = a.getAllCityinW(); //developed by moeni
 
         ArrayList<City> cityinC = a.getAllCityContinent("North America");// developed by moeni
-      // Extract countries information in the world
-        ArrayList<Country> topCountryinW = a.getAllTopCountryinW(6);//developed by moeni
+
         // Extract city information in a country
         ArrayList<City> cityinCou = a.getAllCityCountry("Myanmar");// developed by moeni
         // Extract city information in the world
         ArrayList<City> topCityinW = a.getAllTopcityinW(6);//developed by moeni
         ArrayList<Country> capitalinW = a.getAllCapitalinW();//moeni
         ArrayList<Country> topcapitalinCon = a.getAllTopCapitalinContinent(5,"Asia");//moeni
- 
+        ArrayList<Country> topcapitalinReg = a.getAllTopCapitalinRegion(5,"Central Africa");//moeni
+
+        // Extract countries information in the world
+        ArrayList<Country> topCountryinW = a.getAllTopCountryinW(6);//developed by moeni
         ArrayList<Country> popcitycontient = a.getAllPopulationCityContinent();//moeni
         ArrayList<Country> popinW = a.getAllPopulationinW();//moeni
         ArrayList<Country> popCont = a.getAllPopulationinCont("Asia");//moeni
@@ -53,75 +55,99 @@ public class App {
         ArrayList<Country> popCou = a.getAllPopulationinCou("Myanmar");//moeni
         ArrayList<City> PopDist = a.getAllPopulationindist("Noord-Holland");//moeni
         ArrayList<City> PopCity = a.getAllPopulationincity("Yangon");//moeni
-
-
         ArrayList<Language> languages = a.getAllLanguage();//moeni
+
+        ArrayList<Country> couC = a.getAllCountryINContinent("Asia"); // developed by Htet EIndra Wai
+        ArrayList<Country> couR = a.getAllRegion("Southern Europe"); // developed by Htet EIndra Wai
+
+
+        ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");//By Phoo Pwint Thin
+        ArrayList<City> TopCityinR = a.getAllTopCityinR(5, "Central America");//By Phoo Pwint Thin
+        ArrayList<Country> AllPopulationCityRegion = a.getAllPopulationCityRegion();//By Phoo Pwint Thin
+        ArrayList<Country> AllPopulationCityCountry = a.getAllPopulationCityCountry();// by PPT
+
+        ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
+        ArrayList<Country> topcapitalinW = a.getAllTopCapitalinW(5);//By HWYl
+        ArrayList<City> citiesINR = a.getAllCityInReg("South America"); // developed by Htet EIndra Wai
+        ArrayList<City> citiesIND = a.getAllCityInDist("Noord-Holland"); // developed by Htet Eindra Wai
+        ArrayList<City> citiesINCount = a.getAllTopcityinCoun(4, "Australia");// developed by Htet Eindra Wai
+        ArrayList<City> citiesINDist = a.getAllTopcityinDist(6,"Noord-Holland"); // developed by Htet Eindra Wai
+        ArrayList<Country> countryInCont = a.getAllTopCountryinCont(5,"Asia"); // developed by Htet Eindra Wai
+        ArrayList<Country> TopcountryINReg = a.getAllTopCountryinReg(5,"Middle East");// HEW
+        ArrayList<Country> CaptialinC = a.getAllCapitalinContinent("Asia"); //By HWYl
+
+
+
 
 
 
 
 
         // Display results
-          a.displayCountry(cou);//developed by moeni
-//        a.displayCityinW(cityinW); //developed by moeni
-//        a.displayCityContinent(cityinC);// developed by moeni
-//        a.displayTopCountryinW(topCountryinW,"TopcountriesinW.md");
-//        a.displayCityCountry(cityinCou);// developed by moeni
-//        a.displayTopCityinW(topCityinW,"TopcountriesinW.md");// by moeni
-//        a.displayCapitalinW(capitalinW);
+        a.displayCountry(cou);//developed by moeni
+        a.displayCountryInContinent(couC); //developed by Htet EIndra Wai
+        a.displayCountryInReg(couR); //developed by Htet EIndra Wai
+        a.displayTopCountryinW(topCountryinW);// moeni
+        a.displayTopCountryinCont(countryInCont);// developed by Htet Eindra Wai
+        a.displayTopCountryinReg(TopcountryINReg);// HEW
+        a.displayCityinW(cityinW); //developed by moeni
+        a.displayCityContinent(cityinC);// developed by moeni
+        a.displayCityInReg(citiesINR); // developed by Htet EIndra Wai
+        a.displayCityCountry(cityinCou);// developed by moeni
+        a.displayCityInDIst( citiesIND); // developed by Htet Eindra Wai
+
+
+
+        a.displayTopCityinW(topCityinW);// by moeni
+        a.displayTopCityinContiN(topCityinContiN);//By HWYL
+        a.displayTopCityinR(TopCityinR);//By Phoo Pwint Thin
+        a.displayTopCityinCoun(citiesINCount); // developed by Htet Eindra Wai
+        a.displayTopCityinDist( citiesINDist); // developed by Htet Eindra Wai
+        a.displayCapitalinW(capitalinW);
+        a.displayCapitalinContinent(CaptialinC);//By HWYL
+        a.displayCapitalinR(capitalinR);//By Phoo Pwint Thin
+
+        a.displayTopCapitalinW(topcapitalinW);//By HWYL
+        a.displayTopCapitalinContinent(topcapitalinCon);//By Moeni
+        a.displayTopCapitalinRegion(topcapitalinReg);//By Moeni
+
+
 
         a.displayPoupulationCityContinent(popcitycontient);//By moeni
+        a.displayPoupulationCityRegion(AllPopulationCityRegion);//By Phoo Pwint Thin
+        a.displayPopulationCityCountry(AllPopulationCityCountry);
         a.displayPoupulationinW(popinW);//By moeni
         a.displayPoupulationinCont(popCont);//By moeni
         a.displayPoupulationinReg(popReg);//By moeni
         a.displayPoupulationinCou(popCou);//By moeni
         a.displayPoupulationinDist(PopDist);//By moeni
         a.displayPoupulationincity(PopCity);//By moeni
-
         a.displayLanguage(languages);// by moeni
+
+
+
+
+
 
 
         // _________________________________________ Moe Ni Ni Chaw_____________________________//
         //______________________________________________Phoo Pwint THin______________________________//
-        ArrayList<Country> capitalinR = a.getAllCapitalinR("Central America");//By Phoo Pwint Thin
-        ArrayList<City> TopCityinR = a.getAllTopCityinR(5, "Central America");//By Phoo Pwint Thin
-        ArrayList<Country> AllPopulationCityRegion = a.getAllPopulationCityRegion();//By Phoo Pwint Thin
-        ArrayList<Country> AllPopulationCityCountry = a.getAllPopulationCityCountry();
-        // Display results
-//        a.displayTopCityinR(TopCityinR);//By Phoo Pwint Thin
-          a.displayPoupulationCityRegion(AllPopulationCityRegion);//By Phoo Pwint Thin
-        a.displayPopulationCityCountry(AllPopulationCityCountry);
-//        a.displayCapitalinR(capitalinR);//By Phoo Pwint Thin
+
+
 
 
         // _________________________________________ HWYL_____________________________//
 
-        ArrayList<City> topCityinContiN = a.getAllTopcityinContiN(6, "Asia");//By HWYL
-        ArrayList<Country> topcapitalinW = a.getAllTopCapitalinW(5);//By HWYl
 
-        // Display results
-        a.displayTopCapitalinContinent(topcapitalinCon);//By HWYL
-//        a.displayTopCityinContiN(topCityinContiN,"topCityinContiN.md");//By HWYL
-        a.displayTopCapitalinW(topcapitalinW);//By HWYL
+
+
         //-------------------------------------------Htet EIndra Wai---------------------------//
 
-//         ArrayList<Country> couR = a.getAllRegion("Southern Europe"); // developed by Htet EIndra Wai
-//         ArrayList<Country> couC = a.getAllCountryINContinent("Asia"); // developed by Htet EIndra Wai
-//            ArrayList<City> citiesINR = a.getAllCityInReg("South America"); // developed by Htet EIndra Wai
-//            ArrayList<City> citiesIND = a.getAllCityInDist("Noord-Holland"); // developed by Htet Eindra Wai
-//            ArrayList<City> citiesINCount = a.getAllTopcityinCoun(4, "Australia");// developed by Htet Eindra Wai
-//            ArrayList<City> citiesINDist = a.getAllTopcityinDist(6,"Noord-Holland"); // developed by Htet Eindra Wai
-            ArrayList<Country> countryInCont = a.getAllTopCountryinCont(5,"Asia"); // developed by Htet Eindra Wai
-            ArrayList<Country> TopcountryINReg = a.getAllTopCountryinReg(5,"Middle East");
+
+
         //display Results
-//        a.displayCountryInReg(couR); //developed by Htet EIndra Wai
-//        a.displayCountryInContinent(couC); //developed by Htet EIndra Wai
-//        a.displayCityInReg(citiesINR); // developed by Htet EIndra Wai
-//        a.displayCityInDIst( citiesIND); // developed by Htet Eindra Wai
-//        a.displayTopCityinCoun(citiesINCount, "TopcitiesinCountry.md"); // developed by Htet Eindra Wai
-//        a.displayTopCityinDist( citiesINDist,"TopcitiesinDist.md"); // developed by Htet Eindra Wai
-         a.displayTopCountryinCont(countryInCont);// developed by Htet Eindra Wai
-         a.displayTopCountryinReg(TopcountryINReg);
+
+
 
 
         // Extract countries information in a region
@@ -135,9 +161,6 @@ public class App {
 //      a.displayCapitalinW(capitalinW);
 
 
-        /**
-         * Report for city information
-         */
         // Extract city information in the world
 //        ArrayList<City> cit = a.getAllCity();
 
@@ -148,8 +171,7 @@ public class App {
 //        ArrayList<city> dist = a.getAllCitiesINDist("Noord-Brabant");
 //        ArrayList<city> cityDist = a.getAllTopCityinDist(6,"Gelderland");
 //        ArrayList<city> cou = a.getAllTopCityinCou(4,"Austria");
-        //ArrayList<Country> CaptialinC = a.getAllCapitalinContinent("Asia"); //By HWYl
-        //a.displayCapitalinContinent(CaptialinC);//By HWYL
+
         // Display results
 //        a.displayCity(cit);
 
@@ -339,6 +361,61 @@ public class App {
         StringBuilder sb = new StringBuilder();
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println("All the Top capital cities in a continent organised by largest population to smallest.\n\n");
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println(String.format("%-35s %-40s %-20s",  "Country", "Capital","Population"));
+        for (Country emp : world)
+        {
+            System.out.println(String.format("%-35s %-40s %-20s",  emp.getName(), emp.getCapital_n(),emp.getPopulation()));
+
+        }
+
+    }
+    /**
+     * Gets all the Capital in a Region by MoeNiNiChaw.
+     * @return A list of all city, or null if there is an error.
+     */
+    public ArrayList<Country> getAllTopCapitalinRegion(int Num, String region)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+
+            String strSelect = "SELECT * FROM country, city WHERE country.Capital = city.ID and country.Region = " + "'" + region + "'" + " ORDER BY city.Population desc limit " + Num;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<Country> Country = new ArrayList<Country>();
+
+
+            while (rset.next())
+            {
+                Country emp = new Country();
+
+//                emp.code = rset.getString("country.Code");
+
+                emp.setName(rset.getString("country.Name"));
+                emp.setCapital_n(rset.getString("city.Name"));
+                emp.setPopulation(rset.getInt("city.Population"));
+
+                Country.add(emp);
+            }
+            return Country;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    public void displayTopCapitalinRegion(ArrayList<Country> world)
+    {
+        StringBuilder sb = new StringBuilder();
+        System.out.println("\n-----------------------------------------------------------------------------------\n");
+        System.out.println("All the Top capital cities in a region organised by largest population to smallest.\n\n");
         System.out.println("\n-----------------------------------------------------------------------------------\n");
         System.out.println(String.format("%-35s %-40s %-20s",  "Country", "Capital","Population"));
         for (Country emp : world)
@@ -1644,6 +1721,7 @@ public class App {
         }
 
     }
+
 
 
 

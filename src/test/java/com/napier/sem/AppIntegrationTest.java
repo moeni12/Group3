@@ -310,4 +310,14 @@ public class AppIntegrationTest
 
     }
 
+    @Test
+    void testGetpopofacontinent()
+    {
+        ArrayList<Country> popcontinent = app.getAllPopulationinCont("Myanmar");
+        assertNotNull(popcontinent);
+        assertEquals(popcontinent.size() > 0, true);
+        app.displayPoupulationinCont(popcontinent);
+
+    }
+
 }
